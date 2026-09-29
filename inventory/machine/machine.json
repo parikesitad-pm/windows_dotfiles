@@ -1,0 +1,49 @@
+{
+  "Hostname": "DRVC-F15",
+  "Model": "ASUSTeK COMPUTER INC. ASUS TUF Dash F15 FX516PE_TUF516PE",
+  "OS": "Microsoft Windows 10 Pro",
+  "Version": "10.0.19045",
+  "Build": "19045",
+  "Architecture": "64-bit",
+  "CPU": "11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz",
+  "PhysicalCores": 4,
+  "LogicalProcessors": 8,
+  "RAM_GB": 23.7,
+  "Motherboard": "ASUSTeK COMPUTER INC. FX516PE",
+  "BIOS": "American Megatrends International, LLC. FX516PE.330",
+  "TPMPresent": false,
+  "TPMEnabled": false,
+  "GPUs": [
+    {
+      "Name": "Intel(R) Iris(R) Xe Graphics",
+      "DriverVersion": "31.0.101.5333",
+      "DriverDate": "2024-02-21T07:00:00+07:00",
+      "Resolution": "1920x1080",
+      "RefreshRateHz": 144
+    },
+    {
+      "Name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+      "DriverVersion": "32.0.16.1062",
+      "DriverDate": "2026-06-11T07:00:00+07:00",
+      "Resolution": "x",
+      "RefreshRateHz": null
+    }
+  ],
+  "Disks": [
+    {
+      "Model": "NVMe V-GEN10SM21SCY512MTNV",
+      "Size_GB": 476.94
+    },
+    {
+      "Model": "Mass Storage Device USB Device",
+      "Size_GB": 0.0
+    }
+  ],
+  "NetworkAdapters": [
+    {
+      "Name": "Realtek PCIe GbE Family Controller",
+      "AdapterType": "Ethernet 802.3",
+      "MACAddress": "FC:34:97:4C:D1:D4"
+    }
+  ]
+}

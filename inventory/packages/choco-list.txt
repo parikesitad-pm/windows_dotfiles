@@ -1,0 +1,23 @@
+Chocolatey v2.6.0
+chocolatey 2.6.0
+chocolatey-compatibility.extension 1.0.0
+chocolatey-core.extension 1.4.0
+chocolatey-dotnetfx.extension 1.0.1
+chocolatey-visualstudio.extension 1.13.0
+chocolatey-windowsupdate.extension 1.0.5
+dotnetfx 4.8.0.20220524
+KB2919355 1.0.20160915
+KB2919442 1.0.20160915
+KB2999226 1.0.20181019
+KB3033929 1.0.5
+KB3035131 1.0.3
+python 3.14.2
+python3 3.14.2
+python314 3.14.2
+vcredist140 14.44.35211
+vcredist2015 14.0.24215.20170201
+visualstudio2022buildtools 117.14.24
+visualstudio2022-workload-vctools 1.0.0
+visualstudio-installer 2.0.7
+20 packages installed.
+

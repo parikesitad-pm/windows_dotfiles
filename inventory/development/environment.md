@@ -1,0 +1,162 @@
+# Environment Variables Inventory
+
+> Source Machine: DRVC-F15  
+> Last Backup: 2026-09-29 22:29:09  
+
+## User PATH
+- `C:\Users\drvc-\.cargo\bin`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WindowsApps`
+- `C:\Users\drvc-\AppData\Local\spicetify`
+- `C:\Program Files\Git\cmd`
+- `C:\Program Files\Git\bin`
+- `C:\Users\drvc-\.config\fastfetch\config.jsonc`
+- `C:\Users\drvc-\tools\fastfetch`
+- `C:\Users\drvc-\AppData\Roaming\npm`
+- `C:\Users\drvc-\AppData\Local\PowerToys\DSCModules\`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\DenoLand.Deno_Microsoft.Winget.Source_8wekyb3d8bbwe`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-N-124716-g054dffd133-win64-gpl\bin`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build\bin`
+- `C:\Users\drvc-\AppData\Local\Programs\Microsoft VS Code\bin`
+- `C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\Fastfetch-cli.Fastfetch_Microsoft.Winget.Source_8wekyb3d8bbwe`
+- `C:\Users\drvc-\.dotnet\tools`
+
+## System PATH
+- `C:\Program Files (x86)\Common Files\Oracle\Java\java8path`
+- `C:\Program Files (x86)\Common Files\Oracle\Java\javapath`
+- `C:\Python314\Scripts\`
+- `C:\Python314\`
+- `C:\Windows\system32`
+- `C:\Windows`
+- `C:\Windows\System32\Wbem`
+- `C:\Windows\System32\WindowsPowerShell\v1.0\`
+- `C:\Windows\System32\OpenSSH\`
+- `C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR`
+- `C:\ProgramData\chocolatey\bin`
+- `C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common`
+- `C:\Program Files\dotnet\`
+- `C:\Program Files\nodejs\`
+- `C:\Program Files\Cloudflare\Cloudflare WARP\`
+- `C:\Program Files\Git\cmd`
+- `C:\Program Files\GitHub CLI\`
+- `C:\Program Files\bottom\bin\`
+
+## Discovered Environment Variable Names (Values Redacted)
+- `_`
+- `ACLOCAL_PATH`
+- `ACSetupSvcPort`
+- `AGY_ENABLE_HUB`
+- `ALLUSERSPROFILE`
+- `ANTIGRAVITY_AGENT`
+- `ANTIGRAVITY_AGENTAPI_EXE`
+- `ANTIGRAVITY_APP_DATA_DIR`
+- `ANTIGRAVITY_AUTH_SUCCESS_APP` = <REDACTED>
+- `ANTIGRAVITY_CONVERSATION_ID`
+- `ANTIGRAVITY_CSRF_TOKEN` = <REDACTED>
+- `ANTIGRAVITY_LS_ADDRESS`
+- `ANTIGRAVITY_LS_VERSION`
+- `ANTIGRAVITY_PROJECT_ID`
+- `ANTIGRAVITY_SOURCE_METADATA`
+- `ANTIGRAVITY_TRAJECTORY_ID`
+- `ANTIGRAVITY_VSCODE_HOST`
+- `APPDATA`
+- `ChocolateyInstall`
+- `ChocolateyLastPathUpdate`
+- `CHROME_CRASHPAD_PIPE_NAME`
+- `COMMONPROGRAMFILES`
+- `CommonProgramFiles(x86)`
+- `CommonProgramW6432`
+- `COMPUTERNAME`
+- `COMSPEC`
+- `CONFIG_SITE`
+- `DISPLAY`
+- `DriverData`
+- `EDITOR`
+- `ELECTRON_NO_ATTACH_CONSOLE`
+- `ELECTRON_RUN_AS_NODE`
+- `EnableLog`
+- `EXEPATH`
+- `GEMINI_API_KEY` = <REDACTED>
+- `HOME`
+- `HOMEDRIVE`
+- `HOMEPATH`
+- `HOSTNAME`
+- `INFOPATH`
+- `LANG`
+- `LESS`
+- `LOCALAPPDATA`
+- `LOGNAME`
+- `LOGONSERVER`
+- `LS_COLORS`
+- `LSCOLORS`
+- `MANPATH`
+- `MINGW_CHOST`
+- `MINGW_PACKAGE_PREFIX`
+- `MINGW_PREFIX`
+- `MSYSTEM`
+- `MSYSTEM_CARCH`
+- `MSYSTEM_CHOST`
+- `MSYSTEM_PREFIX`
+- `NDI_RUNTIME_DIR_V2`
+- `NDI_RUNTIME_DIR_V3`
+- `NDI_RUNTIME_DIR_V4`
+- `NDI_RUNTIME_DIR_V5`
+- `NDI_RUNTIME_DIR_V6`
+- `NODE_USE_SYSTEM_CA`
+- `NUMBER_OF_PROCESSORS`
+- `OLDPWD`
+- `OneDrive`
+- `ORIGINAL_PATH`
+- `ORIGINAL_TEMP`
+- `ORIGINAL_TMP`
+- `OS`
+- `PAGER`
+- `PATH`
+- `PATHEXT`
+- `PKG_CONFIG_PATH`
+- `PKG_CONFIG_SYSTEM_INCLUDE_PATH`
+- `PKG_CONFIG_SYSTEM_LIBRARY_PATH`
+- `PLINK_PROTOCOL`
+- `POWERSHELL_TELEMETRY_OPTOUT`
+- `PROCESSOR_ARCHITECTURE`
+- `PROCESSOR_IDENTIFIER`
+- `PROCESSOR_LEVEL`
+- `PROCESSOR_REVISION`
+- `ProgramData`
+- `PROGRAMFILES`
+- `ProgramFiles(x86)`
+- `ProgramW6432`
+- `PSModulePath`
+- `PUBLIC`
+- `PWD`
+- `RlsSvcPort`
+- `SESSIONNAME`
+- `SHELL`
+- `SHLVL`
+- `SSH_ASKPASS`
+- `SYSTEMDRIVE`
+- `SYSTEMROOT`
+- `TEMP`
+- `TERM`
+- `TMP`
+- `TMPDIR`
+- `USERDOMAIN`
+- `USERDOMAIN_ROAMINGPROFILE`
+- `USERNAME`
+- `USERPROFILE`
+- `VISUAL`
+- `VSCODE_CLI`
+- `VSCODE_CODE_CACHE_PATH`
+- `VSCODE_CRASH_REPORTER_PROCESS_TYPE`
+- `VSCODE_CWD`
+- `VSCODE_ESM_ENTRYPOINT`
+- `VSCODE_HANDLES_UNCAUGHT_ERRORS`
+- `VSCODE_IPC_HOOK`
+- `VSCODE_NLS_CONFIG`
+- `VSCODE_PID`
+- `WINDIR`
+- `WSLENV`
+- `WT_PROFILE_ID`
+- `WT_SESSION`
+- `ZES_ENABLE_SYSMAN`
+- `ZSH`
