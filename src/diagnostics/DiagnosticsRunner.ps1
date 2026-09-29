@@ -67,7 +67,11 @@ function Invoke-DotmodDiagnostics {
     Write-DotmodInfo "VS Code Color Theme ........ $($themeInfo.VSCodeTheme)" 2
     Write-DotmodInfo "Starship Palette ........... $($themeInfo.StarshipPalette)" 2
 
-    # 5. Custom Shell Command Dependencies
+    # 5. Display Topology & Hardware Correlation
+    Write-Host "`n--- Display Topology & Hardware Correlation ---" -ForegroundColor Yellow
+    Show-DotmodTopologyDiagnostics
+
+    # 6. Custom Shell Command Dependencies
     Write-Host "`n--- Custom Shell Command Dependencies ---" -ForegroundColor Yellow
     $customCmds = @(
         @{ Name = "dl / fdownload"; Deps = @("yt-dlp") },

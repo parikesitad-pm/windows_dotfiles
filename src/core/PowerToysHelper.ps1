@@ -57,41 +57,127 @@ function Get-DotmodPowerToysStatus {
     return $status
 }
 
+# Win32 Display Correlator for Hardware-to-Screen Geometry Binding
+if (-not ([System.Management.Automation.PSTypeName]"DotmodDisplayCorrelator").Type) {
+    $displayCorrelatorCode = @"
+using System;
+using System.Runtime.InteropServices;
+
+public class DotmodDisplayCorrelator {
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct DISPLAY_DEVICEW {
+        public int cb;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string DeviceName;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string DeviceString;
+        public int StateFlags;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string DeviceID;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string DeviceKey;
+    }
+
+    [DllImport("user32.dll", EntryPoint = "EnumDisplayDevicesW", CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern bool EnumAdapters(IntPtr lpDevice, uint iDevNum, ref DISPLAY_DEVICEW lpDisplayDevice, uint dwFlags);
+
+    [DllImport("user32.dll", EntryPoint = "EnumDisplayDevicesW", CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern bool EnumMonitors(string lpDevice, uint iDevNum, ref DISPLAY_DEVICEW lpDisplayDevice, uint dwFlags);
+}
+"@
+    Add-Type -TypeDefinition $displayCorrelatorCode -ErrorAction SilentlyContinue
+}
+
 function Get-DotmodDisplayTopology {
     Add-Type -AssemblyName System.Windows.Forms -ErrorAction SilentlyContinue
     $screens = @([System.Windows.Forms.Screen]::AllScreens)
     $wmiMonitors = @(Get-CimInstance -Namespace root\wmi -ClassName WmiMonitorID -ErrorAction SilentlyContinue)
 
+    # 1. Enumerate Windows active desktop display adapters and correlate hardware monitor IDs
+    $adapterMap = @{}
+    try {
+        for ($i = 0; ; $i++) {
+            $adapter = New-Object DotmodDisplayCorrelator+DISPLAY_DEVICEW
+            $adapter.cb = [System.Runtime.InteropServices.Marshal]::SizeOf($adapter)
+            if (![DotmodDisplayCorrelator]::EnumAdapters([IntPtr]::Zero, $i, [ref]$adapter, 0)) { break }
+            
+            # StateFlags & 1 == DISPLAY_DEVICE_ATTACHED_TO_DESKTOP
+            if (($adapter.StateFlags -band 1) -eq 1) {
+                $mon = New-Object DotmodDisplayCorrelator+DISPLAY_DEVICEW
+                $mon.cb = [System.Runtime.InteropServices.Marshal]::SizeOf($mon)
+                if ([DotmodDisplayCorrelator]::EnumMonitors($adapter.DeviceName, 0, [ref]$mon, 0)) {
+                    $adapterMap[$adapter.DeviceName] = @{
+                        MonitorDeviceID     = $mon.DeviceID
+                        MonitorDeviceString = $mon.DeviceString
+                        IsPrimary           = (($adapter.StateFlags -band 4) -eq 4)
+                    }
+                }
+            }
+        }
+    } catch {}
+
+    # 2. Correlate each physical screen geometry with its exact hardware monitor identity
     $normalizedMonitors = @()
-    for ($i = 0; $i -lt $wmiMonitors.Count; $i++) {
-        $w = $wmiMonitors[$i]
-        $mfg = (($w.ManufacturerName | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
-        $prod = (($w.ProductCodeID | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
-        $model = "$mfg$prod"
-        $friendly = (($w.UserFriendlyName | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
-        $serial = (($w.SerialNumberID | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
-        
-        $scr = if ($i -lt $screens.Count) { $screens[$i] } else { $null }
-        $res = if ($scr) { "$($scr.Bounds.Width)x$($scr.Bounds.Height)" } else { "Unknown" }
-        $orient = if ($scr) { if ($scr.Bounds.Height -gt $scr.Bounds.Width) { "Portrait" } else { "Landscape" } } else { "Unknown" }
-        $isPrimary = if ($scr) { $scr.Primary } else { $false }
+    $usedWmiInstances = @{}
+
+    foreach ($scr in $screens) {
+        $devName = $scr.DeviceName
+        $info = if ($adapterMap.ContainsKey($devName)) { $adapterMap[$devName] } else { $null }
+
+        $mfg = ""
+        $prod = ""
+        $model = "Unknown"
+        $friendly = ""
+        $serial = ""
+        $instance = "Unknown"
+        $confidence = "Uncertain"
+
+        if ($info -and $info.MonitorDeviceID) {
+            # Extract EDID 3-letter manufacturer + 4-char product code from PnP DeviceID (e.g. MONITOR\BOE090F\...)
+            if ($info.MonitorDeviceID -match "MONITOR\\([A-Za-z0-9]{3})([A-Za-z0-9]{4})\\") {
+                $mfg = $Matches[1]
+                $prod = $Matches[2]
+                $model = "$mfg$prod"
+                $confidence = "High"
+            }
+
+            # Correlate with WmiMonitorID for extended EDID data (serial number, user friendly name)
+            $matchedWmi = $wmiMonitors | Where-Object {
+                ($_.InstanceName -like "*$model*") -and (-not $usedWmiInstances.ContainsKey($_.InstanceName))
+            } | Select-Object -First 1
+
+            if ($matchedWmi) {
+                $usedWmiInstances[$matchedWmi.InstanceName] = $true
+                $instance = $matchedWmi.InstanceName
+                $friendly = (($matchedWmi.UserFriendlyName | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+                $serial = (($matchedWmi.SerialNumberID | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+            } else {
+                $instance = $info.MonitorDeviceID
+            }
+        }
+
+        $res = "$($scr.Bounds.Width)x$($scr.Bounds.Height)"
+        $orient = if ($scr.Bounds.Height -gt $scr.Bounds.Width) { "Portrait" } else { "Landscape" }
+        $isPrimary = [bool]$scr.Primary
 
         $normalizedMonitors += [PSCustomObject]@{
+            DeviceName       = $devName
             Manufacturer     = $mfg
             ProductCode      = $prod
             ModelIdentifier  = $model
             UserFriendlyName = $friendly
             SerialNumber     = $serial
-            InstanceName     = $w.InstanceName
+            InstanceName     = $instance
             Resolution       = $res
             Orientation      = $orient
             IsPrimary        = $isPrimary
+            Confidence       = $confidence
         }
     }
 
-    # Deterministic sorting: Primary first, then ModelIdentifier, Resolution, Orientation
+    # Deterministic sorting: Primary display first, then ModelIdentifier, Resolution, Orientation
     $sorted = @($normalizedMonitors | Sort-Object -Property @{Expression="IsPrimary"; Descending=$true}, ModelIdentifier, Resolution, Orientation)
-    
+
     $sigParts = @()
     foreach ($m in $sorted) {
         $role = if ($m.IsPrimary) { "Primary" } else { "Secondary" }
@@ -121,13 +207,18 @@ function Test-DotmodTopologyMatch {
     if ($CurrentTopology.MonitorCount -eq 0 -or $SavedTopology.MonitorCount -eq 0) { return $false }
     if ($CurrentTopology.MonitorCount -ne $SavedTopology.MonitorCount) { return $false }
 
-    if ($CurrentTopology.Fingerprint -and $SavedTopology.Fingerprint -and ($CurrentTopology.Fingerprint -eq $SavedTopology.Fingerprint)) {
-        return $true
-    }
-
     $currDisplays = @($CurrentTopology.Displays)
     $savedDisplays = @($SavedTopology.Displays)
 
+    # 1. Require High confidence in hardware-to-geometry correlation across all active monitors
+    foreach ($m in $currDisplays) {
+        if ($m.Confidence -ne "High") { return $false }
+    }
+    foreach ($m in $savedDisplays) {
+        if ($m.Confidence -and $m.Confidence -ne "High") { return $false }
+    }
+
+    # 2. Compare displays in deterministic order
     for ($i = 0; $i -lt $currDisplays.Count; $i++) {
         $c = $currDisplays[$i]
         $s = $savedDisplays[$i]
@@ -141,6 +232,28 @@ function Test-DotmodTopologyMatch {
     }
 
     return $true
+}
+
+function Show-DotmodTopologyDiagnostics {
+    $topology = Get-DotmodDisplayTopology
+    Write-Host "Active Monitors Detected: $($topology.MonitorCount)" -ForegroundColor Cyan
+    Write-Host "Topology Signature       : $($topology.Signature)" -ForegroundColor Gray
+    Write-Host "SHA256 Fingerprint       : $($topology.Fingerprint)`n" -ForegroundColor Gray
+
+    $displayIndex = 1
+    foreach ($m in $topology.Displays) {
+        $primaryStr = if ($m.IsPrimary) { "Yes" } else { "No" }
+        Write-Host "Display $displayIndex"
+        Write-Host "Model      : $($m.ModelIdentifier)"
+        Write-Host "Instance   : $($m.InstanceName)"
+        Write-Host "Resolution : $($m.Resolution)"
+        Write-Host "Orientation: $($m.Orientation)"
+        Write-Host "Primary    : $primaryStr"
+        $confColor = if ($m.Confidence -eq "High") { "Green" } else { "Red" }
+        Write-Host "Confidence : " -NoNewline
+        Write-Host "$($m.Confidence)`n" -ForegroundColor $confColor
+        $displayIndex++
+    }
 }
 
 function Backup-DotmodPowerToys {
