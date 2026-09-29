@@ -1,70 +1,140 @@
-﻿{
-    "Browsers":  [
-                     {
-                         "Id":  "Zen-Team.Zen-Browser",
-                         "Name":  "Zen Browser"
-                     },
-                     {
-                         "Id":  "VivaldiTechnologies.Vivaldi",
-                         "Name":  "Vivaldi"
-                     }
-                 ],
-    "Developer":  [
-                      {
-                          "Id":  "Microsoft.VisualStudioCode",
-                          "Name":  "Visual Studio Code"
-                      },
-                      {
-                          "Id":  "Python.Python.3.14",
-                          "Name":  "Python 3.14"
-                      },
-                      {
-                          "Id":  "Rustlang.Rustup",
-                          "Name":  "Rustup / Cargo"
-                      },
-                      {
-                          "Id":  "yt-dlp.yt-dlp",
-                          "Name":  "yt-dlp"
-                      },
-                      {
-                          "Id":  "Gyan.FFmpeg",
-                          "Name":  "FFmpeg"
-                      }
-                  ],
-    "Core":  [
-                 {
-                     "Id":  "DEVCOM.JetBrainsMonoNerdFont",
-                     "Name":  "JetBrains Mono Nerd Font"
-                 },
-                 {
-                     "Id":  "Git.Git",
-                     "Name":  "Git for Windows"
-                 },
-                 {
-                     "Id":  "GitHub.cli",
-                     "Name":  "GitHub CLI"
-                 },
-                 {
-                     "Id":  "Microsoft.WindowsTerminal",
-                     "Name":  "Windows Terminal"
-                 },
-                 {
-                     "Id":  "Microsoft.PowerShell",
-                     "Name":  "PowerShell 7"
-                 },
-                 {
-                     "Id":  "Fastfetch-cli.Fastfetch",
-                     "Name":  "Fastfetch"
-                 }
-             ],
-    "Multimedia":  [
-                       {
-                           "Id":  "Spotify.Spotify",
-                           "Name":  "Spotify"
-                       },
-                       {
-                           "Id":  "Zoom.Zoom.EXE",
-                           "Name":  "Zoom Workplace"
-                       }
-                   ]
+{
+  "Core": [
+    {
+      "Id": "DEVCOM.JetBrainsMonoNerdFont",
+      "Name": "JetBrains Mono Nerd Font",
+      "Executable": "",
+      "Required": true
+    },
+    {
+      "Id": "Git.Git",
+      "Name": "Git for Windows",
+      "Executable": "git",
+      "Required": true
+    },
+    {
+      "Id": "GitHub.cli",
+      "Name": "GitHub CLI",
+      "Executable": "gh",
+      "Required": true
+    },
+    {
+      "Id": "Microsoft.PowerShell",
+      "Name": "PowerShell 7",
+      "Executable": "pwsh",
+      "Required": true
+    },
+    {
+      "Id": "Microsoft.WindowsTerminal",
+      "Name": "Windows Terminal",
+      "Executable": "wt",
+      "Required": true
+    },
+    {
+      "Id": "Microsoft.VisualStudioCode",
+      "Name": "Visual Studio Code",
+      "Executable": "code",
+      "Required": true
+    }
+  ],
+  "Utilities": [
+    {
+      "Id": "Microsoft.PowerToys",
+      "Name": "Microsoft PowerToys",
+      "Executable": "PowerToys",
+      "Required": true
+    },
+    {
+      "Id": "Fastfetch-cli.Fastfetch",
+      "Name": "Fastfetch",
+      "Executable": "fastfetch",
+      "Required": false
+    }
+  ],
+  "Browsers": [
+    {
+      "Id": "Zen-Team.Zen-Browser",
+      "Name": "Zen Browser",
+      "Executable": "zen",
+      "Required": false
+    },
+    {
+      "Id": "VivaldiTechnologies.Vivaldi",
+      "Name": "Vivaldi",
+      "Executable": "vivaldi",
+      "Required": false
+    }
+  ],
+  "Media": [
+    {
+      "Id": "Spotify.Spotify",
+      "Name": "Spotify",
+      "Executable": "spotify",
+      "Required": false
+    },
+    {
+      "Id": "Zoom.Zoom.EXE",
+      "Name": "Zoom Workplace",
+      "Executable": "Zoom",
+      "Required": false
+    }
+  ],
+  "CustomCommandDependencies": [
+    {
+      "Id": "yt-dlp.yt-dlp",
+      "Name": "yt-dlp (Media Download CLI)",
+      "Executable": "yt-dlp",
+      "Required": false
+    },
+    {
+      "Id": "Gyan.FFmpeg",
+      "Name": "FFmpeg (Media Processing Engine)",
+      "Executable": "ffmpeg",
+      "Required": false
+    }
+  ],
+  "OptionalAddons": [
+    {
+      "Id": "Docker.DockerDesktop",
+      "Name": "Docker Desktop",
+      "Category": "Containers",
+      "Executable": "docker",
+      "Required": false
+    },
+    {
+      "Id": "PostgreSQL.PostgreSQL",
+      "Name": "PostgreSQL",
+      "Category": "Databases",
+      "Executable": "psql",
+      "Required": false
+    },
+    {
+      "Id": "SQLite.SQLite",
+      "Name": "SQLite",
+      "Category": "Databases",
+      "Executable": "sqlite3",
+      "Required": false
+    },
+    {
+      "Id": "Oracle.MySQL",
+      "Name": "MySQL",
+      "Category": "Databases",
+      "Executable": "mysql",
+      "Required": false
+    },
+    {
+      "Id": "Python.Python.3.14",
+      "Name": "Python 3.14 (AutoDev Scripting)",
+      "Category": "Runtimes",
+      "Executable": "python",
+      "Required": false
+    },
+    {
+      "Id": "Rustlang.Rustup",
+      "Name": "Rustup / Cargo",
+      "Category": "Runtimes",
+      "Executable": "cargo",
+      "Required": false
+    }
+  ]
 }

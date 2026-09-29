@@ -96,6 +96,7 @@ function Invoke-DotmodDiagnostics {
         @{ Name = "Git .gitconfig"; Path = "$HOME\.gitconfig" },
         @{ Name = "Windows Terminal"; Path = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyd3d8bbwe\LocalState\settings.json" },
         @{ Name = "VS Code Settings"; Path = "$env:APPDATA\Code\User\settings.json" },
+        @{ Name = "PowerToys Settings"; Path = "$env:LOCALAPPDATA\Microsoft\PowerToys\settings.json" },
         @{ Name = "Spicetify Settings"; Path = "$env:APPDATA\spicetify\config-xpui.ini" },
         @{ Name = "Fastfetch Config"; Path = "$HOME\.config\fastfetch\config.jsonc" }
     )

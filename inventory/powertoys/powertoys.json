@@ -1,0 +1,31 @@
+﻿{
+    "EnabledModules":  [
+                           "AdvancedPaste",
+                           "AlwaysOnTop",
+                           "Awake",
+                           "CmdPal",
+                           "ColorPicker",
+                           "CropAndLock",
+                           "EnvironmentVariables",
+                           "FancyZones",
+                           "File Explorer",
+                           "File Locksmith",
+                           "FindMyMouse",
+                           "Hosts",
+                           "Image Resizer",
+                           "Measure Tool",
+                           "MouseHighlighter",
+                           "MouseWithoutBorders",
+                           "Peek",
+                           "PowerRename",
+                           "PowerToys Run",
+                           "RegistryPreview",
+                           "Shortcut Guide",
+                           "TextExtractor",
+                           "Workspaces"
+                       ],
+    "Version":  "v0.98.1",
+    "InstallScope":  "User",
+    "SettingsPath":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\PowerToys",
+    "Installed":  true
+}

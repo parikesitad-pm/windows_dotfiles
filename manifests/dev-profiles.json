@@ -3,9 +3,7 @@
     "DEV_JS": {
       "Name": "DEV JS",
       "Description": "Node.js + React + TypeScript development ecosystem",
-      "WinGetPackages": [
-        { "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }
-      ],
+      "WinGetPackages": [{ "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }],
       "VSCodeManifest": "manifests/vscode/dev-js.txt",
       "ShellProfiles": [
         "dotfiles/shell/profiles/common.zsh",
@@ -29,7 +27,10 @@
       "Name": "DEV RAILS",
       "Description": "Ruby + Bundler + Ruby on Rails development ecosystem",
       "WinGetPackages": [
-        { "Id": "RubyInstallerTeam.RubyWithDevKit.3.3", "Name": "Ruby 3.3 with DevKit" }
+        {
+          "Id": "RubyInstallerTeam.RubyWithDevKit.3.3",
+          "Name": "Ruby 3.3 with DevKit"
+        }
       ],
       "VSCodeManifest": "manifests/vscode/dev-rails.txt",
       "ShellProfiles": [
@@ -39,12 +40,8 @@
       "ReactOption": {
         "Description": "Add React + TypeScript frontend tooling to Rails stack",
         "VSCodeManifest": "manifests/vscode/dev-js.txt",
-        "ShellProfiles": [
-          "dotfiles/shell/profiles/js.zsh"
-        ],
-        "WinGetPackages": [
-          { "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }
-        ]
+        "ShellProfiles": ["dotfiles/shell/profiles/js.zsh"],
+        "WinGetPackages": [{ "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }]
       }
     }
   }

@@ -43,6 +43,15 @@ param(
     [switch]$React,
 
     [Parameter(ParameterSetName = "Restore")]
+    [switch]$NoPowerToys,
+
+    [Parameter(ParameterSetName = "Restore")]
+    [string]$Profile = "",
+
+    [Parameter(ParameterSetName = "Restore")]
+    [switch]$Resume,
+
+    [Parameter(ParameterSetName = "Restore")]
     [string]$Theme = "",
 
     [Parameter(ParameterSetName = "Audit")]
@@ -53,6 +62,9 @@ param(
 
     [Parameter(ParameterSetName = "Diagnostics")]
     [switch]$Diagnostics,
+
+    [Parameter(ParameterSetName = "FormatCheck")]
+    [switch]$ReadyToFormat,
 
     [Parameter(ParameterSetName = "Help")]
     [switch]$Help
@@ -67,6 +79,9 @@ $srcRoot = Join-Path $PSScriptRoot "src"
 . (Join-Path $srcRoot "core\Common.ps1")
 . (Join-Path $srcRoot "core\SecretScanner.ps1")
 . (Join-Path $srcRoot "core\ThemeEngine.ps1")
+. (Join-Path $srcRoot "core\PowerToysHelper.ps1")
+. (Join-Path $srcRoot "core\ProfileManager.ps1")
+. (Join-Path $srcRoot "core\FormatReadiness.ps1")
 . (Join-Path $srcRoot "ui\Banner.ps1")
 . (Join-Path $srcRoot "audit\AuditMachine.ps1")
 . (Join-Path $srcRoot "backup\BackupRunner.ps1")
@@ -132,8 +147,14 @@ if ($Backup) {
     exit 0
 }
 
+if ($ReadyToFormat) {
+    Check-DotmodFormatReadiness
+    exit 0
+}
+
 if ($Restore) {
-    Invoke-DotmodRestore -Full:$Full -ConfigOnly:$ConfigOnly -AppsOnly:$AppsOnly -DryRun:$DryRun -DevJS:$DevJS -DevPHP:$DevPHP -DevRails:$DevRails -React:$React -Theme:$Theme
+    $enablePT = -not $NoPowerToys
+    Invoke-DotmodRestore -Full:$Full -ConfigOnly:$ConfigOnly -AppsOnly:$AppsOnly -DryRun:$DryRun -DevJS:$DevJS -DevPHP:$DevPHP -DevRails:$DevRails -React:$React -PowerToys:$enablePT -Profile:$Profile -Resume:$Resume -Theme:$Theme
     exit 0
 }
 
@@ -162,13 +183,34 @@ switch ($choice) {
     }
     "Restore this PC" {
         Write-Host "`n=== RESTORE WORKSTATION SETUP ===" -ForegroundColor Cyan
-        Write-Host "Select execution mode:" -ForegroundColor Yellow
+
+        # Check for saved profiles
+        $savedProfiles = Get-DotmodSavedProfiles
+        $useSavedProfile = $false
+        $loadedProfile = $null
+
+        if ($savedProfiles.Count -gt 0) {
+            Write-Host "`nSaved DOTMOD Restore Profiles Detected:" -ForegroundColor Yellow
+            for ($i = 0; $i -lt $savedProfiles.Count; $i++) {
+                $p = $savedProfiles[$i]
+                Write-Host "  [$($i+1)] $($p.Name) ($($p.Description))" -ForegroundColor Cyan
+            }
+            Write-Host "  [C] Customize / Build new restore configuration" -ForegroundColor Gray
+            $profChoice = Read-Host "Choose profile (1-$($savedProfiles.Count) or C, default: C)"
+            if ($profChoice -match "^\d+$" -and [int]$profChoice -le $savedProfiles.Count) {
+                $loadedProfile = $savedProfiles[[int]$profChoice - 1]
+                $useSavedProfile = $true
+            }
+        }
+
+        # Execution Mode Selection
+        Write-Host "`nSelect execution mode:" -ForegroundColor Yellow
         Write-Host "  [1] Full Restore (Dry-Run Simulation)"
         Write-Host "  [2] Configuration Only (Dry-Run Simulation)"
         Write-Host "  [3] Applications Only (Dry-Run Simulation)"
         Write-Host "  [4] Full Active Restore (Fresh Windows only)"
         $rType = Read-Host "Choice (1-4, default: 1)"
-        
+
         $modeDryRun = $true
         $isFull = $false
         $isConfig = $false
@@ -191,57 +233,97 @@ switch ($choice) {
             default { $isFull = $true; $modeDryRun = $true }
         }
 
-        # Developer Profile Selection
-        Write-Host "`nSelect your Developer Profile:" -ForegroundColor Yellow
-        Write-Host "  [1] DEV JS    (Node.js + React + TypeScript)"
-        Write-Host "  [2] DEV PHP   (PHP + Composer + Laravel / Lumen)"
-        Write-Host "  [3] DEV RAILS (Ruby + Bundler + Ruby on Rails)"
-        Write-Host "  [4] Common Core Only (Git, Terminal, VS Code, ZSH)"
-        $pChoice = Read-Host "Profile (1-4, default: 1)"
+        if ($useSavedProfile -and $loadedProfile) {
+            Write-Host "`nApplying configuration from saved profile: $($loadedProfile.Name)" -ForegroundColor Green
+            $selJS = $loadedProfile.DeveloperProfiles -contains "DEV_JS"
+            $selPHP = $loadedProfile.DeveloperProfiles -contains "DEV_PHP"
+            $selRails = $loadedProfile.DeveloperProfiles -contains "DEV_RAILS"
+            $selReact = [bool]$loadedProfile.ReactFrontend
+            $ptEnabled = if ($loadedProfile.Utilities -and $null -ne $loadedProfile.Utilities.PowerToys) { [bool]$loadedProfile.Utilities.PowerToys } else { $true }
+            $selectedTheme = if ($loadedProfile.Appearance -and $loadedProfile.Appearance.Theme) { $loadedProfile.Appearance.Theme } else { "tokyo-night" }
 
-        $selJS = $false
-        $selPHP = $false
-        $selRails = $false
-        $selReact = $false
+            Invoke-DotmodRestore -Full:$isFull -ConfigOnly:$isConfig -AppsOnly:$isApps -DryRun:$modeDryRun -DevJS:$selJS -DevPHP:$selPHP -DevRails:$selRails -React:$selReact -PowerToys:$ptEnabled -Theme:$selectedTheme
+        } else {
+            # Multi-Select Developer Profiles
+            Write-Host "`nSelect Developer Profiles (Multi-select supported, e.g. '1,3' or '1'):" -ForegroundColor Yellow
+            Write-Host "  [1] DEV JS    (Node.js + React + TypeScript)"
+            Write-Host "  [2] DEV PHP   (PHP + Composer + Laravel / Lumen)"
+            Write-Host "  [3] DEV RAILS (Ruby + Bundler + Ruby on Rails)"
+            Write-Host "  [4] Common Core Only (Skip stack-specific runtimes)"
+            $pInput = Read-Host "Profiles (e.g. 1,3 or 1, default: 1)"
+            if ([string]::IsNullOrWhiteSpace($pInput)) { $pInput = "1" }
 
-        switch ($pChoice) {
-            "2" { $selPHP = $true }
-            "3" {
-                $selRails = $true
-                Write-Host "`nDEV RAILS Sub-Selection:" -ForegroundColor Yellow
+            $selJS = $pInput -match "1"
+            $selPHP = $pInput -match "2"
+            $selRails = $pInput -match "3"
+            $selReact = $false
+
+            if ($selRails) {
+                Write-Host "`nDEV RAILS Frontend Option:" -ForegroundColor Yellow
                 Write-Host "  [1] Rails only"
                 Write-Host "  [2] Rails + React / TypeScript frontend layer"
-                $subChoice = Read-Host "Sub-choice (1-2, default: 1)"
+                $subChoice = Read-Host "Choice (1-2, default: 1)"
                 if ($subChoice -eq "2") { $selReact = $true }
             }
-            "4" { # Common core only
+
+            # Shared Utilities (PowerToys)
+            Write-Host "`nShared Utilities:" -ForegroundColor Yellow
+            Write-Host "  [x] Microsoft PowerToys (Keyboard Manager, FancyZones, PowerToys Run)"
+            $ptPrompt = Read-Host "Install / Restore Microsoft PowerToys? (Y/n, default: Y)"
+            $ptEnabled = if ($ptPrompt -eq "n" -or $ptPrompt -eq "N") { $false } else { $true }
+
+            # Visual Theme Selection
+            Write-Host "`nChoose development theme:" -ForegroundColor Yellow
+            Write-Host "  [1] Tokyo Night (Recommended default)"
+            Write-Host "  [2] Catppuccin Mocha"
+            Write-Host "  [3] Dracula"
+            Write-Host "  [4] One Dark"
+            Write-Host "  [5] Nord"
+            Write-Host "  [6] Gruvbox Dark"
+            Write-Host "  [7] Keep existing / No theme change"
+            $tChoice = Read-Host "Theme (1-7, default: 1)"
+
+            $selectedTheme = "tokyo-night"
+            switch ($tChoice) {
+                "2" { $selectedTheme = "catppuccin-mocha" }
+                "3" { $selectedTheme = "dracula" }
+                "4" { $selectedTheme = "one-dark" }
+                "5" { $selectedTheme = "nord" }
+                "6" { $selectedTheme = "gruvbox-dark" }
+                "7" { $selectedTheme = "keep" }
+                default { $selectedTheme = "tokyo-night" }
             }
-            default { $selJS = $true }
+
+            # Option to Save as DOTMOD Profile
+            $savePrompt = Read-Host "`nSave this configuration as a reusable DOTMOD profile? (y/N)"
+            if ($savePrompt -eq "y" -or $savePrompt -eq "Y") {
+                $pName = Read-Host "Enter profile name (e.g. Luca)"
+                if (-not [string]::IsNullOrWhiteSpace($pName)) {
+                    $activeDevList = @()
+                    if ($selJS) { $activeDevList += "DEV_JS" }
+                    if ($selPHP) { $activeDevList += "DEV_PHP" }
+                    if ($selRails) { $activeDevList += "DEV_RAILS" }
+
+                    $newProf = [PSCustomObject]@{
+                        Name              = $pName
+                        Description       = "$($activeDevList -join ' + ')$(if ($selReact) { ' + React' }) with $selectedTheme"
+                        DeveloperProfiles = $activeDevList
+                        ReactFrontend     = $selReact
+                        Utilities         = [PSCustomObject]@{ PowerToys = $ptEnabled; Fastfetch = $true }
+                        Browsers          = [PSCustomObject]@{ Zen = $true; Vivaldi = $true }
+                        Media             = [PSCustomObject]@{ Spotify = $true; Zoom = $true; Spicetify = $true }
+                        CustomCommands    = $true
+                        Appearance        = [PSCustomObject]@{ Theme = $selectedTheme; Font = "JetBrainsMono Nerd Font Mono"; FontSize = 12 }
+                    }
+                    Save-DotmodRestoreProfile -ProfileData $newProf
+                }
+            }
+
+            Invoke-DotmodRestore -Full:$isFull -ConfigOnly:$isConfig -AppsOnly:$isApps -DryRun:$modeDryRun -DevJS:$selJS -DevPHP:$selPHP -DevRails:$selRails -React:$selReact -PowerToys:$ptEnabled -Theme:$selectedTheme
         }
-
-        # Visual Theme Selection
-        Write-Host "`nChoose your development theme:" -ForegroundColor Yellow
-        Write-Host "  [1] Tokyo Night (Recommended default)"
-        Write-Host "  [2] Catppuccin Mocha"
-        Write-Host "  [3] Dracula"
-        Write-Host "  [4] One Dark"
-        Write-Host "  [5] Nord"
-        Write-Host "  [6] Gruvbox Dark"
-        Write-Host "  [7] Keep existing / No theme change"
-        $tChoice = Read-Host "Theme (1-7, default: 1)"
-
-        $selectedTheme = "tokyo-night"
-        switch ($tChoice) {
-            "2" { $selectedTheme = "catppuccin-mocha" }
-            "3" { $selectedTheme = "dracula" }
-            "4" { $selectedTheme = "one-dark" }
-            "5" { $selectedTheme = "nord" }
-            "6" { $selectedTheme = "gruvbox-dark" }
-            "7" { $selectedTheme = "keep" }
-            default { $selectedTheme = "tokyo-night" }
-        }
-
-        Invoke-DotmodRestore -Full:$isFull -ConfigOnly:$isConfig -AppsOnly:$isApps -DryRun:$modeDryRun -DevJS:$selJS -DevPHP:$selPHP -DevRails:$selRails -React:$selReact -Theme:$selectedTheme
+    }
+    "Ready to format check" {
+        Check-DotmodFormatReadiness
     }
     "Audit only" {
         Invoke-DotmodAudit

@@ -1,0 +1,25 @@
+{
+  "Name": "Luca",
+  "Description": "Rails + React full stack with Tokyo Night, PowerToys, Zen, Vivaldi, and Spicetify",
+  "DeveloperProfiles": ["DEV_RAILS"],
+  "ReactFrontend": true,
+  "Utilities": {
+    "PowerToys": true,
+    "Fastfetch": true
+  },
+  "Browsers": {
+    "Zen": true,
+    "Vivaldi": true
+  },
+  "Media": {
+    "Spotify": true,
+    "Zoom": true,
+    "Spicetify": true
+  },
+  "CustomCommands": true,
+  "Appearance": {
+    "Theme": "tokyo-night",
+    "Font": "JetBrainsMono Nerd Font Mono",
+    "FontSize": 12
+  }
+}

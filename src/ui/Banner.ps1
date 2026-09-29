@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/ui/Banner.ps1
 # CLI Banner, terminal styling, and interactive menu
 # ============================================================
@@ -38,6 +38,7 @@ function Show-DotmodMenu {
     $options = @(
         "Backup this PC",
         "Restore this PC",
+        "Ready to format check",
         "Audit only",
         "Backup status",
         "Diagnostics",

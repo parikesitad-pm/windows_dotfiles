@@ -125,3 +125,104 @@ function Safe-CopyFileWithBackup {
         return $true
     }
 }
+
+function Test-DotmodAppInstalled {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$AppId,
+        [string]$Executable = ""
+    )
+
+    # 1. Special case for JetBrains Mono Nerd Font
+    if ($AppId -eq "DEVCOM.JetBrainsMonoNerdFont") {
+        if (Get-Command Test-DotmodFontInstalled -ErrorAction SilentlyContinue) {
+            return (Test-DotmodFontInstalled)
+        }
+    }
+
+    # 2. Fast check: executable name in PATH
+    if (-not [string]::IsNullOrWhiteSpace($Executable)) {
+        if (Get-Command $Executable -ErrorAction SilentlyContinue) {
+            return $true
+        }
+    }
+
+    # 3. Fast check: AppData local / roaming installations
+    if ($AppId -eq "Microsoft.PowerToys") {
+        if (Test-Path "$env:LOCALAPPDATA\Microsoft\PowerToys\settings.json") {
+            return $true
+        }
+    }
+    if ($AppId -like "*Zen*") {
+        if (Test-Path "$env:APPDATA\zen\Profiles") { return $true }
+    }
+
+    # 4. WinGet exact package ID
+    try {
+        $oldEAP = $ErrorActionPreference
+        $ErrorActionPreference = "SilentlyContinue"
+        $wingetList = winget list --id $AppId -e 2>$null | Out-String
+        $ErrorActionPreference = $oldEAP
+        if ($wingetList -and ($wingetList -match [regex]::Escape($AppId))) {
+            return $true
+        }
+    } catch {}
+    if ($AppId -like "*Zen*") {
+        if (Test-Path "$env:APPDATA\zen\Profiles") { return $true }
+    }
+
+    return $false
+}
+
+function Get-DotmodStatePath {
+    $dir = Join-Path $global:DOTMOD_ROOT ".dotmod"
+    if (-not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
+    return (Join-Path $dir "state.json")
+}
+
+function Get-DotmodRestoreState {
+    $path = Get-DotmodStatePath
+    if (Test-Path $path) {
+        try {
+            return (Get-Content -Path $path -Raw | ConvertFrom-Json)
+        } catch {}
+    }
+    return [PSCustomObject]@{
+        CompletedStages = @()
+        ActiveProfiles  = @()
+        Theme           = ""
+        LastUpdated     = ""
+        Status          = "NotStarted"
+    }
+}
+
+function Update-DotmodRestoreStage {
+    param([string]$Stage)
+    $path = Get-DotmodStatePath
+    $state = Get-DotmodRestoreState
+    $current = @($state.CompletedStages)
+    if ($current -notcontains $Stage) {
+        $current += $Stage
+    }
+    $state.CompletedStages = $current
+    $state.LastUpdated = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+    $state.Status = "InProgress"
+    $state | ConvertTo-Json -Depth 5 | Set-Content -Path $path -Encoding utf8
+}
+
+function Complete-DotmodRestoreState {
+    $path = Get-DotmodStatePath
+    $state = Get-DotmodRestoreState
+    $state.Status = "Completed"
+    $state.LastUpdated = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+    $state | ConvertTo-Json -Depth 5 | Set-Content -Path $path -Encoding utf8
+}
+
+function Reset-DotmodRestoreState {
+    $path = Get-DotmodStatePath
+    if (Test-Path $path) {
+        Remove-Item -Path $path -Force -ErrorAction SilentlyContinue
+    }
+}

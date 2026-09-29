@@ -35,6 +35,10 @@
                       "Size_GB":  476.94
                   },
                   {
+                      "Model":  "WD Game Drive USB Device",
+                      "Size_GB":  3725.99
+                  },
+                  {
                       "Model":  "Mass Storage Device USB Device",
                       "Size_GB":  0
                   }

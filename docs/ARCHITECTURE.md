@@ -17,12 +17,14 @@ DOTMOD is an idempotent workstation synchronization engine designed for Windows 
 ## Subsystem Architecture
 
 ### 1. Terminal Font Standard Subsystem (`src/restore/FontInstaller.ps1`)
+
 - **Standard**: JetBrains Mono Nerd Font, Size 12.
 - **Role**: Ensures glyph and ligature support for developer terminals before shell configurations are deployed.
 - **Registry Inspection**: Checks `HKLM` and `HKCU` font registries for `JetBrainsMono*Nerd*` or `JetBrainsMonoNL NF*`.
 - **Installation Priority**: Installs via WinGet (`DEVCOM.JetBrainsMonoNerdFont`), with fallback to official GitHub release extraction.
 
 ### 2. Composable Developer Profiles (`manifests/dev-profiles.json`, `dotfiles/shell/profiles/`)
+
 - Supports 3 core developer stacks:
   - `DEV JS`: Node.js, npm, nvm, React, TypeScript, Tailwind CSS.
   - `DEV PHP`: PHP 8.3+, Composer, Laravel, Lumen.
@@ -32,7 +34,26 @@ DOTMOD is an idempotent workstation synchronization engine designed for Windows 
   - Modular shell profile files: `dotfiles/shell/profiles/{common,js,php,rails}.zsh`
   - WinGet package definitions in `dev-profiles.json`
 
-### 3. Visual Theme Engine (`src/core/ThemeEngine.ps1`, `themes/*.psd1`)
+### 3. Microsoft PowerToys & FancyZones Safety Subsystem (`src/core/PowerToysHelper.ps1`)
+
+- **Role**: Manages Microsoft PowerToys as a shared utility/add-on layer without contaminating developer profiles.
+- **Portable Dotfiles**: Captures general settings, Keyboard Manager custom mappings, PowerToys Run plugins, and FancyZones layout templates under `dotfiles/powertoys/`.
+- **Exclusion Filters**: Automatically discards logs, crash dumps, caches, and telemetry.
+- **FancyZones Multi-Monitor Safety**:
+  - The source machine utilizes multi-display docking topology.
+  - Queries active monitors using WMI (`WmiMonitorBasicDisplayParams`).
+  - Compares active monitor hardware device IDs against saved configuration.
+  - If monitor topology matches: prompts/restores `applied-layouts.json`.
+  - If monitor topology differs: skips automatic device binding to prevent layout corruption, while keeping custom layout templates accessible in FancyZones Editor.
+  - Display resolution, refresh rate, and GPU settings are **never** modified.
+
+### 4. Saved Profile & Resumption Subsystem (`src/core/ProfileManager.ps1`, `src/core/Common.ps1`)
+
+- **Declarative Profiles** (`profiles/*.json`): Stores machine configuration blueprints (e.g. `profiles/luca.json`) containing selected developer profiles, theme, utilities (PowerToys), and frontend options.
+- **Resumable State Tracker** (`.dotmod/state.json`): Persists completed stages (`Prerequisites`, `Applications`, `Fonts`, `Dotfiles`, `DeveloperProfiles`, `VSCodeExtensions`, `Theme`, `Diagnostics`). Allows interrupted installations to resume (`-Resume`) seamlessly without duplicating package installations.
+
+### 5. Visual Theme Engine (`src/core/ThemeEngine.ps1`, `themes/*.psd1`)
+
 - Centralized theme definitions in `themes/<theme>.psd1`:
   - Tokyo Night (Recommended Default)
   - Catppuccin Mocha
@@ -44,6 +65,18 @@ DOTMOD is an idempotent workstation synchronization engine designed for Windows 
   - **Windows Terminal**: Injects color scheme, sets active scheme to `DOTMOD <DisplayName>`, configures font face & size.
   - **VS Code**: Installs extension, updates `workbench.colorTheme`, sets integrated terminal font.
   - **Starship**: Updates `palette` selector without modifying custom prompt structure.
+
+### 6. Strict Mode Pipeline Ordering
+
+DOTMOD enforces strict separation and execution ordering:
+1. **Prerequisites**: Administrator privileges, execution policy, WinGet.
+2. **Applications Installation**: Categorized WinGet layers (Core, Utilities/PowerToys, Browsers, Media, CustomCommandDependencies, OptionalAddons).
+3. **Terminal Font Standard**: JetBrains Mono Nerd Font 12.
+4. **Personal Dotfiles Restore**: Shell (.zshrc), Git, Spicetify, PowerToys, Fastfetch, VS Code, Windows Terminal.
+5. **Developer Profile Environment**: Multi-select profile scripts (`~/.dotmod-profiles/*.zsh`) with automatic package and alias deduplication.
+6. **VS Code Extensions**: Common core + profile-specific extensions.
+7. **DOTMOD Appearance & Theme**: Applied **AFTER** personal configuration so DOTMOD managed visual theme and JetBrains Mono Nerd Font 12 win last.
+8. **Diagnostics & Post-Restore Verification**: Comprehensive validation and manual action checklist.
 
 ---
 

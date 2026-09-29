@@ -62,18 +62,9 @@ temp/
 *.pre-dotmod
 *.pre-dotmod.*
 
-# Sensitive OBS production data
-dotfiles/obs/service.json
-dotfiles/obs/service.json.bak
-dotfiles/obs/obs-multi-rtmp.json
-dotfiles/obs/obs-multi-rtmp.json.bak
-dotfiles/obs/obs-websocket.json
-plugin_config/obs-websocket/config.json
-
-# Sensitive vMix production data
-*.vmix
-*.vmp
-*StreamKey*
+# DOTMOD local restore state
+.dotmod/
+.dotmod/*
 
 # Node and build targets
 node_modules/

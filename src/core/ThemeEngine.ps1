@@ -25,7 +25,7 @@ function Get-DotmodThemes {
 function Find-DotmodTheme {
     param([string]$ThemeQuery)
     if ([string]::IsNullOrWhiteSpace($ThemeQuery)) { return $null }
-    
+
     $cleanQuery = ($ThemeQuery -replace "[-_\s]", "").ToLower()
     $themes = Get-DotmodThemes
     foreach ($t in $themes) {
@@ -137,7 +137,7 @@ function Apply-DotmodTheme {
             try {
                 $wtRaw = Get-Content -Path $wtPath -Raw
                 $wtData = $wtRaw | ConvertFrom-Json
-                
+
                 # Ensure schemes list exists
                 if (-not $wtData.schemes) {
                     $wtData | Add-Member -MemberType NoteProperty -Name "schemes" -Value @()
@@ -153,7 +153,7 @@ function Apply-DotmodTheme {
                     $wtData.profiles | Add-Member -MemberType NoteProperty -Name "defaults" -Value (New-Object PSObject)
                 }
                 $wtData.profiles.defaults.colorScheme = $theme.TerminalColors.name
-                
+
                 if (-not $wtData.profiles.defaults.font) {
                     $wtData.profiles.defaults | Add-Member -MemberType NoteProperty -Name "font" -Value (New-Object PSObject)
                 }

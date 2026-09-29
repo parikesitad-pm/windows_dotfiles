@@ -1,7 +1,7 @@
 ﻿# Machine Hardware & OS Inventory
 
 > Source Machine: DRVC-F15  
-> Last Backup: 2026-09-29 22:56:23  
+> Last Backup: 2026-09-30 00:28:54  
 
 ## System Information
 - **Computer Name**: DRVC-F15
@@ -24,6 +24,7 @@
 
 ## Storage Devices
 - **NVMe V-GEN10SM21SCY512MTNV** | Size: 476.94 GB
+- **WD Game Drive USB Device** | Size: 3725.99 GB
 - **Mass Storage Device USB Device** | Size: 0 GB
 
 ## Network Adapters

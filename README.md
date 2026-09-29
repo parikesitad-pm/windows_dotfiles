@@ -28,14 +28,17 @@ The same repository powers two completely separate, strictly isolated phases:
    - Secret sanitization and pre-commit security scanning
    - Synchronized to GitHub
 2. **Fresh Windows (Restore Mode)**:
+   - Automated application installation via WinGet (Categorized into Core, Utilities, Browsers, Media, Custom Command Dependencies, and Addons)
+   - Microsoft PowerToys setup with FancyZones multi-monitor topology safety
    - Font installation (JetBrains Mono Nerd Font 12) *before* terminal/shell configuration
-   - Selectable Developer Profiles (DEV JS, DEV PHP, DEV RAILS + React)
-   - Selectable Visual Themes (Tokyo Night, Catppuccin Mocha, Dracula, One Dark, Nord, Gruvbox Dark)
-   - Automated application installation via WinGet
+   - Multi-select composable Developer Profiles (DEV JS, DEV PHP, DEV RAILS + React) with automatic package/alias deduplication
+   - Saved DOTMOD Profiles (`profiles/*.json`) for 1-click declarative machine rebuilds
+   - Resumable restore pipeline (`-Resume` with state tracking in `.dotmod/state.json`)
+   - Personal dotfiles restore (.zshrc, Git, Spicetify, PowerToys, Fastfetch, VS Code, Windows Terminal)
+   - Selected Visual Theme application applied *after* dotfiles to ensure managed colors & font standard win last
+   - Pre-reinstall readiness verification (`-ReadyToFormat`)
    - Idempotent configuration restoration (with local `*.pre-dotmod` backups)
-   - Shell, Starship, and Fastfetch environment reconstruction
-   - VS Code settings, extensions, and font standardization
-   - Spotify and Spicetify Marketplace setup
+   - Automated post-restore diagnostics and manual task checklist
 
 > [!NOTE]
 > DOTMOD is **NOT** a Windows debloater, registry tweaker, or gaming optimizer. It focuses strictly on reproducible environment backup and rapid post-reinstall workstation recovery.
@@ -151,12 +154,86 @@ DOTMOD provides 3 composable developer stacks that share a common core (Git, Ter
 
 ---
 
+## Microsoft PowerToys & Utilities Layer
+
+Microsoft PowerToys (`Microsoft.PowerToys`) is managed as a shared productivity utility layer:
+
+- **What gets backed up**:
+  - General settings (`dotfiles/powertoys/settings.json`)
+  - Keyboard Manager key bindings and shortcut remaps
+  - PowerToys Run / Command Palette preferences and enabled plugins
+  - FancyZones custom layouts, default templates, and configuration
+- **What is strictly excluded**: Logs, telemetry, crash dumps, and caches.
+- **FancyZones Multi-Monitor Safety**:
+  - The source machine uses a multi-monitor docking station topology.
+  - On Restore, DOTMOD queries active monitor hardware parameters (`WmiMonitorBasicDisplayParams`).
+  - If monitor topology matches, `applied-layouts.json` is restored automatically.
+  - If monitor topology differs, automatic applied layout binding is safely skipped to prevent crashes; all custom layout templates remain available in the FancyZones Editor.
+  - Display resolution, refresh rate, and GPU settings are **never** modified.
+
+---
+
+## Strict Restore Modes
+
+DOTMOD enforces strict mode separation to prevent accidental modifications:
+
+- **`-AppsOnly`**:
+  - Installs packages via WinGet according to `manifests/apps.json`.
+  - **NEVER** touches dotfiles, shell configs, VS Code settings, or themes.
+- **`-ConfigOnly`**:
+  - Restores portable configs (.zshrc, Git, PowerToys, Spicetify, VS Code, Windows Terminal).
+  - **NEVER** installs apps, runtimes, or fonts.
+  - Checks if required applications are installed; gracefully warns and skips missing application configs.
+- **`-Full`**:
+  - Runs the complete, ordered reconstruction: Prerequisites -> Apps -> Fonts -> Dotfiles -> Profiles -> Extensions -> Managed Appearance -> Diagnostics.
+  - Managed theme & JetBrains Mono Nerd Font 12 win last, ensuring backed-up configs do not override selected theme.
+- **`-DryRun`**:
+  - Exact simulation of any mode with zero modifications written to disk.
+
+---
+
+## Saved Profiles & Resumable Restore
+
+- **Declarative Profiles** (`profiles/*.json`): Save and load entire machine configurations (developer profiles, theme, utilities, frontend options) with a single flag:
+  ```powershell
+  .\dotmod.ps1 -Restore -Profile Luca
+  ```
+- **Resumable Restore** (`-Resume`):
+  - Every restore execution tracks its progress in `.dotmod/state.json`.
+  - If interrupted (e.g. network timeout or system reboot), resume without re-running completed stages:
+  ```powershell
+  .\dotmod.ps1 -Restore -Resume
+  ```
+
+---
+
+## Pre-Format Readiness Check
+
+Before repartitioning or wiping your machine, run the automated readiness check:
+
+```powershell
+.\dotmod.ps1 -ReadyToFormat
+```
+
+DOTMOD verifies 9 automated criteria:
+1. Complete backup generated within the last 24 hours
+2. Secret scanner reports 0 sensitive tokens
+3. Git working tree is clean (no uncommitted backup files)
+4. Local commits are pushed and synchronized with GitHub
+5. Shell configuration is backed up (.zshrc, .bash_profile)
+6. VS Code settings and extensions are backed up
+7. Font inventory is captured and standard font is verified
+8. Application manifests and WinGet package lists are captured
+9. Microsoft PowerToys safe settings are backed up
+
+If any automated check fails, DOTMOD alerts `>>> NOT READY TO FORMAT <<<` and provides action items. It also prints the mandatory offline checklist for items that cannot be stored in Git (SSH keys, project `.env` files, browser session cookies, and local AI CLI tokens).
+
 ## Visual Theme System
 
 During restore, DOTMOD provides visual theme synchronization across **Windows Terminal**, **VS Code**, and **Starship**:
 
 | Theme | Recommended | Terminal Color Scheme | VS Code Theme Extension | Starship Palette |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | **Tokyo Night** | **Yes (Default)** | `DOTMOD Tokyo Night` | `enkia.tokyo-night` | `tokyo_night` |
 | **Catppuccin Mocha** | Optional | `DOTMOD Catppuccin Mocha` | `Catppuccin.catppuccin-vsc` | `catppuccin_mocha` |
 | **Dracula** | Optional | `DOTMOD Dracula` | `dracula-theme.theme-dracula` | `dracula` |
@@ -173,16 +250,21 @@ Themes and developer profiles are completely independent: any theme can be paire
 
 | Flag | Purpose | Mode |
 | --- | --- | --- |
-| `.\dotmod.ps1` | Launches interactive UI menu | Interactive |
-| `.\dotmod.ps1 -Backup` | Runs complete workstation audit & backup | Backup |
+| `.\dotmod.ps1` | Launches interactive UI menu with saved profile selection | Interactive |
+| `.\dotmod.ps1 -Backup` | Runs complete workstation audit & backup (18 modules) | Backup |
 | `.\dotmod.ps1 -Backup -NoPush` | Runs backup locally without pushing to GitHub | Backup |
+| `.\dotmod.ps1 -ReadyToFormat` | Validates 9 pre-reinstall criteria before system wipe | Check |
 | `.\dotmod.ps1 -Restore -Full` | Installs applications and restores configurations | Restore |
-| `.\dotmod.ps1 -Restore -Full -DryRun` | Simulates restore process without writing changes | DryRun |
-| `.\dotmod.ps1 -Restore -ConfigOnly` | Restores dotfiles and editor settings only | Restore |
-| `.\dotmod.ps1 -Restore -AppsOnly` | Installs WinGet packages only | Restore |
+| `.\dotmod.ps1 -Restore -Full -DryRun` | Simulates restore process without writing any changes | DryRun |
+| `.\dotmod.ps1 -Restore -ConfigOnly` | Restores dotfiles, terminal, and editor settings only (no apps/fonts) | Restore |
+| `.\dotmod.ps1 -Restore -AppsOnly` | Installs WinGet packages only (no configs/settings modified) | Restore |
+| `.\dotmod.ps1 -Restore -Profile <Name>` | Rebuilds machine using declarative profile (e.g. `Luca`) | Restore |
+| `.\dotmod.ps1 -Restore -Resume` | Resumes an interrupted restore run from `.dotmod/state.json` | Restore |
 | `.\dotmod.ps1 -Restore -DevJS` | Restores system configured for Node.js / React / TypeScript | Restore |
 | `.\dotmod.ps1 -Restore -DevPHP` | Restores system configured for PHP / Laravel | Restore |
 | `.\dotmod.ps1 -Restore -DevRails [-React]` | Restores Ruby / Rails stack (optionally with React frontend) | Restore |
+| `.\dotmod.ps1 -Restore -DevRails -DevJS` | Multi-selects multiple stacks with automatic deduplication | Restore |
+| `.\dotmod.ps1 -Restore -NoPowerToys` | Excludes Microsoft PowerToys from restore | Restore |
 | `.\dotmod.ps1 -Restore -Theme <Name>` | Applies specific theme (`TokyoNight`, `CatppuccinMocha`, etc.) | Restore |
 | `.\dotmod.ps1 -Audit` | Runs safe read-only hardware/software audit | Audit |
 | `.\dotmod.ps1 -Status` | Displays backup status, git commit, and module health | Status |

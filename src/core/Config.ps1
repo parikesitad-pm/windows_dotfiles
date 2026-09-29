@@ -27,6 +27,7 @@ $global:DOTMOD_PATHS = @{
     Docs          = Join-Path $global:DOTMOD_ROOT "docs"
     PrivateBackup = Join-Path $global:DOTMOD_ROOT "private-backup-required"
     Themes        = Join-Path $global:DOTMOD_ROOT "themes"
+    Profiles      = Join-Path $global:DOTMOD_ROOT "profiles"
     Logs          = Join-Path $global:DOTMOD_ROOT "logs"
 }
 
@@ -39,6 +40,7 @@ $global:DOTMOD_MODULES = @(
     "Package inventories",
     "Development environment",
     "Theme configuration",
+    "Microsoft PowerToys",
     "ZSH configuration",
     "Custom shell commands",
     "Starship configuration",

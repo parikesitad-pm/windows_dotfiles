@@ -9,6 +9,7 @@ Set-StrictMode -Version Latest
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Config.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\SecretScanner.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\ThemeEngine.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "core\PowerToysHelper.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "audit\AuditMachine.ps1")
 
 function Invoke-DotmodBackup {
@@ -19,7 +20,7 @@ function Invoke-DotmodBackup {
     $startTime = Get-Date
     $hostname = $env:COMPUTERNAME
     $timestampStr = $startTime.ToString("yyyy-MM-dd HH:mm:ss")
-    $totalSteps = 17
+    $totalSteps = 18
     $step = 1
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
@@ -370,16 +371,31 @@ function Invoke-DotmodBackup {
         Write-DotmodSuccess "Windows Terminal settings.json captured -> dotfiles/windows-terminal/settings.json" 2
     }
 
-    # [12/17] PowerShell Configuration
+    # [12/18] PowerShell Configuration
     Write-DotmodStep ($step++) $totalSteps "PowerShell Configuration"
-    $psProfileSrc = $PROFILE.CurrentUserCurrentHost
+    $psProfileSrc = $null
+    if ($PROFILE) {
+        $psProfileSrc = "$PROFILE"
+    }
+    if (-not $psProfileSrc -or -not (Test-Path $psProfileSrc)) {
+        $candidatePaths = @(
+            (Join-Path ([Environment]::GetFolderPath("MyDocuments")) "WindowsPowerShell\Microsoft.PowerShell_profile.ps1"),
+            (Join-Path ([Environment]::GetFolderPath("MyDocuments")) "PowerShell\Microsoft.PowerShell_profile.ps1")
+        )
+        foreach ($cp in $candidatePaths) {
+            if (Test-Path $cp) {
+                $psProfileSrc = $cp
+                break
+            }
+        }
+    }
     $psProfileDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "powershell\profile.ps1"
-    if (Test-Path $psProfileSrc) {
+    if ($psProfileSrc -and (Test-Path $psProfileSrc)) {
         Copy-Item -Path $psProfileSrc -Destination $psProfileDest -Force
         Write-DotmodSuccess "PowerShell profile captured -> dotfiles/powershell/profile.ps1" 2
     }
 
-    # [13/17] VS Code Environment
+    # [13/18] VS Code Environment
     Write-DotmodStep ($step++) $totalSteps "VS Code Environment"
     $codeSettingsSrc = "$env:APPDATA\Code\User\settings.json"
     $codeSettingsDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "vscode\settings.json"
@@ -399,7 +415,7 @@ function Invoke-DotmodBackup {
     Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "development\vscode-extensions.txt") -Value $extOut -Encoding utf8
     Write-DotmodSuccess "VS Code extensions list captured -> inventory/development/vscode-extensions.txt" 2
 
-    # [14/17] Git Configuration
+    # [14/18] Git Configuration
     Write-DotmodStep ($step++) $totalSteps "Git Configuration"
     $gitConfigSrc = "$env:USERPROFILE\.gitconfig"
     $gitConfigDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "git\.gitconfig"
@@ -415,7 +431,7 @@ function Invoke-DotmodBackup {
         Write-DotmodSuccess ".gitignore_global captured -> dotfiles/git/.gitignore_global" 2
     }
 
-    # [15/17] Browser Inventory
+    # [15/18] Browser Inventory
     Write-DotmodStep ($step++) $totalSteps "Browser Inventory"
     $browserMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "software\browser-inventory.md"
     $browserMd = @(
@@ -439,7 +455,7 @@ function Invoke-DotmodBackup {
     Set-Content -Path $browserMdPath -Value $browserMd -Encoding utf8
     Write-DotmodSuccess "Browser inventory cataloged -> inventory/software/browser-inventory.md" 2
 
-    # [16/17] Spicetify & Spotify
+    # [16/18] Spicetify & Spotify
     Write-DotmodStep ($step++) $totalSteps "Spicetify & Spotify"
     $spicetifyIniSrc = "$env:APPDATA\spicetify\config-xpui.ini"
     $spicetifyDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "spicetify\config-xpui.ini"
@@ -448,7 +464,11 @@ function Invoke-DotmodBackup {
         Write-DotmodSuccess "Spicetify config-xpui.ini captured (Theme: marketplace, CustomApps: marketplace)" 2
     }
 
-    # [17/17] Environment Variables & Private Backup Checklist
+    # [17/18] Microsoft PowerToys
+    Write-DotmodStep ($step++) $totalSteps "Microsoft PowerToys"
+    Backup-DotmodPowerToys
+
+    # [18/18] Environment Variables & Private Backup Checklist
     Write-DotmodStep ($step++) $totalSteps "Environment Variables & Private Checklist"
     $envMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "development\environment.md"
     $userPathEntries = [Environment]::GetEnvironmentVariable("Path", "User") -split ";" | Where-Object { $_ }
@@ -506,35 +526,6 @@ function Invoke-DotmodBackup {
     Set-Content -Path $privateChecklistPath -Value $privateChecklist -Encoding utf8
     Write-DotmodSuccess "private backup checklist generated -> private-backup-required/README.md" 2
 
-    # Build manifests/apps.json
-    $appsManifest = @{
-        Core = @(
-            @{ Id = "DEVCOM.JetBrainsMonoNerdFont"; Name = "JetBrains Mono Nerd Font" },
-            @{ Id = "Git.Git"; Name = "Git for Windows" },
-            @{ Id = "GitHub.cli"; Name = "GitHub CLI" },
-            @{ Id = "Microsoft.WindowsTerminal"; Name = "Windows Terminal" },
-            @{ Id = "Microsoft.PowerShell"; Name = "PowerShell 7" },
-            @{ Id = "Fastfetch-cli.Fastfetch"; Name = "Fastfetch" }
-        )
-        Developer = @(
-            @{ Id = "Microsoft.VisualStudioCode"; Name = "Visual Studio Code" },
-            @{ Id = "Python.Python.3.14"; Name = "Python 3.14" },
-            @{ Id = "Rustlang.Rustup"; Name = "Rustup / Cargo" },
-            @{ Id = "yt-dlp.yt-dlp"; Name = "yt-dlp" },
-            @{ Id = "Gyan.FFmpeg"; Name = "FFmpeg" }
-        )
-        Browsers = @(
-            @{ Id = "Zen-Team.Zen-Browser"; Name = "Zen Browser" },
-            @{ Id = "VivaldiTechnologies.Vivaldi"; Name = "Vivaldi" }
-        )
-        Multimedia = @(
-            @{ Id = "Spotify.Spotify"; Name = "Spotify" },
-            @{ Id = "Zoom.Zoom.EXE"; Name = "Zoom Workplace" }
-        )
-    }
-    $appsManifest | ConvertTo-Json -Depth 4 | Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Manifests "apps.json") -Encoding utf8
-    Write-DotmodSuccess "application manifest created -> manifests/apps.json" 2
-
     # Pre-commit Secret Scan
     Write-Host "`n--- Running Pre-Commit Secret Scanner ---" -ForegroundColor Cyan
     $findings = Invoke-DotmodSecretScan -TargetDirectory $global:DOTMOD_ROOT
@@ -552,7 +543,7 @@ function Invoke-DotmodBackup {
     }
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
-    Write-Host "  [OK] Backup complete: 17 modules completed" -ForegroundColor Green
+    Write-Host "  [OK] Backup complete: 18 modules completed" -ForegroundColor Green
     Write-Host "  [OK] Portable configuration captured" -ForegroundColor Green
     Write-Host "  [OK] Hardware, software, fonts, and theme inventories generated" -ForegroundColor Green
     Write-Host "  [OK] Sensitive items safely excluded and cataloged" -ForegroundColor Green
