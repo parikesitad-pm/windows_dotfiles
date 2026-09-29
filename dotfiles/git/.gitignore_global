@@ -1,0 +1,11 @@
+# Global Git Exclusions
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.bak
+.vscode/
+.idea/
+*.swp
+*.swo
