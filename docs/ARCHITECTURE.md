@@ -39,13 +39,16 @@ DOTMOD is an idempotent workstation synchronization engine designed for Windows 
 - **Role**: Manages Microsoft PowerToys as a shared utility/add-on layer without contaminating developer profiles.
 - **Portable Dotfiles**: Captures general settings, Keyboard Manager custom mappings, PowerToys Run plugins, and FancyZones layout templates under `dotfiles/powertoys/`.
 - **Exclusion Filters**: Automatically discards logs, crash dumps, caches, and telemetry.
-- **FancyZones Multi-Monitor Safety**:
+- **FancyZones Multi-Monitor Topology Fingerprint Safety**:
   - The source machine utilizes multi-display docking topology.
-  - Queries active monitors using WMI (`WmiMonitorBasicDisplayParams`).
-  - Compares active monitor hardware device IDs against saved configuration.
-  - If monitor topology matches: prompts/restores `applied-layouts.json`.
-  - If monitor topology differs: skips automatic device binding to prevent layout corruption, while keeping custom layout templates accessible in FancyZones Editor.
-  - Display resolution, refresh rate, and GPU settings are **never** modified.
+  - Queries active monitors using WMI (`WmiMonitorID`) and Windows display bounds (`Screen.AllScreens`).
+  - Normalizes and extracts: active monitor count, EDID manufacturer code, product code, model identifier, serial number (when present), device instance, current resolution, orientation (Landscape/Portrait), and primary status.
+  - Computes a deterministic canonical topology signature and SHA256 fingerprint saved to `dotfiles/powertoys/FancyZones/topology.json` and `inventory/powertoys/topology.json`.
+  - On Restore, executes conservative matching against the target workstation's live topology:
+    - If all display models, resolutions, and orientations match with high confidence, `applied-layouts.json` is safely restored.
+    - If the topology differs or cannot be confidently matched, automatic device binding is skipped (`FancyZones layout templates restored, but monitor binding was skipped because the display topology could not be safely matched.`).
+    - Custom layouts, default layouts, and layout templates are always safely restored and accessible in the FancyZones Editor.
+  - Display resolution, refresh rate, display arrangement, GPU settings, and docking configurations are **never** modified.
 
 ### 4. Saved Profile & Resumption Subsystem (`src/core/ProfileManager.ps1`, `src/core/Common.ps1`)
 
@@ -69,6 +72,7 @@ DOTMOD is an idempotent workstation synchronization engine designed for Windows 
 ### 6. Strict Mode Pipeline Ordering
 
 DOTMOD enforces strict separation and execution ordering:
+
 1. **Prerequisites**: Administrator privileges, execution policy, WinGet.
 2. **Applications Installation**: Categorized WinGet layers (Core, Utilities/PowerToys, Browsers, Media, CustomCommandDependencies, OptionalAddons).
 3. **Terminal Font Standard**: JetBrains Mono Nerd Font 12.

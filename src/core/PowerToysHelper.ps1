@@ -57,6 +57,92 @@ function Get-DotmodPowerToysStatus {
     return $status
 }
 
+function Get-DotmodDisplayTopology {
+    Add-Type -AssemblyName System.Windows.Forms -ErrorAction SilentlyContinue
+    $screens = @([System.Windows.Forms.Screen]::AllScreens)
+    $wmiMonitors = @(Get-CimInstance -Namespace root\wmi -ClassName WmiMonitorID -ErrorAction SilentlyContinue)
+
+    $normalizedMonitors = @()
+    for ($i = 0; $i -lt $wmiMonitors.Count; $i++) {
+        $w = $wmiMonitors[$i]
+        $mfg = (($w.ManufacturerName | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+        $prod = (($w.ProductCodeID | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+        $model = "$mfg$prod"
+        $friendly = (($w.UserFriendlyName | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+        $serial = (($w.SerialNumberID | Where-Object { $_ -ne 0 -and $_ -ge 32 } | ForEach-Object { [char]$_ }) -join "").Trim()
+        
+        $scr = if ($i -lt $screens.Count) { $screens[$i] } else { $null }
+        $res = if ($scr) { "$($scr.Bounds.Width)x$($scr.Bounds.Height)" } else { "Unknown" }
+        $orient = if ($scr) { if ($scr.Bounds.Height -gt $scr.Bounds.Width) { "Portrait" } else { "Landscape" } } else { "Unknown" }
+        $isPrimary = if ($scr) { $scr.Primary } else { $false }
+
+        $normalizedMonitors += [PSCustomObject]@{
+            Manufacturer     = $mfg
+            ProductCode      = $prod
+            ModelIdentifier  = $model
+            UserFriendlyName = $friendly
+            SerialNumber     = $serial
+            InstanceName     = $w.InstanceName
+            Resolution       = $res
+            Orientation      = $orient
+            IsPrimary        = $isPrimary
+        }
+    }
+
+    # Deterministic sorting: Primary first, then ModelIdentifier, Resolution, Orientation
+    $sorted = @($normalizedMonitors | Sort-Object -Property @{Expression="IsPrimary"; Descending=$true}, ModelIdentifier, Resolution, Orientation)
+    
+    $sigParts = @()
+    foreach ($m in $sorted) {
+        $role = if ($m.IsPrimary) { "Primary" } else { "Secondary" }
+        $sigParts += "[${role}:$($m.ModelIdentifier)($($m.Resolution)-$($m.Orientation))]"
+    }
+    $canonicalSig = "$($sorted.Count)_DISPLAYS:" + ($sigParts -join "|")
+
+    $hasher = [System.Security.Cryptography.SHA256]::Create()
+    $hashBytes = $hasher.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($canonicalSig))
+    $fingerprint = -join ($hashBytes | ForEach-Object { "{0:x2}" -f $_ })
+
+    return [PSCustomObject]@{
+        MonitorCount = $sorted.Count
+        Displays     = $sorted
+        Signature    = $canonicalSig
+        Fingerprint  = $fingerprint
+    }
+}
+
+function Test-DotmodTopologyMatch {
+    param(
+        [Parameter(Mandatory=$false)]$CurrentTopology,
+        [Parameter(Mandatory=$false)]$SavedTopology
+    )
+
+    if (-not $CurrentTopology -or -not $SavedTopology) { return $false }
+    if ($CurrentTopology.MonitorCount -eq 0 -or $SavedTopology.MonitorCount -eq 0) { return $false }
+    if ($CurrentTopology.MonitorCount -ne $SavedTopology.MonitorCount) { return $false }
+
+    if ($CurrentTopology.Fingerprint -and $SavedTopology.Fingerprint -and ($CurrentTopology.Fingerprint -eq $SavedTopology.Fingerprint)) {
+        return $true
+    }
+
+    $currDisplays = @($CurrentTopology.Displays)
+    $savedDisplays = @($SavedTopology.Displays)
+
+    for ($i = 0; $i -lt $currDisplays.Count; $i++) {
+        $c = $currDisplays[$i]
+        $s = $savedDisplays[$i]
+
+        if ($c.ModelIdentifier -ne $s.ModelIdentifier) { return $false }
+        if ($c.Resolution -ne $s.Resolution) { return $false }
+        if ($c.Orientation -ne $s.Orientation) { return $false }
+        if ($c.SerialNumber -and $s.SerialNumber -and $c.SerialNumber -ne "0" -and $s.SerialNumber -ne "0") {
+            if ($c.SerialNumber -ne $s.SerialNumber) { return $false }
+        }
+    }
+
+    return $true
+}
+
 function Backup-DotmodPowerToys {
     Write-DotmodInfo "Auditing Microsoft PowerToys configuration..."
 
@@ -122,12 +208,25 @@ function Backup-DotmodPowerToys {
         Write-DotmodSuccess "FancyZones layout templates & preferences captured" 2
     }
 
+    # 5. Capture & Fingerprint Display Topology
+    $topology = Get-DotmodDisplayTopology
+    $fzDestDir = Join-Path $destRoot "FancyZones"
+    if (-not (Test-Path $fzDestDir)) { New-Item -ItemType Directory -Path $fzDestDir -Force | Out-Null }
+    $topologyJson = $topology | ConvertTo-Json -Depth 5
+    Set-Content -Path (Join-Path $fzDestDir "topology.json") -Value $topologyJson -Encoding utf8
+    Set-Content -Path (Join-Path $invRoot "topology.json") -Value $topologyJson -Encoding utf8
+    Write-DotmodSuccess "FancyZones display topology signature captured ($($topology.MonitorCount) displays: $($topology.Signature))" 2
+
     # Save Inventory Report
     $invJsonPath = Join-Path $invRoot "powertoys.json"
     $pt | ConvertTo-Json -Depth 5 | Set-Content -Path $invJsonPath -Encoding utf8
 
     $invMdPath = Join-Path $invRoot "powertoys.md"
     $moduleList = ($pt.EnabledModules | ForEach-Object { "- **$_**" }) -join "`r`n"
+    $displayList = ($topology.Displays | ForEach-Object {
+        "- Display $($_.ModelIdentifier) ($($_.Manufacturer)): $($_.Resolution) $($_.Orientation)$(if ($_.IsPrimary) { ' [Primary]' }) (Serial: $($_.SerialNumber))"
+    }) -join "`r`n"
+
     $invMd = @(
         "# Microsoft PowerToys Inventory",
         "",
@@ -142,11 +241,17 @@ function Backup-DotmodPowerToys {
         "## Active Enabled Modules ($($pt.EnabledModules.Count))",
         $moduleList,
         "",
+        "## Captured Display Topology",
+        "- **Monitor Count**: $($topology.MonitorCount)",
+        "- **Topology Signature**: ``$($topology.Signature)``",
+        "- **SHA256 Fingerprint**: ``$($topology.Fingerprint)``",
+        $displayList,
+        "",
         "## Portable Configuration Captured",
         "- General Settings: ``dotfiles/powertoys/settings.json``",
         "- Keyboard Manager: ``dotfiles/powertoys/Keyboard Manager/``",
         "- PowerToys Run: ``dotfiles/powertoys/PowerToys Run/settings.json``",
-        "- FancyZones: ``dotfiles/powertoys/FancyZones/`` (Templates, custom layouts, and monitor reference)"
+        "- FancyZones: ``dotfiles/powertoys/FancyZones/`` (Templates, custom layouts, and topology fingerprint)"
     ) -join "`r`n"
 
     Set-Content -Path $invMdPath -Value $invMd -Encoding utf8
@@ -206,31 +311,28 @@ function Restore-DotmodPowerToys {
         # Check monitor topology compatibility for applied-layouts.json
         $appliedSrc = Join-Path $fzTracked "applied-layouts.json"
         if (Test-Path $appliedSrc) {
-            $currentMonitors = @(Get-CimInstance -Namespace root\wmi -ClassName WmiMonitorBasicDisplayParams -ErrorAction SilentlyContinue)
-            $currentMonitorCount = $currentMonitors.Count
+            $topologyFile = Join-Path $fzTracked "topology.json"
+            $savedTopology = if (Test-Path $topologyFile) {
+                Get-Content -Path $topologyFile -Raw | ConvertFrom-Json
+            } else { $null }
 
-            $savedLayoutsRaw = Get-Content -Path $appliedSrc -Raw -ErrorAction SilentlyContinue
-            $savedMonitorCount = 0
-            if ($savedLayoutsRaw) {
-                try {
-                    $savedObj = $savedLayoutsRaw | ConvertFrom-Json
-                    if ($savedObj."applied-layouts") {
-                        $devices = @($savedObj."applied-layouts" | Select-Object -ExpandProperty device -ErrorAction SilentlyContinue)
-                        $savedMonitorCount = @($devices | Select-Object -Unique monitor).Count
-                    }
-                } catch {}
-            }
+            $currentTopology = Get-DotmodDisplayTopology
+            $isMatch = Test-DotmodTopologyMatch -CurrentTopology $currentTopology -SavedTopology $savedTopology
 
             Write-Host "`n  FancyZones Topology Safety Inspection:" -ForegroundColor Yellow
-            Write-Host "    Current active monitors: $currentMonitorCount" -ForegroundColor Gray
-            Write-Host "    Saved topology monitors: $savedMonitorCount" -ForegroundColor Gray
+            Write-Host "    Current active displays: $($currentTopology.MonitorCount) ($($currentTopology.Signature))" -ForegroundColor Gray
+            if ($savedTopology) {
+                Write-Host "    Saved topology displays: $($savedTopology.MonitorCount) ($($savedTopology.Signature))" -ForegroundColor Gray
+            } else {
+                Write-Host "    Saved topology: No topology metadata recorded in dotfiles" -ForegroundColor Gray
+            }
 
-            if ($currentMonitorCount -gt 0 -and $savedMonitorCount -gt 0 -and $currentMonitorCount -eq $savedMonitorCount) {
-                Write-DotmodSuccess "Monitor topology matches ($currentMonitorCount displays). Restoring applied FancyZones layouts." 4
+            if ($isMatch) {
+                Write-DotmodSuccess "Display topology matched with high confidence ($($currentTopology.MonitorCount) displays verified). Restoring applied FancyZones layouts." 4
                 [void](Safe-CopyFileWithBackup -SourcePath $appliedSrc -DestinationPath (Join-Path $fzDest "applied-layouts.json") -DryRun:$DryRun)
             } else {
-                Write-Host "    ! Saved FancyZones configuration detected, but monitor topology changed." -ForegroundColor Yellow
-                Write-Host "    -> Automatic FancyZones applied-layouts restore skipped for safety." -ForegroundColor Yellow
+                Write-Host "    ! Display topology mismatch detected or could not be safely matched." -ForegroundColor Yellow
+                Write-Host "    -> FancyZones layout templates restored, but monitor binding was skipped because the display topology could not be safely matched." -ForegroundColor Cyan
                 Write-Host "    -> Layout templates remain available in the FancyZones Editor." -ForegroundColor Cyan
             }
         }

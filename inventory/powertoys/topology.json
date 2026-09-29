@@ -1,0 +1,29 @@
+﻿{
+    "MonitorCount":  2,
+    "Displays":  [
+                     {
+                         "Manufacturer":  "BOE",
+                         "ProductCode":  "090F",
+                         "ModelIdentifier":  "BOE090F",
+                         "UserFriendlyName":  "",
+                         "SerialNumber":  "0",
+                         "InstanceName":  "DISPLAY\\BOE090F\\4\u0026292d0912\u00260\u0026UID8388688_0",
+                         "Resolution":  "1920x1080",
+                         "Orientation":  "Landscape",
+                         "IsPrimary":  true
+                     },
+                     {
+                         "Manufacturer":  "AGT",
+                         "ProductCode":  "1081",
+                         "ModelIdentifier":  "AGT1081",
+                         "UserFriendlyName":  "",
+                         "SerialNumber":  "1",
+                         "InstanceName":  "DISPLAY\\AGT1081\\4\u0026292d0912\u00260\u0026UID4163_0",
+                         "Resolution":  "1080x1920",
+                         "Orientation":  "Portrait",
+                         "IsPrimary":  false
+                     }
+                 ],
+    "Signature":  "2_DISPLAYS:[Primary:BOE090F(1920x1080-Landscape)]|[Secondary:AGT1081(1080x1920-Portrait)]",
+    "Fingerprint":  "3e342d95d0deb36617cf20b8b38de87cbf6380274bd11cb9943dd3d93ac9c062"
+}

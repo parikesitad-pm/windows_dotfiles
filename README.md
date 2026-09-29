@@ -164,12 +164,15 @@ Microsoft PowerToys (`Microsoft.PowerToys`) is managed as a shared productivity 
   - PowerToys Run / Command Palette preferences and enabled plugins
   - FancyZones custom layouts, default templates, and configuration
 - **What is strictly excluded**: Logs, telemetry, crash dumps, and caches.
-- **FancyZones Multi-Monitor Safety**:
+- **FancyZones Multi-Monitor Topology Fingerprint Safety**:
   - The source machine uses a multi-monitor docking station topology.
-  - On Restore, DOTMOD queries active monitor hardware parameters (`WmiMonitorBasicDisplayParams`).
-  - If monitor topology matches, `applied-layouts.json` is restored automatically.
-  - If monitor topology differs, automatic applied layout binding is safely skipped to prevent crashes; all custom layout templates remain available in the FancyZones Editor.
-  - Display resolution, refresh rate, and GPU settings are **never** modified.
+  - DOTMOD captures a normalized display topology signature during Backup (manufacturer, product code, model, resolution, orientation, and primary status) and saves a SHA256 fingerprint.
+  - On Restore, DOTMOD conservatively compares the saved fingerprint against the target machine's active displays.
+  - If confident match: restores `applied-layouts.json` monitor bindings.
+  - If topology differs: skips `applied-layouts.json` binding with message:
+    `"FancyZones layout templates restored, but monitor binding was skipped because the display topology could not be safely matched."`
+  - Custom layouts, default layouts, and layout templates are always safely restored and remain available in the FancyZones Editor.
+  - Display resolution, refresh rate, display arrangement, GPU settings, and docking configurations are **never** modified.
 
 ---
 
@@ -195,12 +198,15 @@ DOTMOD enforces strict mode separation to prevent accidental modifications:
 ## Saved Profiles & Resumable Restore
 
 - **Declarative Profiles** (`profiles/*.json`): Save and load entire machine configurations (developer profiles, theme, utilities, frontend options) with a single flag:
+
   ```powershell
   .\dotmod.ps1 -Restore -Profile Luca
   ```
+
 - **Resumable Restore** (`-Resume`):
   - Every restore execution tracks its progress in `.dotmod/state.json`.
   - If interrupted (e.g. network timeout or system reboot), resume without re-running completed stages:
+
   ```powershell
   .\dotmod.ps1 -Restore -Resume
   ```
@@ -216,6 +222,7 @@ Before repartitioning or wiping your machine, run the automated readiness check:
 ```
 
 DOTMOD verifies 9 automated criteria:
+
 1. Complete backup generated within the last 24 hours
 2. Secret scanner reports 0 sensitive tokens
 3. Git working tree is clean (no uncommitted backup files)

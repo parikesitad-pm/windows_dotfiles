@@ -51,7 +51,7 @@ Restoration follows a strictly ordered, idempotent pipeline:
    - Copies `.zshrc`, `.bash_profile`, `starship.toml`, `fastfetch/`, `settings.json`, and PowerShell profile.
    - Automatically generates timestamped `*.pre-dotmod` backups before modifying existing files.
    - **Microsoft PowerToys**: Restores general settings, Keyboard Manager mappings, PowerToys Run plugins, and FancyZones layout templates.
-   - **FancyZones Safety**: Compares current active monitor topology against backed-up display hardware IDs. If monitor topology changed, automatic device binding is safely skipped to avoid corrupting window positions.
+   - **FancyZones Safety**: Compares current active monitor topology (manufacturer, model, resolution, orientation) against the backed-up display topology signature and SHA256 fingerprint. If display topology differs, automatic device binding is safely skipped (`FancyZones layout templates restored, but monitor binding was skipped because the display topology could not be safely matched.`) while keeping custom layouts accessible in FancyZones Editor. Resolution, refresh rate, and display arrangement are never modified.
 5. **Developer Profile Environment**:
    - Deploys `dotfiles/shell/profiles/common.zsh` to `~/.dotmod-profiles/common.zsh`.
    - Provisions selected stack packages and shell scripts (`js.zsh`, `php.zsh`, or `rails.zsh`).
@@ -149,4 +149,3 @@ After DOTMOD Restore completes, follow this manual checklist:
    - Re-export API keys (`GEMINI_API_KEY`, etc.) in your user environment or shell profile.
 6. **Microsoft PowerToys**:
    - Launch Microsoft PowerToys from the Start Menu to ensure background autorun is active.
-
