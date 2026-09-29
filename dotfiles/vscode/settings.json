@@ -1,0 +1,311 @@
+{
+  "settingsSync.ignoredSettings": [],
+
+  // ========================
+  // 🎨 UI
+  // ========================
+  "workbench.colorTheme": "Tokyo Night Dark",
+  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "cSpell.language": "en,id",
+  "cSpell.userWords": ["genai"],
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext"],
+
+  // ========================
+  // ✍️ EDITOR
+  // ========================
+  "editor.fontFamily": "'Fira Code', 'Segoe UI', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  "editor.lineHeight": 1.7,
+  "editor.letterSpacing": 0.5,
+  "editor.fontWeight": "normal",
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "editor.cursorBlinking": "expand",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelZoom": true,
+  "editor.minimap.enabled": false,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ========================
+  // 💻 TERMINAL (WINDOWS INTEGRATION)
+  // ========================
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "icon": "terminal-bash",
+    },
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+    },
+  },
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'JetBrains Mono', monospace",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.letterSpacing": 0.5,
+  "terminal.integrated.gpuAcceleration": "on",
+
+  // ========================
+  // 📁 FILE / SEARCH (REACT, RAILS, TAURI)
+  // ========================
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/vendor": true,
+    "**/target": true,
+    "**/src-tauri/target": true,
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/vendor": true,
+    "**/target": true,
+    "**/src-tauri/target": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/public/build": true,
+    "**/tmp": true,
+    "**/log": true,
+  },
+
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/node_modules/**": true,
+    "**/target/**": true,
+    "**/src-tauri/target/**": true,
+  },
+
+  // ========================
+  // 🔧 GIT
+  // ========================
+  "git.autorefresh": false,
+  "git.autoStash": false,
+  "git.openRepositoryInParentFolders": "never",
+  "git.autofetch": true,
+
+  // ========================
+  // 🌈 THEME OVERRIDES
+  // ========================
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000",
+  },
+
+  // ========================
+  // 🧹 PRETTIER
+  // ========================
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "always",
+  "prettier.endOfLine": "lf",
+
+  // ========================
+  // 🐍 PYTHON & 📝 MARKDOWN
+  // ========================
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+    },
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+  },
+
+  // ========================
+  // 🌐 WEB ECOSYSTEM
+  // ========================
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+
+  // ========================
+  // ⚛️ ESLINT & TYPESCRIPT
+  // ========================
+  "js/ts.tsdk": "node_modules/typescript/lib",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "js/ts.inlayHints.parameterNames.enabled": "all",
+  "js/ts.inlayHints.variableTypes.enabled": true,
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
+
+  // ========================
+  // 🦀 TAURI & RUST
+  // ========================
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+  },
+  "rust-analyzer.cargo.buildScripts.enable": true,
+  "rust-analyzer.check.command": "clippy",
+
+  "json.schemas": [
+    {
+      "fileMatch": ["tauri.conf.json"],
+      "url": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/tooling/cli/schema.json",
+    },
+  ],
+
+  // ========================
+  // 🛤️ RUBY / RAILS
+  // ========================
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true,
+  },
+  "rubyLsp.formatter": "rubocop",
+  "erb-formatter.htmlFormatter": "prettier",
+
+  // ========================
+  // 🎨 TAILWIND CSS
+  // ========================
+  "tailwindCSS.includeLanguages": {
+    "erb": "html",
+    "ruby": "html",
+    "rust": "html",
+  },
+
+  // ========================
+  // 🔐 ENV & SQL
+  // ========================
+  "dotenv.enableAutocloaking": false,
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools",
+    "editor.formatOnSave": false,
+  },
+
+  // ========================
+  // 🎨 SYNTAX HIGHLIGHTING CUSTOMIZATIONS
+  // ========================
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "storage.type",
+          "storage.modifier",
+          "entity.name.type.class",
+          "support.class.builtin",
+          "keyword.control",
+          "constant.language",
+          "entity.name.method",
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff79c6",
+        },
+      },
+      {
+        "scope": [
+          "entity.name.tag.jsx",
+          "support.class.component",
+          "entity.name.type.js",
+        ],
+        "settings": {
+          "foreground": "#7aa2f7",
+          "fontStyle": "bold",
+        },
+      },
+      {
+        "scope": ["entity.other.attribute-name.jsx"],
+        "settings": {
+          "foreground": "#9ece6a",
+          "fontStyle": "italic",
+        },
+      },
+      {
+        "scope": ["string.quoted.double.js", "string.quoted.single.js"],
+        "settings": {
+          "foreground": "#e0af68",
+        },
+      },
+      {
+        "scope": ["constant.numeric"],
+        "settings": {
+          "foreground": "#ff9e64",
+          "fontStyle": "bold",
+        },
+      },
+    ],
+  },
+
+  // ========================
+  // 🔒 TOOLS
+  // ========================
+  "security.workspace.trust.untrustedFiles": "open",
+  "claudeCode.preferredLocation": "panel",
+  "tabnine.experimentalAutoImports": true,
+}
