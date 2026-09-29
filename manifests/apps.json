@@ -1,0 +1,70 @@
+{
+  "Browsers": [
+    {
+      "Id": "Zen-Team.Zen-Browser",
+      "Name": "Zen Browser"
+    },
+    {
+      "Id": "VivaldiTechnologies.Vivaldi",
+      "Name": "Vivaldi"
+    }
+  ],
+  "MultimediaAndBroadcast": [
+    {
+      "Id": "Spotify.Spotify",
+      "Name": "Spotify"
+    },
+    {
+      "Id": "OBSProject.OBSStudio",
+      "Name": "OBS Studio"
+    },
+    {
+      "Id": "Zoom.Zoom.EXE",
+      "Name": "Zoom Workplace"
+    }
+  ],
+  "Core": [
+    {
+      "Id": "Git.Git",
+      "Name": "Git for Windows"
+    },
+    {
+      "Id": "GitHub.cli",
+      "Name": "GitHub CLI"
+    },
+    {
+      "Id": "Microsoft.WindowsTerminal",
+      "Name": "Windows Terminal"
+    },
+    {
+      "Id": "Microsoft.PowerShell",
+      "Name": "PowerShell 7"
+    },
+    {
+      "Id": "Fastfetch-cli.Fastfetch",
+      "Name": "Fastfetch"
+    }
+  ],
+  "Developer": [
+    {
+      "Id": "Microsoft.VisualStudioCode",
+      "Name": "Visual Studio Code"
+    },
+    {
+      "Id": "Python.Python.3.14",
+      "Name": "Python 3.14"
+    },
+    {
+      "Id": "Rustlang.Rustup",
+      "Name": "Rustup / Cargo"
+    },
+    {
+      "Id": "yt-dlp.yt-dlp",
+      "Name": "yt-dlp"
+    },
+    {
+      "Id": "Gyan.FFmpeg",
+      "Name": "FFmpeg"
+    }
+  ]
+}
