@@ -1,0 +1,13 @@
+eamodio.gitlens
+github.vscode-github-actions
+davidanson.vscode-markdownlint
+yzhang.markdown-all-in-one
+streetsidesoftware.code-spell-checker
+streetsidesoftware.code-spell-checker-indonesian
+pkief.material-icon-theme
+mikestead.dotenv
+christian-kohler.path-intellisense
+formulahendry.auto-close-tag
+formulahendry.auto-rename-tag
+tamasfe.even-better-toml
+oderwat.indent-rainbow

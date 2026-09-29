@@ -1,0 +1,31 @@
+@{
+    Id                 = "gruvbox-dark"
+    DisplayName        = "Gruvbox Dark"
+    DarkMode           = $true
+    VSCodeExtension    = "jdinhlife.gruvbox"
+    VSCodeThemeName    = "Gruvbox Dark Hard"
+    StarshipPalette    = "gruvbox_dark"
+    TerminalColors     = @{
+        name                = "DOTMOD Gruvbox Dark"
+        background          = "#1d2021"
+        foreground          = "#ebdbb2"
+        selectionBackground = "#504945"
+        cursorColor         = "#ebdbb2"
+        black               = "#282828"
+        red                 = "#cc241d"
+        green               = "#98971a"
+        yellow              = "#d79921"
+        blue                = "#458588"
+        purple              = "#b16286"
+        cyan                = "#689d6a"
+        white               = "#a89984"
+        brightBlack         = "#928374"
+        brightRed           = "#fb4934"
+        brightGreen         = "#b8bb26"
+        brightYellow        = "#fabd2f"
+        brightBlue          = "#83a598"
+        brightPurple        = "#d3869b"
+        brightCyan          = "#8ec07c"
+        brightWhite         = "#ebdbb2"
+    }
+}

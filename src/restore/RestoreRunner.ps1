@@ -1,20 +1,27 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/restore/RestoreRunner.ps1
 # Master restore engine for post-reinstall Windows workstation
-# Supports: -Full, -ConfigOnly, -AppsOnly, -DryRun
+# Supports Developer Profiles & Visual Theme System
 # ============================================================
 
 Set-StrictMode -Version Latest
 
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Common.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Config.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "core\ThemeEngine.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "restore\FontInstaller.ps1")
 
 function Invoke-DotmodRestore {
     param(
         [switch]$Full,
         [switch]$ConfigOnly,
         [switch]$AppsOnly,
-        [switch]$DryRun
+        [switch]$DryRun,
+        [switch]$DevJS,
+        [switch]$DevPHP,
+        [switch]$DevRails,
+        [switch]$React,
+        [string]$Theme = ""
     )
 
     if (-not $Full -and -not $ConfigOnly -and -not $AppsOnly) {
@@ -43,53 +50,167 @@ function Invoke-DotmodRestore {
     $hasGit = [bool](Get-Command git -ErrorAction SilentlyContinue)
     Write-DotmodInfo "WinGet available: $hasWinget | Git available: $hasGit" 2
 
-    $appsManifestPath = Join-Path $global:DOTMOD_PATHS.Manifests "apps.json"
-    $appsManifest = if (Test-Path $appsManifestPath) {
-        Get-Content -Path $appsManifestPath -Raw | ConvertFrom-Json
+    # ------------------------------------------------------------
+    # STEP 1: Font Installation (Standard: JetBrains Mono Nerd Font, 12)
+    # ------------------------------------------------------------
+    Write-Host "`n--- [1/6] Terminal Font Standard ---" -ForegroundColor Cyan
+    Install-DotmodFonts -DryRun:$DryRun
+
+    # ------------------------------------------------------------
+    # STEP 2: Developer Profile Selection & Tooling
+    # ------------------------------------------------------------
+    Write-Host "`n--- [2/6] Developer Profile Configuration ---" -ForegroundColor Cyan
+    $selectedProfiles = @()
+    if ($DevJS) { $selectedProfiles += "DEV_JS" }
+    if ($DevPHP) { $selectedProfiles += "DEV_PHP" }
+    if ($DevRails) { $selectedProfiles += "DEV_RAILS" }
+
+    # If no profile passed via CLI and interactive, let user know active selection
+    if ($selectedProfiles.Count -eq 0) {
+        Write-DotmodInfo "No specific developer stack passed via CLI (-DevJS, -DevPHP, -DevRails). Using Common developer core." 2
+    } else {
+        Write-DotmodSuccess "Selected Developer Profile(s): $($selectedProfiles -join ', ')$(if ($React) { ' (+ React/TypeScript Layer)' })" 2
+    }
+
+    # Prepare user profile directory ~/.dotmod-profiles/
+    $userProfilesDir = "$HOME\.dotmod-profiles"
+    if (-not $DryRun -and -not (Test-Path $userProfilesDir)) {
+        New-Item -ItemType Directory -Path $userProfilesDir -Force | Out-Null
+    }
+
+    # Always deploy common shell profile
+    $commonProfileSrc = Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\profiles\common.zsh"
+    $commonProfileDest = Join-Path $userProfilesDir "common.zsh"
+    [void](Safe-CopyFileWithBackup -SourcePath $commonProfileSrc -DestinationPath $commonProfileDest -DryRun:$DryRun)
+
+    # Process Profiles
+    $devProfilesJsonPath = Join-Path $global:DOTMOD_PATHS.Manifests "dev-profiles.json"
+    $devProfilesDef = if (Test-Path $devProfilesJsonPath) {
+        Get-Content -Path $devProfilesJsonPath -Raw | ConvertFrom-Json
     } else { $null }
 
-    # 1. Applications Restoration
-    if ($Full -or $AppsOnly) {
-        Write-Host "`n--- [1/4] Applications Installation ---" -ForegroundColor Cyan
-        if ($appsManifest) {
-            $categories = @("Core", "Developer", "Browsers", "MultimediaAndBroadcast")
-            foreach ($cat in $categories) {
-                Write-Host "`n  [$cat]" -ForegroundColor Yellow
-                foreach ($app in $appsManifest.$cat) {
-                    $appId = $app.Id
-                    $appName = $app.Name
-                    
-                    # Idempotency check: see if command or winget package already exists
-                    $installed = $false
-                    if (Get-Command $appName -ErrorAction SilentlyContinue) {
-                        $installed = $true
-                    } elseif (Get-Command (Split-Path -Leaf $appId) -ErrorAction SilentlyContinue) {
-                        $installed = $true
-                    }
+    $extraWingetApps = @()
+    $vscodeManifestFiles = @("manifests/vscode/common.txt")
 
-                    if ($installed) {
-                        Write-DotmodSuccess "$appName ($appId) ............ already installed" 4
-                    } else {
-                        if ($DryRun) {
-                            Write-DotmodSkipped "$appName ($appId) ............ would install via winget" 4
+    if ($devProfilesDef) {
+        foreach ($profKey in $selectedProfiles) {
+            $prof = $devProfilesDef.Profiles.$profKey
+            if ($prof) {
+                # WinGet packages
+                if ($prof.WinGetPackages) {
+                    $extraWingetApps += $prof.WinGetPackages
+                }
+                # VS Code manifest
+                if ($prof.VSCodeManifest) {
+                    $vscodeManifestFiles += $prof.VSCodeManifest
+                }
+                # Shell profiles
+                if ($prof.ShellProfiles) {
+                    foreach ($sp in $prof.ShellProfiles) {
+                        $spSrc = Join-Path $global:DOTMOD_ROOT $sp
+                        $spDest = Join-Path $userProfilesDir (Split-Path -Leaf $sp)
+                        [void](Safe-CopyFileWithBackup -SourcePath $spSrc -DestinationPath $spDest -DryRun:$DryRun)
+                    }
+                }
+            }
+        }
+
+        # If Rails + React composition requested
+        if ($DevRails -and $React -and $devProfilesDef.Profiles.DEV_RAILS.ReactOption) {
+            Write-DotmodInfo "Composing React + TypeScript layer into Rails environment..." 2
+            $ro = $devProfilesDef.Profiles.DEV_RAILS.ReactOption
+            if ($ro.WinGetPackages) { $extraWingetApps += $ro.WinGetPackages }
+            if ($ro.VSCodeManifest) { $vscodeManifestFiles += $ro.VSCodeManifest }
+            if ($ro.ShellProfiles) {
+                foreach ($sp in $ro.ShellProfiles) {
+                    $spSrc = Join-Path $global:DOTMOD_ROOT $sp
+                    $spDest = Join-Path $userProfilesDir (Split-Path -Leaf $sp)
+                    [void](Safe-CopyFileWithBackup -SourcePath $spSrc -DestinationPath $spDest -DryRun:$DryRun)
+                }
+            }
+        }
+    }
+
+    # ------------------------------------------------------------
+    # STEP 3: Theme Application
+    # ------------------------------------------------------------
+    Write-Host "`n--- [3/6] Visual Theme Application ---" -ForegroundColor Cyan
+    $themeToApply = if ([string]::IsNullOrWhiteSpace($Theme)) { "tokyo-night" } else { $Theme }
+    Write-DotmodInfo "Target Theme: $themeToApply" 2
+    Apply-DotmodTheme -ThemeName $themeToApply -DryRun:$DryRun
+
+    # ------------------------------------------------------------
+    # STEP 4: Applications Installation (Core + Profile-specific)
+    # ------------------------------------------------------------
+    if ($Full -or $AppsOnly) {
+        Write-Host "`n--- [4/6] Applications Installation ---" -ForegroundColor Cyan
+        $appsManifestPath = Join-Path $global:DOTMOD_PATHS.Manifests "apps.json"
+        $appsManifest = if (Test-Path $appsManifestPath) {
+            Get-Content -Path $appsManifestPath -Raw | ConvertFrom-Json
+        } else { $null }
+
+        if ($appsManifest) {
+            $categories = @("Core", "Developer", "Browsers", "Multimedia")
+            foreach ($cat in $categories) {
+                if ($appsManifest.$cat) {
+                    Write-Host "`n  [$cat]" -ForegroundColor Yellow
+                    foreach ($app in $appsManifest.$cat) {
+                        $appId = $app.Id
+                        $appName = $app.Name
+
+                        $installed = $false
+                        if (Get-Command $appName -ErrorAction SilentlyContinue) {
+                            $installed = $true
+                        } elseif (Get-Command (Split-Path -Leaf $appId) -ErrorAction SilentlyContinue) {
+                            $installed = $true
+                        }
+
+                        if ($installed) {
+                            Write-DotmodSuccess "$appName ($appId) ............ already installed" 4
                         } else {
-                            Write-Host "    -> Installing $appName via WinGet..." -ForegroundColor Cyan
-                            winget install --id $appId -e --silent --accept-package-agreements --accept-source-agreements
-                            if ($LASTEXITCODE -eq 0) {
-                                Write-DotmodSuccess "$appName ............ installed successfully" 4
+                            if ($DryRun) {
+                                Write-DotmodSkipped "$appName ($appId) ............ would install via winget" 4
                             } else {
-                                Write-DotmodWarning "$appName ............ install reported code $LASTEXITCODE" 4
+                                Write-Host "    -> Installing $appName via WinGet..." -ForegroundColor Cyan
+                                winget install --id $appId -e --silent --accept-package-agreements --accept-source-agreements
+                                if ($LASTEXITCODE -eq 0) {
+                                    Write-DotmodSuccess "$appName ............ installed successfully" 4
+                                } else {
+                                    Write-DotmodWarning "$appName ............ install reported code $LASTEXITCODE" 4
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        # Install profile-specific extra apps (Node, PHP, Ruby, etc.)
+        if ($extraWingetApps.Count -gt 0) {
+            Write-Host "`n  [Developer Profile Packages]" -ForegroundColor Yellow
+            foreach ($app in $extraWingetApps) {
+                $appId = $app.Id
+                $appName = $app.Name
+                if ($DryRun) {
+                    Write-DotmodSkipped "$appName ($appId) ............ would install via winget" 4
+                } else {
+                    Write-Host "    -> Installing $appName via WinGet..." -ForegroundColor Cyan
+                    winget install --id $appId -e --silent --accept-package-agreements --accept-source-agreements
+                    if ($LASTEXITCODE -eq 0) {
+                        Write-DotmodSuccess "$appName ............ installed successfully" 4
+                    } else {
+                        Write-DotmodWarning "$appName ............ install reported code $LASTEXITCODE" 4
+                    }
+                }
+            }
+        }
     }
 
-    # 2. Shell & Terminal Configuration Restoration
+    # ------------------------------------------------------------
+    # STEP 5: Shell & Terminal Configuration Restoration
+    # ------------------------------------------------------------
     if ($Full -or $ConfigOnly) {
-        Write-Host "`n--- [2/4] Shell & Terminal Configuration ---" -ForegroundColor Cyan
+        Write-Host "`n--- [5/6] Shell & Terminal Configuration ---" -ForegroundColor Cyan
 
         # ZSH .zshrc
         $zshTracked = Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\.zshrc"
@@ -131,59 +252,56 @@ function Invoke-DotmodRestore {
         [void](Safe-CopyFileWithBackup -SourcePath $gitTracked -DestinationPath $gitDest -DryRun:$DryRun)
     }
 
-    # 3. Development Tools & VS Code Extensions
+    # ------------------------------------------------------------
+    # STEP 6: VS Code Environment & Extensions (Profile-Aware)
+    # ------------------------------------------------------------
     if ($Full -or $ConfigOnly) {
-        Write-Host "`n--- [3/4] VS Code Environment ---" -ForegroundColor Cyan
+        Write-Host "`n--- [6/6] VS Code Environment & Extensions ---" -ForegroundColor Cyan
         $vscTracked = Join-Path $global:DOTMOD_PATHS.Dotfiles "vscode\settings.json"
         $vscDest = "$env:APPDATA\Code\User\settings.json"
         [void](Safe-CopyFileWithBackup -SourcePath $vscTracked -DestinationPath $vscDest -DryRun:$DryRun)
 
-        $extFile = Join-Path $global:DOTMOD_PATHS.Inventory "development\vscode-extensions.txt"
-        if (Test-Path $extFile) {
-            $extLines = Get-Content $extFile | Where-Object { $_ -match "@" }
-            Write-DotmodInfo "Catalog has $($extLines.Count) extensions to verify" 2
-            if ($DryRun) {
-                Write-DotmodSkipped "Would verify and install $($extLines.Count) VS Code extensions" 2
-            } else {
+        # Collect unique extensions from manifests
+        $extToInstall = @()
+        foreach ($mf in ($vscodeManifestFiles | Select-Object -Unique)) {
+            $mfPath = Join-Path $global:DOTMOD_ROOT $mf
+            if (Test-Path $mfPath) {
+                Get-Content -Path $mfPath | ForEach-Object {
+                    $trimmed = $_.Trim()
+                    if ($trimmed -and -not $trimmed.StartsWith("#")) {
+                        $extToInstall += $trimmed
+                    }
+                }
+            }
+        }
+        $extToInstall = @($extToInstall | Select-Object -Unique)
+
+        Write-DotmodInfo "Target extensions to install across profiles: $($extToInstall.Count)" 2
+        if ($DryRun) {
+            Write-DotmodSkipped "Would verify and install $($extToInstall.Count) VS Code extensions" 2
+        } else {
+            if (Get-Command code -ErrorAction SilentlyContinue) {
                 $installedExts = code --list-extensions 2>$null
-                foreach ($extLine in $extLines) {
-                    $extId = ($extLine -split "@")[0].Trim()
+                foreach ($extId in $extToInstall) {
                     if ($installedExts -contains $extId) {
-                        Write-DotmodSuccess "Extension $extId already installed" 4
+                        Write-DotmodSuccess "Extension $extId ............ already installed" 4
                     } else {
                         Write-Host "    -> Installing VS Code extension $extId..." -ForegroundColor Gray
                         code --install-extension $extId --force | Out-Null
                     }
                 }
+            } else {
+                Write-DotmodWarning "VS Code 'code' command not in PATH; skipping extension install" 2
             }
         }
     }
 
-    # 4. Spicetify & Spotify Restoration Workflow
-    if ($Full -or $ConfigOnly) {
-        Write-Host "`n--- [4/4] Spicetify & Spotify Restoration ---" -ForegroundColor Cyan
+    # Spicetify / Spotify handling (Only if not config-only or full)
+    if ($Full) {
         $spicetifyIniTracked = Join-Path $global:DOTMOD_PATHS.Dotfiles "spicetify\config-xpui.ini"
         $spicetifyIniDest = "$env:APPDATA\spicetify\config-xpui.ini"
-
-        if ($DryRun) {
-            Write-DotmodSkipped "Would restore Spicetify configuration to $spicetifyIniDest" 2
-            Write-DotmodInfo "Spicetify workflow requirement: pause for Spotify login before running 'spicetify apply'" 2
-        } else {
-            [void](Safe-CopyFileWithBackup -SourcePath $spicetifyIniTracked -DestinationPath $spicetifyIniDest -DryRun:$false)
-            
-            Write-Host ""
-            Write-Host "  Spotify requires first-run initialization." -ForegroundColor Yellow
-            Write-Host "  1. Open Spotify" -ForegroundColor Gray
-            Write-Host "  2. Log in" -ForegroundColor Gray
-            Write-Host "  3. Allow Spotify to initialize" -ForegroundColor Gray
-            Write-Host "  4. Close Spotify" -ForegroundColor Gray
-            Write-Host "  5. Return here" -ForegroundColor Gray
-            Write-Host "  6. Press Enter to continue..." -ForegroundColor Gray
-            Read-Host
-            
-            Write-Host "  Applying Spicetify theme and Marketplace..." -ForegroundColor Cyan
-            spicetify backup apply
-            spicetify apply
+        if (Test-Path $spicetifyIniTracked) {
+            [void](Safe-CopyFileWithBackup -SourcePath $spicetifyIniTracked -DestinationPath $spicetifyIniDest -DryRun:$DryRun)
         }
     }
 
@@ -191,11 +309,10 @@ function Invoke-DotmodRestore {
     Write-Host "`n============================================================" -ForegroundColor DarkGray
     Write-Host "  MANUAL RESTORATION STEPS REQUIRED" -ForegroundColor Yellow
     Write-Host "============================================================" -ForegroundColor DarkGray
-    Write-Host "  * OBS Studio: Re-enter YouTube stream key in Settings > Stream" -ForegroundColor Gray
-    Write-Host "  * vMix: Re-enter software license key upon launch" -ForegroundColor Gray
     Write-Host "  * Zoom: Log in to active workplace account" -ForegroundColor Gray
     Write-Host "  * Zen Browser: Install extensions from addons.mozilla.org (uBlock Origin, Buram)" -ForegroundColor Gray
     Write-Host "  * API Keys: Populate GEMINI_API_KEY / ANTHROPIC_API_KEY in environment" -ForegroundColor Gray
+    Write-Host "  * Spotify: Open Spotify once, log in, then run 'spicetify backup apply'" -ForegroundColor Gray
     Write-Host "============================================================`n" -ForegroundColor DarkGray
 
     return $true

@@ -1,4 +1,4 @@
-adrianwilczynski.alpine-js-intellisense@1.2.0
+﻿adrianwilczynski.alpine-js-intellisense@1.2.0
 aliariff.vscode-erb-beautify@0.5.0
 bmewburn.vscode-intelephense-client@1.18.5
 bracketpaircolordlw.bracket-pair-color-dlw@0.0.6
@@ -56,3 +56,4 @@ whizkydee.material-palenight-theme@2.0.5
 wix.vscode-import-cost@3.3.0
 yoavbls.pretty-ts-errors@0.8.7
 yzhang.markdown-all-in-one@3.6.3
+

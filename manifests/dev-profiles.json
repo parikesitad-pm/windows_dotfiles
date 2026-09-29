@@ -1,0 +1,51 @@
+{
+  "Profiles": {
+    "DEV_JS": {
+      "Name": "DEV JS",
+      "Description": "Node.js + React + TypeScript development ecosystem",
+      "WinGetPackages": [
+        { "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }
+      ],
+      "VSCodeManifest": "manifests/vscode/dev-js.txt",
+      "ShellProfiles": [
+        "dotfiles/shell/profiles/common.zsh",
+        "dotfiles/shell/profiles/js.zsh"
+      ]
+    },
+    "DEV_PHP": {
+      "Name": "DEV PHP",
+      "Description": "PHP + Composer + Laravel / Lumen backend ecosystem",
+      "WinGetPackages": [
+        { "Id": "PHP.PHP.8.3", "Name": "PHP 8.3" },
+        { "Id": "Composer.Composer", "Name": "Composer" }
+      ],
+      "VSCodeManifest": "manifests/vscode/dev-php.txt",
+      "ShellProfiles": [
+        "dotfiles/shell/profiles/common.zsh",
+        "dotfiles/shell/profiles/php.zsh"
+      ]
+    },
+    "DEV_RAILS": {
+      "Name": "DEV RAILS",
+      "Description": "Ruby + Bundler + Ruby on Rails development ecosystem",
+      "WinGetPackages": [
+        { "Id": "RubyInstallerTeam.RubyWithDevKit.3.3", "Name": "Ruby 3.3 with DevKit" }
+      ],
+      "VSCodeManifest": "manifests/vscode/dev-rails.txt",
+      "ShellProfiles": [
+        "dotfiles/shell/profiles/common.zsh",
+        "dotfiles/shell/profiles/rails.zsh"
+      ],
+      "ReactOption": {
+        "Description": "Add React + TypeScript frontend tooling to Rails stack",
+        "VSCodeManifest": "manifests/vscode/dev-js.txt",
+        "ShellProfiles": [
+          "dotfiles/shell/profiles/js.zsh"
+        ],
+        "WinGetPackages": [
+          { "Id": "OpenJS.NodeJS", "Name": "Node.js LTS" }
+        ]
+      }
+    }
+  }
+}

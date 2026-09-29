@@ -1,0 +1,3517 @@
+﻿[
+    {
+        "Name":  "Arial (TrueType)",
+        "FileName":  "arial.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Black (TrueType)",
+        "FileName":  "ariblk.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Bold (TrueType)",
+        "FileName":  "arialbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Bold Italic (TrueType)",
+        "FileName":  "arialbi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Italic (TrueType)",
+        "FileName":  "ariali.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Narrow (TrueType)",
+        "FileName":  "ARIALN.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Narrow Bold (TrueType)",
+        "FileName":  "ARIALNB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Narrow Bold Italic (TrueType)",
+        "FileName":  "ARIALNBI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Arial Narrow Italic (TrueType)",
+        "FileName":  "ARIALNI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bahnschrift (TrueType)",
+        "FileName":  "bahnschrift.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bebas Neue Regular (OpenType)",
+        "FileName":  "BebasNeue-Regular.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bodoni Bd BT Bold (TrueType)",
+        "FileName":  "Bodoni Bd BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bodoni Bd BT Bold Italic (TrueType)",
+        "FileName":  "Bodoni Bd BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bodoni Bk BT Book (TrueType)",
+        "FileName":  "Bodoni Bk BT Book.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bodoni Bk BT Book Italic (TrueType)",
+        "FileName":  "Bodoni Bk BT Book Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Book Antiqua (TrueType)",
+        "FileName":  "BKANT.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Book Antiqua Bold (TrueType)",
+        "FileName":  "ANTQUAB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Book Antiqua Bold Italic (TrueType)",
+        "FileName":  "ANTQUABI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Book Antiqua Italic (TrueType)",
+        "FileName":  "ANTQUAI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bookman Old Style (TrueType)",
+        "FileName":  "BOOKOS.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bookman Old Style Bold (TrueType)",
+        "FileName":  "BOOKOSB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bookman Old Style Bold Italic (TrueType)",
+        "FileName":  "BOOKOSBI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bookman Old Style Italic (TrueType)",
+        "FileName":  "BOOKOSI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Bookshelf Symbol 7 (TrueType)",
+        "FileName":  "BSSYM7.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri (TrueType)",
+        "FileName":  "calibri.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri Bold (TrueType)",
+        "FileName":  "calibrib.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri Bold Italic (TrueType)",
+        "FileName":  "calibriz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri Italic (TrueType)",
+        "FileName":  "calibrii.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri Light (TrueType)",
+        "FileName":  "calibril.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Calibri Light Italic (TrueType)",
+        "FileName":  "calibrili.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cambria \u0026 Cambria Math (TrueType)",
+        "FileName":  "cambria.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cambria Bold (TrueType)",
+        "FileName":  "cambriab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cambria Bold Italic (TrueType)",
+        "FileName":  "cambriaz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cambria Italic (TrueType)",
+        "FileName":  "cambriai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara (TrueType)",
+        "FileName":  "candara.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara Bold (TrueType)",
+        "FileName":  "candarab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara Bold Italic (TrueType)",
+        "FileName":  "candaraz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara Italic (TrueType)",
+        "FileName":  "candarai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara Light (TrueType)",
+        "FileName":  "candaral.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Candara Light Italic (TrueType)",
+        "FileName":  "candarali.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cascadia Code Regular (TrueType)",
+        "FileName":  "CascadiaCode.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Cascadia Mono Regular (TrueType)",
+        "FileName":  "CascadiaMono.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century (TrueType)",
+        "FileName":  "CENTURY.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century Gothic (TrueType)",
+        "FileName":  "GOTHIC.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century Gothic Bold (TrueType)",
+        "FileName":  "GOTHICB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century Gothic Bold Italic (TrueType)",
+        "FileName":  "GOTHICBI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century Gothic Italic (TrueType)",
+        "FileName":  "GOTHICI.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century725 Cn BT (TrueType)",
+        "FileName":  "Century725 Cn BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 BT Italic (TrueType)",
+        "FileName":  "Century751 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 BT Roman (TrueType)",
+        "FileName":  "Century751 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 No2 BT Bold (TrueType)",
+        "FileName":  "Century751 No2 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 No2 BT Bold Italic (TrueType)",
+        "FileName":  "Century751 No2 BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 No2 BT Italic (TrueType)",
+        "FileName":  "Century751 No2 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 No2 BT Roman (TrueType)",
+        "FileName":  "Century751 No2 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 SeBd BT Semi Bold (TrueType)",
+        "FileName":  "Century751 SeBd BT Semi Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Century751 SeBd BT Semi Bold Italic (TrueType)",
+        "FileName":  "Century751 SeBd BT Semi Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Clarendon Blk BT Black (TrueType)",
+        "FileName":  "Clarendon Blk BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Clarendon BT Bold (TrueType)",
+        "FileName":  "Clarendon BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Clarendon BT Roman (TrueType)",
+        "FileName":  "Clarendon BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Clarendon Lt BT Light (TrueType)",
+        "FileName":  "Clarendon Lt BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Comic Sans MS (TrueType)",
+        "FileName":  "comic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Comic Sans MS Bold (TrueType)",
+        "FileName":  "comicbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Comic Sans MS Bold Italic (TrueType)",
+        "FileName":  "comicz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Comic Sans MS Italic (TrueType)",
+        "FileName":  "comici.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Consolas (TrueType)",
+        "FileName":  "consola.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Consolas Bold (TrueType)",
+        "FileName":  "consolab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Consolas Bold Italic (TrueType)",
+        "FileName":  "consolaz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Consolas Italic (TrueType)",
+        "FileName":  "consolai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Constantia (TrueType)",
+        "FileName":  "constan.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Constantia Bold (TrueType)",
+        "FileName":  "constanb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Constantia Bold Italic (TrueType)",
+        "FileName":  "constanz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Constantia Italic (TrueType)",
+        "FileName":  "constani.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel (TrueType)",
+        "FileName":  "corbel.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel Bold (TrueType)",
+        "FileName":  "corbelb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel Bold Italic (TrueType)",
+        "FileName":  "corbelz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel Italic (TrueType)",
+        "FileName":  "corbeli.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel Light (TrueType)",
+        "FileName":  "corbell.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Corbel Light Italic (TrueType)",
+        "FileName":  "corbelli.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier 10,12,15",
+        "FileName":  "COURE.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier 10,12,15 (120)",
+        "FileName":  "COURF.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier New (TrueType)",
+        "FileName":  "cour.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier New Bold (TrueType)",
+        "FileName":  "courbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier New Bold Italic (TrueType)",
+        "FileName":  "courbi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Courier New Italic (TrueType)",
+        "FileName":  "couri.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "DeVinne Txt BT (TrueType)",
+        "FileName":  "DeVinne Txt BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Dubai Bold (TrueType)",
+        "FileName":  "DUBAI-BOLD.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Dubai Light (TrueType)",
+        "FileName":  "DUBAI-LIGHT.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Dubai Medium (TrueType)",
+        "FileName":  "DUBAI-MEDIUM.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Dubai Regular (TrueType)",
+        "FileName":  "DUBAI-REGULAR.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ebrima (TrueType)",
+        "FileName":  "ebrima.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ebrima Bold (TrueType)",
+        "FileName":  "ebrimabd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Embassy BT (TrueType)",
+        "FileName":  "Embassy BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "EngraversGothic BT (TrueType)",
+        "FileName":  "EngraversGothic BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Black (TrueType)",
+        "FileName":  "Exo2-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Black Italic (TrueType)",
+        "FileName":  "Exo2-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Bold (TrueType)",
+        "FileName":  "Exo2-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Bold Italic (TrueType)",
+        "FileName":  "Exo2-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 ExtraBold (TrueType)",
+        "FileName":  "Exo2-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 ExtraBold Italic (TrueType)",
+        "FileName":  "Exo2-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 ExtraLight (TrueType)",
+        "FileName":  "Exo2-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 ExtraLight Italic (TrueType)",
+        "FileName":  "Exo2-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Italic (TrueType)",
+        "FileName":  "Exo2-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Light (TrueType)",
+        "FileName":  "Exo2-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Light Italic (TrueType)",
+        "FileName":  "Exo2-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Medium (TrueType)",
+        "FileName":  "Exo2-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Medium Italic (TrueType)",
+        "FileName":  "Exo2-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Regular (TrueType)",
+        "FileName":  "Exo2-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 SemiBold (TrueType)",
+        "FileName":  "Exo2-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 SemiBold Italic (TrueType)",
+        "FileName":  "Exo2-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Thin (TrueType)",
+        "FileName":  "Exo2-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exo 2 Thin Italic (TrueType)",
+        "FileName":  "Exo2-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exotc350 Bd BT Bold (TrueType)",
+        "FileName":  "Exotc350 Bd BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Exotc350 DmBd BT Demi-Bold (TrueType)",
+        "FileName":  "Exotc350 DmBd BT Demi-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Fira Sans Black (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Black.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Black Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-BlackItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Bold (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Bold.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Bold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-BoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans ExtraBold (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-ExtraBold.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans ExtraBold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-ExtraBoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans ExtraLight (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-ExtraLight.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans ExtraLight Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-ExtraLightItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Italic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Light (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Light.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Light Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-LightItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Medium (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Medium.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Medium Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-MediumItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Regular (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Regular.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans SemiBold (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-SemiBold.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans SemiBold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-SemiBoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Thin (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-Thin.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Fira Sans Thin Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraSans-ThinItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Bold (TrueType)",
+        "FileName":  "FiraCodeNerdFont-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Light (TrueType)",
+        "FileName":  "FiraCodeNerdFont-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Med (TrueType)",
+        "FileName":  "FiraCodeNerdFont-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono Bold (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono Light (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono Med (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono Reg (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono Ret (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-Retina.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Mono SemBd (TrueType)",
+        "FileName":  "FiraCodeNerdFontMono-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo Bold (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo Light (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo Med (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo Reg (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo Ret (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-Retina.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Propo SemBd (TrueType)",
+        "FileName":  "FiraCodeNerdFontPropo-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Reg (TrueType)",
+        "FileName":  "FiraCodeNerdFont-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font Ret (TrueType)",
+        "FileName":  "FiraCodeNerdFont-Retina.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "FiraCode Nerd Font SemBd (TrueType)",
+        "FileName":  "FiraCodeNerdFont-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Franklin Gothic Medium (TrueType)",
+        "FileName":  "framd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Franklin Gothic Medium Italic (TrueType)",
+        "FileName":  "framdit.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Freehand521 BT (TrueType)",
+        "FileName":  "Freehand521 BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Bk BT Book (TrueType)",
+        "FileName":  "Futura Bk BT Book.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Bk BT Book Italic (TrueType)",
+        "FileName":  "Futura Bk BT Book Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Md BT Bold (TrueType)",
+        "FileName":  "Futura Md BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Md BT Bold Italic (TrueType)",
+        "FileName":  "Futura Md BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Md BT Medium (TrueType)",
+        "FileName":  "Futura Md BT Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Futura Md BT Medium Italic (TrueType)",
+        "FileName":  "Futura Md BT Medium Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Gabriola (TrueType)",
+        "FileName":  "Gabriola.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Gadugi (TrueType)",
+        "FileName":  "gadugi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Gadugi Bold (TrueType)",
+        "FileName":  "gadugib.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Garamond (TrueType)",
+        "FileName":  "GARA.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Garamond Bold (TrueType)",
+        "FileName":  "GARABD.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Garamond Italic (TrueType)",
+        "FileName":  "GARAIT.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Geometr212 BkCn BT Book (TrueType)",
+        "FileName":  "Geometr212 BkCn BT Book.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Geometr212 BkCn BT Heavy (TrueType)",
+        "FileName":  "Geometr212 BkCn BT Heavy.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Geometr415 Blk BT Black (TrueType)",
+        "FileName":  "Geometr415 Blk BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Geometr706 BlkCn BT Black (TrueType)",
+        "FileName":  "Geometr706 BlkCn BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Georgia (TrueType)",
+        "FileName":  "georgia.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Georgia Bold (TrueType)",
+        "FileName":  "georgiab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Georgia Bold Italic (TrueType)",
+        "FileName":  "georgiaz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Georgia Italic (TrueType)",
+        "FileName":  "georgiai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 Md BT Bold (TrueType)",
+        "FileName":  "GeoSlab703 Md BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 Md BT Bold Italic (TrueType)",
+        "FileName":  "GeoSlab703 Md BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 Md BT Medium (TrueType)",
+        "FileName":  "GeoSlab703 Md BT Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 Md BT Medium Italic (TrueType)",
+        "FileName":  "GeoSlab703 Md BT Medium Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 MdCn BT Bold (TrueType)",
+        "FileName":  "GeoSlab703 MdCn BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "GeoSlab703 MdCn BT Medium (TrueType)",
+        "FileName":  "GeoSlab703 MdCn BT Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Holo MDL2 Assets (TrueType)",
+        "FileName":  "holomdl2.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 BT Bold (TrueType)",
+        "FileName":  "Humanst521 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 BT Bold Italic (TrueType)",
+        "FileName":  "Humanst521 BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 BT Italic (TrueType)",
+        "FileName":  "Humanst521 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 BT Roman (TrueType)",
+        "FileName":  "Humanst521 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 Lt BT Light (TrueType)",
+        "FileName":  "Humanst521 Lt BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humanst521 Lt BT Light Italic (TrueType)",
+        "FileName":  "Humanst521 Lt BT Light Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 Blk BT Black Italic (TrueType)",
+        "FileName":  "Humnst777 Blk BT Black Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 BlkCn BT Black (TrueType)",
+        "FileName":  "Humnst777 BlkCn BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 BT Roman (TrueType)",
+        "FileName":  "Humnst777 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 Cn BT (TrueType)",
+        "FileName":  "Humnst777 Cn BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 Cn BT Bold (TrueType)",
+        "FileName":  "Humnst777 Cn BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Humnst777 Lt BT Light (TrueType)",
+        "FileName":  "Humnst777 Lt BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font (TrueType)",
+        "FileName":  "HurmitNerdFont-Regular.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Bold (TrueType)",
+        "FileName":  "HurmitNerdFont-Bold.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Bold Italic (TrueType)",
+        "FileName":  "HurmitNerdFont-BoldItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Italic (TrueType)",
+        "FileName":  "HurmitNerdFont-Italic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Light (TrueType)",
+        "FileName":  "HurmitNerdFont-Light.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Light Italic (TrueType)",
+        "FileName":  "HurmitNerdFont-LightItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono (TrueType)",
+        "FileName":  "HurmitNerdFontMono-Regular.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono Bold (TrueType)",
+        "FileName":  "HurmitNerdFontMono-Bold.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono Bold Italic (TrueType)",
+        "FileName":  "HurmitNerdFontMono-BoldItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono Italic (TrueType)",
+        "FileName":  "HurmitNerdFontMono-Italic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono Light (TrueType)",
+        "FileName":  "HurmitNerdFontMono-Light.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Mono Light Italic (TrueType)",
+        "FileName":  "HurmitNerdFontMono-LightItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-Regular.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo Bold (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-Bold.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo Bold Italic (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-BoldItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo Italic (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-Italic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo Light (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-Light.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Hurmit Nerd Font Propo Light Italic (TrueType)",
+        "FileName":  "HurmitNerdFontPropo-LightItalic.otf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Impact (TrueType)",
+        "FileName":  "impact.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ink Free (TrueType)",
+        "FileName":  "Inkfree.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Black (TrueType)",
+        "FileName":  "Inter_18pt-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Black Italic (TrueType)",
+        "FileName":  "Inter_18pt-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Bold (TrueType)",
+        "FileName":  "Inter_18pt-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Bold Italic (TrueType)",
+        "FileName":  "Inter_18pt-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt ExtraBold (TrueType)",
+        "FileName":  "Inter_18pt-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt ExtraBold Italic (TrueType)",
+        "FileName":  "Inter_18pt-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt ExtraLight (TrueType)",
+        "FileName":  "Inter_18pt-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt ExtraLight Italic (TrueType)",
+        "FileName":  "Inter_18pt-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Italic (TrueType)",
+        "FileName":  "Inter_18pt-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Light (TrueType)",
+        "FileName":  "Inter_18pt-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Light Italic (TrueType)",
+        "FileName":  "Inter_18pt-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Medium (TrueType)",
+        "FileName":  "Inter_18pt-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Medium Italic (TrueType)",
+        "FileName":  "Inter_18pt-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Regular (TrueType)",
+        "FileName":  "Inter_18pt-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt SemiBold (TrueType)",
+        "FileName":  "Inter_18pt-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt SemiBold Italic (TrueType)",
+        "FileName":  "Inter_18pt-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Thin (TrueType)",
+        "FileName":  "Inter_18pt-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 18pt Thin Italic (TrueType)",
+        "FileName":  "Inter_18pt-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Black (TrueType)",
+        "FileName":  "Inter_24pt-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Black Italic (TrueType)",
+        "FileName":  "Inter_24pt-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Bold (TrueType)",
+        "FileName":  "Inter_24pt-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Bold Italic (TrueType)",
+        "FileName":  "Inter_24pt-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt ExtraBold (TrueType)",
+        "FileName":  "Inter_24pt-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt ExtraBold Italic (TrueType)",
+        "FileName":  "Inter_24pt-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt ExtraLight (TrueType)",
+        "FileName":  "Inter_24pt-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt ExtraLight Italic (TrueType)",
+        "FileName":  "Inter_24pt-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Italic (TrueType)",
+        "FileName":  "Inter_24pt-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Light (TrueType)",
+        "FileName":  "Inter_24pt-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Light Italic (TrueType)",
+        "FileName":  "Inter_24pt-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Medium (TrueType)",
+        "FileName":  "Inter_24pt-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Medium Italic (TrueType)",
+        "FileName":  "Inter_24pt-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Regular (TrueType)",
+        "FileName":  "Inter_24pt-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt SemiBold (TrueType)",
+        "FileName":  "Inter_24pt-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt SemiBold Italic (TrueType)",
+        "FileName":  "Inter_24pt-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Thin (TrueType)",
+        "FileName":  "Inter_24pt-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 24pt Thin Italic (TrueType)",
+        "FileName":  "Inter_24pt-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Black (TrueType)",
+        "FileName":  "Inter_28pt-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Black Italic (TrueType)",
+        "FileName":  "Inter_28pt-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Bold (TrueType)",
+        "FileName":  "Inter_28pt-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Bold Italic (TrueType)",
+        "FileName":  "Inter_28pt-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt ExtraBold (TrueType)",
+        "FileName":  "Inter_28pt-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt ExtraBold Italic (TrueType)",
+        "FileName":  "Inter_28pt-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt ExtraLight (TrueType)",
+        "FileName":  "Inter_28pt-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt ExtraLight Italic (TrueType)",
+        "FileName":  "Inter_28pt-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Italic (TrueType)",
+        "FileName":  "Inter_28pt-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Light (TrueType)",
+        "FileName":  "Inter_28pt-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Light Italic (TrueType)",
+        "FileName":  "Inter_28pt-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Medium (TrueType)",
+        "FileName":  "Inter_28pt-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Medium Italic (TrueType)",
+        "FileName":  "Inter_28pt-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Regular (TrueType)",
+        "FileName":  "Inter_28pt-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt SemiBold (TrueType)",
+        "FileName":  "Inter_28pt-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt SemiBold Italic (TrueType)",
+        "FileName":  "Inter_28pt-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Thin (TrueType)",
+        "FileName":  "Inter_28pt-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter 28pt Thin Italic (TrueType)",
+        "FileName":  "Inter_28pt-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter Italic (TrueType)",
+        "FileName":  "Inter-Italic-VariableFont_opsz,wght.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Inter Regular (TrueType)",
+        "FileName":  "Inter-VariableFont_opsz,wght.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Bold (TrueType)",
+        "FileName":  "Invention.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Bold Italic (TrueType)",
+        "FileName":  "Invention_BdIt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention ExtraBold (TrueType)",
+        "FileName":  "Invention_XBd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention ExtraBold Italic (TrueType)",
+        "FileName":  "Invention_XBdIt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention ExtraLight (TrueType)",
+        "FileName":  "Invention_XLt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention ExtraLight Italic (TrueType)",
+        "FileName":  "Invention_XLtIt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Italic (TrueType)",
+        "FileName":  "Invention_It.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Light (TrueType)",
+        "FileName":  "Invention_Lt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Light Italic (TrueType)",
+        "FileName":  "Invention_LtIt.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Invention Regular (TrueType)",
+        "FileName":  "Invention_Rg.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Javanese Text (TrueType)",
+        "FileName":  "javatext.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Bold (TrueType)",
+        "FileName":  "JetBrainsMono-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMono-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMono-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMono-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMono-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMono-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Italic (TrueType)",
+        "FileName":  "JetBrainsMono-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Light (TrueType)",
+        "FileName":  "JetBrainsMono-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Light Italic (TrueType)",
+        "FileName":  "JetBrainsMono-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Medium (TrueType)",
+        "FileName":  "JetBrainsMono-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMono-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Regular (TrueType)",
+        "FileName":  "JetBrainsMono-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono SemiBold (TrueType)",
+        "FileName":  "JetBrainsMono-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMono-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Thin (TrueType)",
+        "FileName":  "JetBrainsMono-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrains Mono Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMono-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Light (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NF Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFont-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Light (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFM Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontMono-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Light (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMono NFP Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNerdFontPropo-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Light (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NF Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFont-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Light (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFM Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontMono-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Bold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Bold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP ExtraBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP ExtraBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP ExtraLight (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP ExtraLight Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Light (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Light Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Medium (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Medium Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Regular (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP SemiBold (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP SemiBold Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Thin (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "JetBrainsMonoNL NFP Thin Italic (TrueType)",
+        "FileName":  "JetBrainsMonoNLNerdFontPropo-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Kaufmann BT (TrueType)",
+        "FileName":  "Kaufmann BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Black (TrueType)",
+        "FileName":  "Lato-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Black Italic (TrueType)",
+        "FileName":  "Lato-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Bold (TrueType)",
+        "FileName":  "Lato-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Bold Italic (TrueType)",
+        "FileName":  "Lato-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Italic (TrueType)",
+        "FileName":  "Lato-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato Regular (TrueType)",
+        "FileName":  "Lato-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato-Hairline (TrueType)",
+        "FileName":  "Lato-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato-HairlineItalic (TrueType)",
+        "FileName":  "Lato-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato-Light (TrueType)",
+        "FileName":  "Lato-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lato-LightItalic (TrueType)",
+        "FileName":  "Lato-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Leelawadee (TrueType)",
+        "FileName":  "LEELAWAD.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Leelawadee Bold (TrueType)",
+        "FileName":  "LEELAWDB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Leelawadee UI (TrueType)",
+        "FileName":  "leelawui.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Leelawadee UI Bold (TrueType)",
+        "FileName":  "leelauib.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Leelawadee UI Semilight (TrueType)",
+        "FileName":  "leeluisl.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lucida Console (TrueType)",
+        "FileName":  "lucon.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Lucida Sans Unicode (TrueType)",
+        "FileName":  "l_10646.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Malgun Gothic (TrueType)",
+        "FileName":  "malgun.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Malgun Gothic Bold (TrueType)",
+        "FileName":  "malgunbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Malgun Gothic SemiLight (TrueType)",
+        "FileName":  "malgunsl.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MesloLGS NF Bold (TrueType)",
+        "FileName":  "MesloLGS NF Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MesloLGS NF Bold Italic (TrueType)",
+        "FileName":  "MesloLGS NF Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MesloLGS NF Italic (TrueType)",
+        "FileName":  "MesloLGS NF Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Himalaya (TrueType)",
+        "FileName":  "himalaya.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft JhengHei \u0026 Microsoft JhengHei UI (TrueType)",
+        "FileName":  "msjh.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft JhengHei Bold \u0026 Microsoft JhengHei UI Bold (TrueType)",
+        "FileName":  "msjhbd.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft JhengHei Light \u0026 Microsoft JhengHei UI Light (TrueType)",
+        "FileName":  "msjhl.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft New Tai Lue (TrueType)",
+        "FileName":  "ntailu.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft New Tai Lue Bold (TrueType)",
+        "FileName":  "ntailub.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft PhagsPa (TrueType)",
+        "FileName":  "phagspa.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft PhagsPa Bold (TrueType)",
+        "FileName":  "phagspab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Sans Serif (TrueType)",
+        "FileName":  "micross.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Tai Le (TrueType)",
+        "FileName":  "taile.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Tai Le Bold (TrueType)",
+        "FileName":  "taileb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Uighur (TrueType)",
+        "FileName":  "MSUIGHUR.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Uighur Bold (TrueType)",
+        "FileName":  "MSUIGHUB.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft YaHei \u0026 Microsoft YaHei UI (TrueType)",
+        "FileName":  "msyh.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft YaHei Bold \u0026 Microsoft YaHei UI Bold (TrueType)",
+        "FileName":  "msyhbd.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft YaHei Light \u0026 Microsoft YaHei UI Light (TrueType)",
+        "FileName":  "msyhl.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Microsoft Yi Baiti (TrueType)",
+        "FileName":  "msyi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MingLiU-ExtB \u0026 PMingLiU-ExtB \u0026 MingLiU_HKSCS-ExtB (TrueType)",
+        "FileName":  "mingliub.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Modern (All res)",
+        "FileName":  "modern.fon",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Mongolian Baiti (TrueType)",
+        "FileName":  "monbaiti.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Monotype Corsiva (TrueType)",
+        "FileName":  "MTCORSVA.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Black (TrueType)",
+        "FileName":  "Montserrat-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Black Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-BlackItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat Bold (TrueType)",
+        "FileName":  "Montserrat-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Bold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-BoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat ExtraBold (TrueType)",
+        "FileName":  "Montserrat-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat ExtraBold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-ExtraBoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat ExtraLight (TrueType)",
+        "FileName":  "Montserrat-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat ExtraLight Italic (TrueType)",
+        "FileName":  "Montserrat-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Italic (TrueType)",
+        "FileName":  "Montserrat-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Light (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-Light.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat Light Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-LightItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat Medium (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-Medium.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat Medium Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-MediumItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat Regular (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-Regular.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat SemiBold (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Montserrat-SemiBold.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Montserrat SemiBold Italic (TrueType)",
+        "FileName":  "Montserrat-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Thin (TrueType)",
+        "FileName":  "Montserrat-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Montserrat Thin Italic (TrueType)",
+        "FileName":  "Montserrat-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Gothic \u0026 MS UI Gothic \u0026 MS PGothic (TrueType)",
+        "FileName":  "msgothic.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Reference Sans Serif (TrueType)",
+        "FileName":  "REFSAN.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Reference Specialty (TrueType)",
+        "FileName":  "REFSPCL.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Sans Serif 8,10,12,14,18,24",
+        "FileName":  "SSERIFE.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Sans Serif 8,10,12,14,18,24 (120)",
+        "FileName":  "SSERIFF.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Serif 8,10,12,14,18,24",
+        "FileName":  "SERIFE.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MS Serif 8,10,12,14,18,24 (120)",
+        "FileName":  "SERIFF.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MT Extra (TrueType)",
+        "FileName":  "MTEXTRA.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "MV Boli (TrueType)",
+        "FileName":  "mvboli.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Myanmar Text (TrueType)",
+        "FileName":  "mmrtext.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Myanmar Text Bold (TrueType)",
+        "FileName":  "mmrtextb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "News701 BT Bold (TrueType)",
+        "FileName":  "News701 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "News701 BT Italic (TrueType)",
+        "FileName":  "News701 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "News706 BT Bold (TrueType)",
+        "FileName":  "News706 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "NewsGoth BT Bold (TrueType)",
+        "FileName":  "NewsGoth BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "NewsGoth BT Bold Italic (TrueType)",
+        "FileName":  "NewsGoth BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "NewsGoth BT Italic (TrueType)",
+        "FileName":  "NewsGoth BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "NewsGoth BT Roman (TrueType)",
+        "FileName":  "NewsGoth BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "NewsGoth Lt BT Light (TrueType)",
+        "FileName":  "NewsGoth Lt BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nirmala UI (TrueType)",
+        "FileName":  "Nirmala.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nirmala UI Bold (TrueType)",
+        "FileName":  "NirmalaB.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nirmala UI Semilight (TrueType)",
+        "FileName":  "NirmalaS.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Black (TrueType)",
+        "FileName":  "NotoSans-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Black Italic (TrueType)",
+        "FileName":  "NotoSans-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Bold (TrueType)",
+        "FileName":  "NotoSans-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Bold Italic (TrueType)",
+        "FileName":  "NotoSans-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Black (TrueType)",
+        "FileName":  "NotoSans_Condensed-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Black Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Bold (TrueType)",
+        "FileName":  "NotoSans_Condensed-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Bold Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed ExtraBold (TrueType)",
+        "FileName":  "NotoSans_Condensed-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed ExtraBold Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed ExtraLight (TrueType)",
+        "FileName":  "NotoSans_Condensed-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed ExtraLight Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Light (TrueType)",
+        "FileName":  "NotoSans_Condensed-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Light Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Medium (TrueType)",
+        "FileName":  "NotoSans_Condensed-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Medium Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Regular (TrueType)",
+        "FileName":  "NotoSans_Condensed-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed SemiBold (TrueType)",
+        "FileName":  "NotoSans_Condensed-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed SemiBold Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Thin (TrueType)",
+        "FileName":  "NotoSans_Condensed-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Condensed Thin Italic (TrueType)",
+        "FileName":  "NotoSans_Condensed-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraBold (TrueType)",
+        "FileName":  "NotoSans-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraBold Italic (TrueType)",
+        "FileName":  "NotoSans-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Black (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Black Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Bold (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Bold Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed ExtraBold (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed ExtraBold Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed ExtraLight (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed ExtraLight Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Light (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Light Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Medium (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Medium Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Regular (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed SemiBold (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed SemiBold Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Thin (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraCondensed Thin Italic (TrueType)",
+        "FileName":  "NotoSans_ExtraCondensed-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraLight (TrueType)",
+        "FileName":  "NotoSans-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans ExtraLight Italic (TrueType)",
+        "FileName":  "NotoSans-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Italic (TrueType)",
+        "FileName":  "NotoSans-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Light (TrueType)",
+        "FileName":  "NotoSans-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Light Italic (TrueType)",
+        "FileName":  "NotoSans-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Medium (TrueType)",
+        "FileName":  "NotoSans-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Medium Italic (TrueType)",
+        "FileName":  "NotoSans-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Regular (TrueType)",
+        "FileName":  "NotoSans-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiBold (TrueType)",
+        "FileName":  "NotoSans-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiBold Italic (TrueType)",
+        "FileName":  "NotoSans-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Black (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Black Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Bold (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Bold Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed ExtraBold (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed ExtraBold Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed ExtraLight (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed ExtraLight Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Light (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Light Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Medium (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Medium Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Regular (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed SemiBold (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed SemiBold Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Thin (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans SemiCondensed Thin Italic (TrueType)",
+        "FileName":  "NotoSans_SemiCondensed-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Thin (TrueType)",
+        "FileName":  "NotoSans-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Noto Sans Thin Italic (TrueType)",
+        "FileName":  "NotoSans-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Black (TrueType)",
+        "FileName":  "Nunito-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Black Italic (TrueType)",
+        "FileName":  "Nunito-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Bold (TrueType)",
+        "FileName":  "Nunito-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Bold Italic (TrueType)",
+        "FileName":  "Nunito-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito ExtraBold (TrueType)",
+        "FileName":  "Nunito-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito ExtraBold Italic (TrueType)",
+        "FileName":  "Nunito-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito ExtraLight (TrueType)",
+        "FileName":  "Nunito-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito ExtraLight Italic (TrueType)",
+        "FileName":  "Nunito-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Italic (TrueType)",
+        "FileName":  "Nunito-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Light (TrueType)",
+        "FileName":  "Nunito-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Light Italic (TrueType)",
+        "FileName":  "Nunito-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Medium (TrueType)",
+        "FileName":  "Nunito-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Medium Italic (TrueType)",
+        "FileName":  "Nunito-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito Regular (TrueType)",
+        "FileName":  "Nunito-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito SemiBold (TrueType)",
+        "FileName":  "Nunito-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Nunito SemiBold Italic (TrueType)",
+        "FileName":  "Nunito-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "OCR-A BT (TrueType)",
+        "FileName":  "OCR-A BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "OCR-B 10 BT (TrueType)",
+        "FileName":  "OCR-B 10 BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Pacifico Regular (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\Pacifico-Regular.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Palatino Linotype (TrueType)",
+        "FileName":  "pala.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Palatino Linotype Bold (TrueType)",
+        "FileName":  "palab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Palatino Linotype Bold Italic (TrueType)",
+        "FileName":  "palabi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Palatino Linotype Italic (TrueType)",
+        "FileName":  "palai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Bold (TrueType)",
+        "FileName":  "PlusJakartaSans-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Bold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\PlusJakartaSans-BoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Plus Jakarta Sans ExtraBold (TrueType)",
+        "FileName":  "PlusJakartaSans-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans ExtraBold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\PlusJakartaSans-ExtraBoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Plus Jakarta Sans ExtraLight (TrueType)",
+        "FileName":  "PlusJakartaSans-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans ExtraLight Italic (TrueType)",
+        "FileName":  "PlusJakartaSans-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\PlusJakartaSans-Italic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Light (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\PlusJakartaSans-Light.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Light Italic (TrueType)",
+        "FileName":  "PlusJakartaSans-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Medium (TrueType)",
+        "FileName":  "PlusJakartaSans-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Medium Italic (TrueType)",
+        "FileName":  "PlusJakartaSans-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans Regular (TrueType)",
+        "FileName":  "PlusJakartaSans-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans SemiBold (TrueType)",
+        "FileName":  "PlusJakartaSans-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Plus Jakarta Sans SemiBold Italic (TrueType)",
+        "FileName":  "C:\\Users\\drvc-\\AppData\\Local\\Microsoft\\Windows\\Fonts\\PlusJakartaSans-SemiBoldItalic.ttf",
+        "Scope":  "User"
+    },
+    {
+        "Name":  "Roboto Condensed Black (TrueType)",
+        "FileName":  "RobotoCondensed-Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Black Italic (TrueType)",
+        "FileName":  "RobotoCondensed-BlackItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Bold (TrueType)",
+        "FileName":  "RobotoCondensed-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Bold Italic (TrueType)",
+        "FileName":  "RobotoCondensed-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed ExtraBold (TrueType)",
+        "FileName":  "RobotoCondensed-ExtraBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed ExtraBold Italic (TrueType)",
+        "FileName":  "RobotoCondensed-ExtraBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed ExtraLight (TrueType)",
+        "FileName":  "RobotoCondensed-ExtraLight.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed ExtraLight Italic (TrueType)",
+        "FileName":  "RobotoCondensed-ExtraLightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Italic (TrueType)",
+        "FileName":  "RobotoCondensed-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Light (TrueType)",
+        "FileName":  "RobotoCondensed-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Light Italic (TrueType)",
+        "FileName":  "RobotoCondensed-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Medium (TrueType)",
+        "FileName":  "RobotoCondensed-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Medium Italic (TrueType)",
+        "FileName":  "RobotoCondensed-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Regular (TrueType)",
+        "FileName":  "RobotoCondensed-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed SemiBold (TrueType)",
+        "FileName":  "RobotoCondensed-SemiBold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed SemiBold Italic (TrueType)",
+        "FileName":  "RobotoCondensed-SemiBoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Thin (TrueType)",
+        "FileName":  "RobotoCondensed-Thin.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roboto Condensed Thin Italic (TrueType)",
+        "FileName":  "RobotoCondensed-ThinItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Roman (All res)",
+        "FileName":  "roman.fon",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Schadow BT Bold (TrueType)",
+        "FileName":  "Schadow BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Schadow BT Roman (TrueType)",
+        "FileName":  "Schadow BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Script (All res)",
+        "FileName":  "script.fon",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe MDL2 Assets (TrueType)",
+        "FileName":  "segmdl2.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe Print (TrueType)",
+        "FileName":  "segoepr.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe Print Bold (TrueType)",
+        "FileName":  "segoeprb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe Script (TrueType)",
+        "FileName":  "segoesc.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe Script Bold (TrueType)",
+        "FileName":  "segoescb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI (TrueType)",
+        "FileName":  "segoeui.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Black (TrueType)",
+        "FileName":  "seguibl.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Black Italic (TrueType)",
+        "FileName":  "seguibli.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Bold (TrueType)",
+        "FileName":  "segoeuib.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Bold Italic (TrueType)",
+        "FileName":  "segoeuiz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Emoji (TrueType)",
+        "FileName":  "seguiemj.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Historic (TrueType)",
+        "FileName":  "seguihis.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Italic (TrueType)",
+        "FileName":  "segoeuii.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Light (TrueType)",
+        "FileName":  "segoeuil.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Light Italic (TrueType)",
+        "FileName":  "seguili.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Semibold (TrueType)",
+        "FileName":  "seguisb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Semibold Italic (TrueType)",
+        "FileName":  "seguisbi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Semilight (TrueType)",
+        "FileName":  "segoeuisl.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Semilight Italic (TrueType)",
+        "FileName":  "seguisli.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Segoe UI Symbol (TrueType)",
+        "FileName":  "seguisym.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SimSun \u0026 NSimSun (TrueType)",
+        "FileName":  "simsun.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SimSun-ExtB (TrueType)",
+        "FileName":  "simsunb.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SimSun-ExtG (TrueType)",
+        "FileName":  "SimsunExtG.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Sitka Small \u0026 Sitka Text \u0026 Sitka Subheading \u0026 Sitka Heading \u0026 Sitka Display \u0026 Sitka Banner (TrueType)",
+        "FileName":  "Sitka.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Sitka Small Bold \u0026 Sitka Text Bold \u0026 Sitka Subheading Bold \u0026 Sitka Heading Bold \u0026 Sitka Display Bold \u0026 Sitka Banner Bold (TrueType)",
+        "FileName":  "SitkaB.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Sitka Small Bold Italic \u0026 Sitka Text Bold Italic \u0026 Sitka Subheading Bold Italic \u0026 Sitka Heading Bold Italic \u0026 Sitka Display Bold Italic \u0026 Sitka Banner Bold Italic (TrueType)",
+        "FileName":  "SitkaZ.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Sitka Small Italic \u0026 Sitka Text Italic \u0026 Sitka Subheading Italic \u0026 Sitka Heading Italic \u0026 Sitka Display Italic \u0026 Sitka Banner Italic (TrueType)",
+        "FileName":  "SitkaI.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Small Fonts",
+        "FileName":  "SMALLE.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Small Fonts (120)",
+        "FileName":  "SMALLF.FON",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font (TrueType)",
+        "FileName":  "SpaceMonoNerdFont-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Bold (TrueType)",
+        "FileName":  "SpaceMonoNerdFont-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Bold Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFont-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFont-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Mono (TrueType)",
+        "FileName":  "SpaceMonoNerdFontMono-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Mono Bold (TrueType)",
+        "FileName":  "SpaceMonoNerdFontMono-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Mono Bold Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFontMono-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Mono Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFontMono-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Propo (TrueType)",
+        "FileName":  "SpaceMonoNerdFontPropo-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Propo Bold (TrueType)",
+        "FileName":  "SpaceMonoNerdFontPropo-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Propo Bold Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFontPropo-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "SpaceMono Nerd Font Propo Italic (TrueType)",
+        "FileName":  "SpaceMonoNerdFontPropo-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Square721 BT Bold (TrueType)",
+        "FileName":  "Square721 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Square721 BT Roman (TrueType)",
+        "FileName":  "Square721 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Square721 Cn BT Bold (TrueType)",
+        "FileName":  "Square721 Cn BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Square721 Cn BT Roman (TrueType)",
+        "FileName":  "Square721 Cn BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Blk BT Black (TrueType)",
+        "FileName":  "Swis721 Blk BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 BlkCn BT Black (TrueType)",
+        "FileName":  "Swis721 BlkCn BT Black.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 BT Bold (TrueType)",
+        "FileName":  "Swis721 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 BT Bold Italic (TrueType)",
+        "FileName":  "Swis721 BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 BT Italic (TrueType)",
+        "FileName":  "Swis721 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 BT Roman (TrueType)",
+        "FileName":  "Swis721 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Cn BT Bold (TrueType)",
+        "FileName":  "Swis721 Cn BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Cn BT Bold Italic (TrueType)",
+        "FileName":  "Swis721 Cn BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Cn BT Italic (TrueType)",
+        "FileName":  "Swis721 Cn BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Cn BT Roman (TrueType)",
+        "FileName":  "Swis721 Cn BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Hv BT Heavy (TrueType)",
+        "FileName":  "Swis721 Hv BT Heavy.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Lt BT Light (TrueType)",
+        "FileName":  "Swis721 Lt BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 Lt BT Light Italic (TrueType)",
+        "FileName":  "Swis721 Lt BT Light Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 LtEx BT Light (TrueType)",
+        "FileName":  "Swis721 LtEx BT Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 WGL4 BT Bold (TrueType)",
+        "FileName":  "Swis721 WGL4 BT Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 WGL4 BT Bold Italic (TrueType)",
+        "FileName":  "Swis721 WGL4 BT Bold Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 WGL4 BT Italic (TrueType)",
+        "FileName":  "Swis721 WGL4 BT Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Swis721 WGL4 BT Roman (TrueType)",
+        "FileName":  "Swis721 WGL4 BT Roman.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Sylfaen (TrueType)",
+        "FileName":  "sylfaen.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Symbol (TrueType)",
+        "FileName":  "symbol.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Tahoma (TrueType)",
+        "FileName":  "tahoma.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Tahoma Bold (TrueType)",
+        "FileName":  "tahomabd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Times New Roman (TrueType)",
+        "FileName":  "times.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Times New Roman Bold (TrueType)",
+        "FileName":  "timesbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Times New Roman Bold Italic (TrueType)",
+        "FileName":  "timesbi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Times New Roman Italic (TrueType)",
+        "FileName":  "timesi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Trebuchet MS (TrueType)",
+        "FileName":  "trebuc.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Trebuchet MS Bold (TrueType)",
+        "FileName":  "trebucbd.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Trebuchet MS Bold Italic (TrueType)",
+        "FileName":  "trebucbi.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Trebuchet MS Italic (TrueType)",
+        "FileName":  "trebucit.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "TypoUpright BT (TrueType)",
+        "FileName":  "TypoUpright BT.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Bold (TrueType)",
+        "FileName":  "Ubuntu-Bold.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Bold Italic (TrueType)",
+        "FileName":  "Ubuntu-BoldItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Italic (TrueType)",
+        "FileName":  "Ubuntu-Italic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Light (TrueType)",
+        "FileName":  "Ubuntu-Light.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Light Italic (TrueType)",
+        "FileName":  "Ubuntu-LightItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Medium (TrueType)",
+        "FileName":  "Ubuntu-Medium.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Medium Italic (TrueType)",
+        "FileName":  "Ubuntu-MediumItalic.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Ubuntu Regular (TrueType)",
+        "FileName":  "Ubuntu-Regular.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Verdana (TrueType)",
+        "FileName":  "verdana.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Verdana Bold (TrueType)",
+        "FileName":  "verdanab.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Verdana Bold Italic (TrueType)",
+        "FileName":  "verdanaz.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Verdana Italic (TrueType)",
+        "FileName":  "verdanai.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Webdings (TrueType)",
+        "FileName":  "webdings.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Wingdings (TrueType)",
+        "FileName":  "wingding.ttf",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Wingdings 2 (TrueType)",
+        "FileName":  "WINGDNG2.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Wingdings 3 (TrueType)",
+        "FileName":  "WINGDNG3.TTF",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Yu Gothic Bold \u0026 Yu Gothic UI Semibold \u0026 Yu Gothic UI Bold (TrueType)",
+        "FileName":  "YuGothB.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Yu Gothic Light \u0026 Yu Gothic UI Light (TrueType)",
+        "FileName":  "YuGothL.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Yu Gothic Medium \u0026 Yu Gothic UI Regular (TrueType)",
+        "FileName":  "YuGothM.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "Yu Gothic Regular \u0026 Yu Gothic UI Semilight (TrueType)",
+        "FileName":  "YuGothR.ttc",
+        "Scope":  "System"
+    },
+    {
+        "Name":  "思源黑体 CN (TrueType)",
+        "FileName":  "SourceHanSansCNMedium.ttf",
+        "Scope":  "System"
+    }
+]

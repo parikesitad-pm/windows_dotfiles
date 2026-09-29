@@ -1,4 +1,4 @@
-Chocolatey v2.6.0
+﻿Chocolatey v2.6.0
 chocolatey 2.6.0
 chocolatey-compatibility.extension 1.0.0
 chocolatey-core.extension 1.4.0

@@ -1,7 +1,7 @@
-# Machine Hardware & OS Inventory
+﻿# Machine Hardware & OS Inventory
 
 > Source Machine: DRVC-F15  
-> Last Backup: 2026-09-29 22:29:09  
+> Last Backup: 2026-09-29 22:56:23  
 
 ## System Information
 - **Computer Name**: DRVC-F15
@@ -16,9 +16,9 @@
 - **CPU**: 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
 - **Physical Cores**: 4
 - **Logical Processors**: 8
-- **RAM**: 23.7 GB
+- **Total Installed RAM**: 23.7 GB
 
-## Graphics & Displays
+## Graphics Adapters & Displays
 - **Intel(R) Iris(R) Xe Graphics** | Driver: 31.0.101.5333 (02/21/2024 07:00:00) | Resolution: 1920x1080 @ 144Hz
 - **NVIDIA GeForce RTX 3050 Ti Laptop GPU** | Driver: 32.0.16.1062 (06/11/2026 07:00:00) | Resolution: x @ Hz
 
@@ -26,5 +26,5 @@
 - **NVMe V-GEN10SM21SCY512MTNV** | Size: 476.94 GB
 - **Mass Storage Device USB Device** | Size: 0 GB
 
-## Active Network Adapters
+## Network Adapters
 - **Realtek PCIe GbE Family Controller** (Ethernet 802.3) MAC: FC:34:97:4C:D1:D4

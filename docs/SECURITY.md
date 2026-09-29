@@ -1,6 +1,6 @@
 # DOTMOD Security Philosophy & Policies
 
-> **DOTMOD** — Windows Environment Backup & Restore  
+> **DOTMOD** — Windows Environment Backup & Restore
 > *a Modula Project crafted by parikesitad-pm*
 
 ---
@@ -15,16 +15,12 @@ Under no circumstances may any of the following items enter the repository:
    - Private SSH keys (`id_rsa`, `id_ed25519`, `id_ecdsa`)
    - Personal Access Tokens (GitHub PAT, GitLab, Bitbucket)
    - API Keys (Google Gemini, Anthropic Claude, OpenAI, AWS)
-2. **Broadcast & Production Keys**:
-   - OBS Stream Keys (YouTube, Twitch, Facebook, RTMP URLs)
-   - OBS WebSocket Passwords
-   - vMix License Keys & Production Projects with client assets
-3. **Session & Browser State**:
+2. **Session & Browser State**:
    - Browser cookies, history, login databases (`Login Data`, `cookies.sqlite`)
-   - WhatsApp Web sessions, active OAuth tokens
-4. **Environment Secrets**:
+   - Active OAuth tokens, session databases
+3. **Environment Secrets**:
    - `.env` and `.env.*` files
-   - Any sensitive environment variables
+   - Any sensitive environment variables (API tokens, auth secrets)
 
 ---
 

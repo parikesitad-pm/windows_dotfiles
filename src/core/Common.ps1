@@ -1,12 +1,17 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/core/Common.ps1
 # Common utility functions, logging, and output helpers
 # ============================================================
 
 Set-StrictMode -Version Latest
 
+# Ensure Config.ps1 is loaded
+if (-not (Get-Variable -Name "DOTMOD_ROOT" -Scope Global -ErrorAction SilentlyContinue)) {
+    . (Join-Path $PSScriptRoot "Config.ps1")
+}
+
 # Global session log path
-if ($null -eq $global:DOTMOD_LOG_FILE) {
+if (-not (Get-Variable -Name "DOTMOD_LOG_FILE" -Scope Global -ErrorAction SilentlyContinue) -or $null -eq $global:DOTMOD_LOG_FILE) {
     $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
     $logDir = Join-Path $global:DOTMOD_ROOT "logs"
     if (-not (Test-Path $logDir)) {

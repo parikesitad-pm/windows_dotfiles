@@ -1,0 +1,8 @@
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+dsznajder.es7-react-js-snippets
+bradlc.vscode-tailwindcss
+yoavbls.pretty-ts-errors
+wix.vscode-import-cost
+graphql.vscode-graphql
+graphql.vscode-graphql-syntax

@@ -1,0 +1,31 @@
+@{
+    Id                 = "nord"
+    DisplayName        = "Nord"
+    DarkMode           = $true
+    VSCodeExtension    = "arcticicestudio.nord-visual-studio-code"
+    VSCodeThemeName    = "Nord"
+    StarshipPalette    = "nord"
+    TerminalColors     = @{
+        name                = "DOTMOD Nord"
+        background          = "#2e3440"
+        foreground          = "#d8dee9"
+        selectionBackground = "#434c5e"
+        cursorColor         = "#d8dee9"
+        black               = "#3b4252"
+        red                 = "#bf616a"
+        green               = "#a3be8c"
+        yellow              = "#ebcb8b"
+        blue                = "#81a1c1"
+        purple              = "#b48ead"
+        cyan                = "#88c0d0"
+        white               = "#e5e9f0"
+        brightBlack         = "#4c566a"
+        brightRed           = "#bf616a"
+        brightGreen         = "#a3be8c"
+        brightYellow        = "#ebcb8b"
+        brightBlue          = "#81a1c1"
+        brightPurple        = "#b48ead"
+        brightCyan          = "#8fbcbb"
+        brightWhite         = "#eceff4"
+    }
+}

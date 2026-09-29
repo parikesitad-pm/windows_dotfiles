@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/core/Config.ps1
 # Global project configuration, branding, and paths
 # ============================================================
@@ -26,6 +26,7 @@ $global:DOTMOD_PATHS = @{
     Manifests     = Join-Path $global:DOTMOD_ROOT "manifests"
     Docs          = Join-Path $global:DOTMOD_ROOT "docs"
     PrivateBackup = Join-Path $global:DOTMOD_ROOT "private-backup-required"
+    Themes        = Join-Path $global:DOTMOD_ROOT "themes"
     Logs          = Join-Path $global:DOTMOD_ROOT "logs"
 }
 
@@ -33,9 +34,11 @@ $global:DOTMOD_PATHS = @{
 $global:DOTMOD_MODULES = @(
     "Machine inventory",
     "Driver inventory",
+    "Fonts inventory",
     "Installed applications",
     "Package inventories",
     "Development environment",
+    "Theme configuration",
     "ZSH configuration",
     "Custom shell commands",
     "Starship configuration",
@@ -45,8 +48,6 @@ $global:DOTMOD_MODULES = @(
     "Git configuration",
     "Browser inventory",
     "Spicetify & Spotify",
-    "OBS Studio",
-    "vMix configuration",
     "Environment variables",
     "Private backup checklist"
 )

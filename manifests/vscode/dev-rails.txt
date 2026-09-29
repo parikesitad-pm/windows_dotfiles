@@ -1,0 +1,2 @@
+shopify.ruby-lsp
+aliariff.vscode-erb-beautify

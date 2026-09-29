@@ -1,4 +1,4 @@
-# ==========================================
+﻿# ==========================================
 # PATH & ENVIRONMENT
 # ==========================================
 export PATH="$HOME/.local/bin:$HOME/.spicetify:$PATH"
@@ -126,4 +126,3 @@ alias dl4k='yt-dlp --cookies-from-browser firefox -S ext:mp4,res:2160 -f bv+ba'
 
 # GEMINI API KEY
 export GEMINI_API_KEY="<REDACTED>"
-

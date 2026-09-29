@@ -1,7 +1,7 @@
-# Installed Software Inventory
+﻿# Installed Software Inventory
 
 > Source Machine: DRVC-F15  
-> Last Backup: 2026-09-29 22:29:09  
+> Last Backup: 2026-09-29 22:56:23  
 
 ## Categorized Overview
 
@@ -25,13 +25,9 @@
 - **Zen Browser** (Zen-Team.Zen-Browser) - 1.22.3b (Firefox-based)
 - **Vivaldi** (VivaldiTechnologies.Vivaldi) - [Target browser manifest]
 
-### Broadcast & Production
-- **vMix 64-bit** - 26.0.0.45
-- **OBS Studio** (OBSProject.OBSStudio) - 32.0.2
-- **Zoom Workplace** (Zoom.Zoom.EXE) - 7.1.9
-
-### Audio & Multimedia Utilities
-- **yt-dlp** (yt-dlp.yt-dlp) - 2026.07.04
-- **FFmpeg** (yt-dlp.FFmpeg) - N-124716
+### Multimedia Utilities
 - **Spotify** (Spotify.Spotify) - 1.3.0
 - **Spicetify CLI** - 2.45.1
+- **Zoom Workplace** (Zoom.Zoom.EXE) - 7.1.9
+- **yt-dlp** (yt-dlp.yt-dlp) - 2026.07.04
+- **FFmpeg** (yt-dlp.FFmpeg) - N-124716

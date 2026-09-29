@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/backup/BackupRunner.ps1
 # Master backup execution engine (READ-ONLY on current machine)
 # ============================================================
@@ -8,6 +8,7 @@ Set-StrictMode -Version Latest
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Common.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Config.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\SecretScanner.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "core\ThemeEngine.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "audit\AuditMachine.ps1")
 
 function Invoke-DotmodBackup {
@@ -18,7 +19,7 @@ function Invoke-DotmodBackup {
     $startTime = Get-Date
     $hostname = $env:COMPUTERNAME
     $timestampStr = $startTime.ToString("yyyy-MM-dd HH:mm:ss")
-    $totalSteps = 16
+    $totalSteps = 17
     $step = 1
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
@@ -27,14 +28,24 @@ function Invoke-DotmodBackup {
     Write-Host "  Started: $timestampStr" -ForegroundColor Gray
     Write-Host "============================================================`n" -ForegroundColor DarkGray
 
-    # [01/16] Machine Inventory
+    # Ensure required target directories exist
+    @("machine", "software", "development", "packages", "fonts") | ForEach-Object {
+        $p = Join-Path $global:DOTMOD_PATHS.Inventory $_
+        if (-not (Test-Path $p)) { New-Item -ItemType Directory -Path $p -Force | Out-Null }
+    }
+    @("shell", "shell\profiles", "starship", "fastfetch", "vscode", "windows-terminal", "powershell", "git", "spicetify") | ForEach-Object {
+        $p = Join-Path $global:DOTMOD_PATHS.Dotfiles $_
+        if (-not (Test-Path $p)) { New-Item -ItemType Directory -Path $p -Force | Out-Null }
+    }
+
+    # [01/17] Machine Inventory
     Write-DotmodStep ($step++) $totalSteps "Machine Inventory"
     $machine = Get-DotmodMachineData
     $machineJsonPath = Join-Path $global:DOTMOD_PATHS.Inventory "machine\machine.json"
     $machineMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "machine\machine.md"
-    
+
     $machine | ConvertTo-Json -Depth 5 | Set-Content -Path $machineJsonPath -Encoding utf8
-    
+
     $gpuLines = ($machine.GPUs | ForEach-Object { "- **$($_.Name)** | Driver: $($_.DriverVersion) ($($_.DriverDate)) | Resolution: $($_.Resolution) @ $($_.RefreshRateHz)Hz" }) -join "`n"
     $diskLines = ($machine.Disks | ForEach-Object { "- **$($_.Model)** | Size: $($_.Size_GB) GB" }) -join "`n"
     $netLines = ($machine.NetworkAdapters | ForEach-Object { "- **$($_.Name)** ($($_.AdapterType)) MAC: $($_.MACAddress)" }) -join "`n"
@@ -58,48 +69,47 @@ function Invoke-DotmodBackup {
         "- **CPU**: $($machine.CPU)",
         "- **Physical Cores**: $($machine.PhysicalCores)",
         "- **Logical Processors**: $($machine.LogicalProcessors)",
-        "- **RAM**: $($machine.RAM_GB) GB",
+        "- **Total Installed RAM**: $($machine.RAM_GB) GB",
         "",
-        "## Graphics & Displays",
+        "## Graphics Adapters & Displays",
         $gpuLines,
         "",
         "## Storage Devices",
         $diskLines,
         "",
-        "## Active Network Adapters",
+        "## Network Adapters",
         $netLines
     ) -join "`r`n"
 
     Set-Content -Path $machineMdPath -Value $machineMd -Encoding utf8
-    Write-DotmodSuccess "hardware inventoried -> inventory/machine/machine.json" 2
-    Write-DotmodSuccess "Windows inventoried -> inventory/machine/machine.md" 2
+    Write-DotmodSuccess "hardware profile captured -> inventory/machine/machine.md & machine.json" 2
 
-    # [02/16] Driver Inventory
+    # [02/17] Driver Inventory
     Write-DotmodStep ($step++) $totalSteps "Driver Inventory"
     $drivers = Get-DotmodDriverData
     $driverMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "machine\drivers.md"
     $driverTableLines = ($drivers | ForEach-Object { "| $($_.DeviceClass) | $($_.DeviceName) | $($_.Manufacturer) | $($_.DriverVersion) | $($_.DriverDate) |" }) -join "`r`n"
-    
+
     $driverMd = @(
         "# System & Hardware Drivers Inventory",
         "",
         "> Source Machine: $hostname  ",
         "> Last Backup: $timestampStr  ",
         "",
-        "| Device Class | Device Name | Manufacturer | Driver Version | Driver Date |",
+        "| Class | Device Name | Manufacturer | Driver Version | Date |",
         "|---|---|---|---|---|",
         $driverTableLines
     ) -join "`r`n"
 
     Set-Content -Path $driverMdPath -Value $driverMd -Encoding utf8
-    Write-DotmodSuccess "$($drivers.Count) drivers inventoried -> inventory/machine/drivers.md" 2
+    Write-DotmodSuccess "$($drivers.Count) hardware drivers cataloged -> inventory/machine/drivers.md" 2
 
-    # [03/16] Installed Applications
-    Write-DotmodStep ($step++) $totalSteps "Installed Applications (WinGet)"
+    # [03/17] Installed Software & Winget List
+    Write-DotmodStep ($step++) $totalSteps "Installed Applications"
     $wingetOut = winget list 2>$null | Out-String
     $wingetListPath = Join-Path $global:DOTMOD_PATHS.Inventory "software\winget-list.txt"
     Set-Content -Path $wingetListPath -Value $wingetOut -Encoding utf8
-    
+
     $softwareMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "software\software.md"
     $softwareMd = @(
         "# Installed Software Inventory",
@@ -129,239 +139,307 @@ function Invoke-DotmodBackup {
         "- **Zen Browser** (Zen-Team.Zen-Browser) - 1.22.3b (Firefox-based)",
         "- **Vivaldi** (VivaldiTechnologies.Vivaldi) - [Target browser manifest]",
         "",
-        "### Broadcast & Production",
-        "- **vMix 64-bit** - 26.0.0.45",
-        "- **OBS Studio** (OBSProject.OBSStudio) - 32.0.2",
-        "- **Zoom Workplace** (Zoom.Zoom.EXE) - 7.1.9",
-        "",
-        "### Audio & Multimedia Utilities",
-        "- **yt-dlp** (yt-dlp.yt-dlp) - 2026.07.04",
-        "- **FFmpeg** (yt-dlp.FFmpeg) - N-124716",
+        "### Multimedia Utilities",
         "- **Spotify** (Spotify.Spotify) - 1.3.0",
-        "- **Spicetify CLI** - 2.45.1"
+        "- **Spicetify CLI** - 2.45.1",
+        "- **Zoom Workplace** (Zoom.Zoom.EXE) - 7.1.9",
+        "- **yt-dlp** (yt-dlp.yt-dlp) - 2026.07.04",
+        "- **FFmpeg** (yt-dlp.FFmpeg) - N-124716"
     ) -join "`r`n"
 
     Set-Content -Path $softwareMdPath -Value $softwareMd -Encoding utf8
     Write-DotmodSuccess "winget packages recorded -> inventory/software/winget-list.txt" 2
-    Write-DotmodSuccess "software summary created -> inventory/software/software.md" 2
 
-    # [04/16] Package Inventories
+    # [04/17] Package Inventories
     Write-DotmodStep ($step++) $totalSteps "Package Inventories"
     $npmOut = npm list -g --depth=0 2>$null | Out-String
     Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "packages\npm-global.txt") -Value $npmOut -Encoding utf8
-    
+
     $pipOut = pip list 2>$null | Out-String
     Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "packages\pip-list.txt") -Value $pipOut -Encoding utf8
-    
+
     $chocoOut = choco list 2>$null | Out-String
     Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "packages\choco-list.txt") -Value $chocoOut -Encoding utf8
 
-    $psModules = Get-Module -ListAvailable | Select-Object Name, Version, Path -Unique | Sort-Object Name
-    $psModLines = $psModules | ForEach-Object { "$($_.Name) ($($_.Version)) - $($_.Path)" }
-    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "packages\powershell-modules.txt") -Value $psModLines -Encoding utf8
-    Write-DotmodSuccess "npm, pip, choco, and powershell module inventories saved" 2
+    $psModules = Get-InstalledModule -ErrorAction SilentlyContinue | Select-Object Name, Version, Repository | Out-String
+    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "packages\powershell-modules.txt") -Value $psModules -Encoding utf8
+    Write-DotmodSuccess "package inventories captured (npm, pip, choco, powershell)" 2
 
-    # [05/16] Development Environment
-    Write-DotmodStep ($step++) $totalSteps "Development Environment"
+    # [05/17] Font Standard & Font Inventory
+    Write-DotmodStep ($step++) $totalSteps "Fonts Inventory & Standard Verification"
+    $fontList = @()
+    $fontKeys = @(
+        "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts",
+        "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts"
+    )
+    foreach ($k in $fontKeys) {
+        if (Test-Path $k) {
+            $props = Get-ItemProperty -Path $k
+            foreach ($p in $props.PSObject.Properties) {
+                if ($p.Name -notin @("PSPath", "PSParentPath", "PSChildName", "PSDrive", "PSProvider")) {
+                    $fontList += [PSCustomObject]@{
+                        Name     = $p.Name
+                        FileName = $p.Value
+                        Scope    = if ($k -like "HKLM*") { "System" } else { "User" }
+                    }
+                }
+            }
+        }
+    }
+    $fontList = @($fontList | Sort-Object Name -Unique)
+    $fontsJsonPath = Join-Path $global:DOTMOD_PATHS.Inventory "fonts\fonts.json"
+    $fontList | ConvertTo-Json -Depth 3 | Set-Content -Path $fontsJsonPath -Encoding utf8
+
+    $jbMonoMatches = @($fontList | Where-Object {
+        ($_.Name -like "*JetBrains*" -and ($_.Name -like "*NF*" -or $_.Name -like "*Nerd*")) -or
+        ($_.FileName -like "*JetBrainsMono*Nerd*")
+    })
+    $jbMonoInstalled = ($jbMonoMatches.Count -gt 0)
+    $jbStatus = if ($jbMonoInstalled) { "INSTALLED (JetBrains Mono Nerd Font present)" } else { "MISSING" }
+
+    $fontMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "fonts\fonts.md"
+    $fontMd = @(
+        "# Windows Fonts Inventory",
+        "",
+        "> Source Machine: $hostname  ",
+        "> Last Backup: $timestampStr  ",
+        "",
+        "## DOTMOD Terminal Font Standard",
+        "- **Standard Face**: JetBrains Mono Nerd Font",
+        "- **Standard Size**: 12",
+        "- **WinGet Package**: ``DEVCOM.JetBrainsMonoNerdFont``",
+        "- **Current Host Status**: $jbStatus",
+        "",
+        "## Total Installed Fonts Cataloged",
+        "- Count: $($fontList.Count) registered font entries",
+        "- Detailed JSON inventory: ``inventory/fonts/fonts.json``",
+        "",
+        "## Monospace & Developer Fonts Detected",
+        ($fontList | Where-Object { $_.Name -match "Mono|Code|Consolas|Courier|Nerd|JetBrains" } | ForEach-Object { "- **$($_.Name)** ($($_.Scope)) -> ``$($_.FileName)``" }) -join "`r`n"
+    ) -join "`r`n"
+
+    Set-Content -Path $fontMdPath -Value $fontMd -Encoding utf8
+    Write-DotmodSuccess "Font inventory cataloged ($($fontList.Count) fonts). JetBrains Mono status: $jbStatus" 2
+
+    # [06/17] Development Environment & Developer Profiles
+    Write-DotmodStep ($step++) $totalSteps "Development Environment & Capabilities"
     $devMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "development\development.md"
+    $devProfilesMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "developer-profiles.md"
+
+    # Capability detection
+    $hasNode = Get-Command node -ErrorAction SilentlyContinue
+    $hasNpm = Get-Command npm -ErrorAction SilentlyContinue
+    $hasPhp = Get-Command php -ErrorAction SilentlyContinue
+    $hasComposer = Get-Command composer -ErrorAction SilentlyContinue
+    $hasRuby = Get-Command ruby -ErrorAction SilentlyContinue
+    $hasGem = Get-Command gem -ErrorAction SilentlyContinue
+
+    $nodeVer = if ($hasNode) { (node -v 2>$null).Trim() } else { "Not installed" }
+    $phpVer = if ($hasPhp) { ((php -v 2>$null | Select-Object -First 1) -replace "PHP ([0-9.]+).*", '$1').Trim() } else { "Not installed" }
+    $rubyVer = if ($hasRuby) { ((ruby -v 2>$null | Select-Object -First 1) -replace "ruby ([0-9.p]+).*", '$1').Trim() } else { "Not installed" }
+
+    $devProfilesMd = @(
+        "# Developer Capabilities Audit",
+        "",
+        "> Source Machine: $hostname  ",
+        "> Last Backup: $timestampStr  ",
+        "",
+        "## Detected Workstation Capabilities",
+        "- **DEV JS** (Node.js + React + TypeScript): $(if ($hasNode) { "Active (Node $nodeVer)" } else { "Available for restore" })",
+        "- **DEV PHP** (PHP + Laravel + Lumen): $(if ($hasPhp) { "Active (PHP $phpVer)" } else { "Available for restore" })",
+        "- **DEV RAILS** (Ruby + Ruby on Rails): $(if ($hasRuby) { "Active (Ruby $rubyVer)" } else { "Available for restore" })",
+        "",
+        "## Modular Profiles Architecture",
+        "During restore, DOTMOD allows choosing any of the 3 profiles, composable with visual themes.",
+        "When DEV RAILS is selected, a sub-option allows including the React/TypeScript frontend layer without duplicating packages."
+    ) -join "`r`n"
+    Set-Content -Path $devProfilesMdPath -Value $devProfilesMd -Encoding utf8
+
     $devMd = @(
         "# Development Environment Inventory",
         "",
         "> Source Machine: $hostname  ",
         "> Last Backup: $timestampStr  ",
         "",
-        "| Tool | Version | Executable Path |",
-        "|---|---|---|",
-        "| Git | $(git --version 2>&1) | C:\Program Files\Git\mingw64\bin\git.exe |",
-        "| GitHub CLI | $(gh --version 2>&1 | Select-Object -First 1) | C:\Program Files\GitHub CLI\gh.exe |",
-        "| Node.js | $(node --version 2>&1) | C:\Program Files\nodejs\node.exe |",
-        "| npm | $(npm --version 2>&1) | C:\Program Files\nodejs\npm.ps1 |",
-        "| Python | $(python --version 2>&1) | C:\Python314\python.exe |",
-        "| Pip | $(pip --version 2>&1) | C:\Python314\Scripts\pip.exe |",
-        "| Rustc | $(rustc --version 2>&1) | C:\Users\drvc-\.cargo\bin\rustc.exe |",
-        "| Cargo | $(cargo --version 2>&1) | C:\Users\drvc-\.cargo\bin\cargo.exe |",
-        "| Claude CLI | $(claude --version 2>&1) | C:\Users\drvc-\.local\bin\claude.exe |",
-        "| Codex CLI | $(codex --version 2>&1) | C:\Users\drvc-\AppData\Roaming\npm\codex.ps1 |",
-        "| Fastfetch | $(fastfetch --version 2>&1) | C:\Users\drvc-\tools\fastfetch\fastfetch.exe |",
-        "| yt-dlp | $(yt-dlp --version 2>&1) | C:\Users\drvc-\AppData\Local\Microsoft\WinGet\Packages\yt-dlp.yt-dlp_Microsoft.Winget.Source_8wekyb3d8bbwe\yt-dlp.exe |",
-        "| Spicetify | $(spicetify --version 2>&1) | C:\Users\drvc-\AppData\Local\spicetify\spicetify.exe |"
+        "## Runtimes & Compilers",
+        "- **Node.js**: $nodeVer",
+        "- **PHP**: $phpVer",
+        "- **Ruby**: $rubyVer",
+        "- **Python**: $(if (Get-Command python -ErrorAction SilentlyContinue) { (python --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **Rust**: $(if (Get-Command rustc -ErrorAction SilentlyContinue) { (rustc --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **Cargo**: $(if (Get-Command cargo -ErrorAction SilentlyContinue) { (cargo --version 2>&1).Trim() } else { 'Not installed' })",
+        "",
+        "## Global CLI Tools",
+        "- **Claude Code**: $(if (Get-Command claude -ErrorAction SilentlyContinue) { (claude --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **Codex CLI**: $(if (Get-Command codex -ErrorAction SilentlyContinue) { (codex --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **Gemini CLI**: $(if (Get-Command gemini -ErrorAction SilentlyContinue) { (gemini --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **yt-dlp**: $(if (Get-Command yt-dlp -ErrorAction SilentlyContinue) { (yt-dlp --version 2>&1).Trim() } else { 'Not installed' })",
+        "- **FFmpeg**: $(if (Get-Command ffmpeg -ErrorAction SilentlyContinue) { (ffmpeg -version 2>&1 | Select-Object -First 1).Trim() } else { 'Not installed' })"
     ) -join "`r`n"
-
     Set-Content -Path $devMdPath -Value $devMd -Encoding utf8
-    Write-DotmodSuccess "development runtime versions documented -> inventory/development/development.md" 2
+    Write-DotmodSuccess "development runtime and capabilities documented -> inventory/development/development.md" 2
 
-    # [06/16] ZSH & Shell Configuration (High Priority)
-    Write-DotmodStep ($step++) $totalSteps "ZSH & Shell Configuration"
-    $zshSrc = "$HOME\.zshrc"
-    $zshDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\.zshrc"
-    if (Test-Path $zshSrc) {
-        $zshContent = Get-Content -Path $zshSrc -Raw
-        # SANITIZE RAW SECRETS IN .ZSHRC
-        $sanitizedZsh = $zshContent -replace 'export GEMINI_API_KEY="[^"]+"', 'export GEMINI_API_KEY="<REDACTED>"'
-        Set-Content -Path $zshDest -Value $sanitizedZsh -Encoding utf8
-        Write-DotmodSuccess ".zshrc captured (sanitized GEMINI_API_KEY)" 2
+    # [07/17] Visual Theme Audit
+    Write-DotmodStep ($step++) $totalSteps "Visual Theme Configuration Audit"
+    $currTheme = Get-DotmodCurrentTheme
+    $themeMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "theme.md"
+    $themeMd = @(
+        "# Visual Theme Configuration Audit",
+        "",
+        "> Source Machine: $hostname  ",
+        "> Last Backup: $timestampStr  ",
+        "",
+        "## Active Appearance on Host",
+        "- **Windows Terminal Color Scheme**: $($currTheme.TerminalScheme)",
+        "- **VS Code Color Theme**: $($currTheme.VSCodeTheme)",
+        "- **Starship Prompt Palette**: $($currTheme.StarshipPalette)",
+        "",
+        "## DOTMOD Theme Manifests Available for Restore",
+        "Defined in ``themes/*.psd1``:",
+        "- **Tokyo Night** (Recommended default)",
+        "- **Catppuccin Mocha**",
+        "- **Dracula**",
+        "- **One Dark**",
+        "- **Nord**",
+        "- **Gruvbox Dark**",
+        "- **Keep existing / No theme change**"
+    ) -join "`r`n"
+    Set-Content -Path $themeMdPath -Value $themeMd -Encoding utf8
+    Write-DotmodSuccess "Visual theme recorded (VS Code: $($currTheme.VSCodeTheme), WT: $($currTheme.TerminalScheme)) -> inventory/theme.md" 2
+
+    # [08/17] ZSH Shell Configuration
+    Write-DotmodStep ($step++) $totalSteps "ZSH Configuration"
+    $zshrcSrc = "$env:USERPROFILE\.zshrc"
+    $zshrcDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\.zshrc"
+    if (Test-Path $zshrcSrc) {
+        $zshLines = Get-Content -Path $zshrcSrc
+        $sanitizedZsh = $zshLines | ForEach-Object {
+            if ($_ -match 'GEMINI_API_KEY\s*=\s*["'']?([^"'']+)["'']?') {
+                'export GEMINI_API_KEY="<REDACTED>"'
+            } else {
+                $_
+            }
+        }
+        Set-Content -Path $zshrcDest -Value $sanitizedZsh -Encoding utf8
+        Write-DotmodSuccess ".zshrc captured and sanitized (API keys redacted) -> dotfiles/shell/.zshrc" 2
     }
-    $bashProfSrc = "$HOME\.bash_profile"
+
+    $bashProfSrc = "$env:USERPROFILE\.bash_profile"
     if (Test-Path $bashProfSrc) {
         Copy-Item -Path $bashProfSrc -Destination (Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\.bash_profile") -Force
         Write-DotmodSuccess ".bash_profile captured" 2
     }
-    $customPlugins = @("fzf-tab", "zsh-autosuggestions", "zsh-completions", "zsh-syntax-highlighting")
+
+    $customPlugins = @("zsh-autosuggestions", "zsh-completions", "zsh-syntax-highlighting", "fzf-tab")
     Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Dotfiles "shell\custom-plugins.txt") -Value $customPlugins -Encoding utf8
-    Write-DotmodSuccess "custom oh-my-zsh plugins cataloged" 2
+    Write-DotmodSuccess "custom oh-my-zsh plugin list captured" 2
 
-    # [07/16] Custom Shell Commands
+    # [09/17] Custom Shell Commands & Aliases
     Write-DotmodStep ($step++) $totalSteps "Custom Shell Commands"
-    $customCmds = @(
-        @{ Command = "dl"; Type = "alias"; Definition = "yt-dlp --cookies-from-browser firefox"; Binary = "yt-dlp"; Package = "yt-dlp.yt-dlp" },
-        @{ Command = "fdownload"; Type = "alias"; Definition = "yt-dlp --cookies-from-browser firefox -F"; Binary = "yt-dlp"; Package = "yt-dlp.yt-dlp" },
-        @{ Command = "dlmp3"; Type = "alias"; Definition = "yt-dlp --cookies-from-browser firefox -x --audio-format mp3"; Binary = "yt-dlp, ffmpeg"; Package = "yt-dlp.yt-dlp, Gyan.FFmpeg" },
-        @{ Command = "dl1080"; Type = "alias"; Definition = "yt-dlp --cookies-from-browser firefox -S ext:mp4,res:1080 -f bv+ba"; Binary = "yt-dlp, ffmpeg"; Package = "yt-dlp.yt-dlp, Gyan.FFmpeg" },
-        @{ Command = "dl4k"; Type = "alias"; Definition = "yt-dlp --cookies-from-browser firefox -S ext:mp4,res:2160 -f bv+ba"; Binary = "yt-dlp, ffmpeg"; Package = "yt-dlp.yt-dlp, Gyan.FFmpeg" },
-        @{ Command = "ff"; Type = "alias"; Definition = "ffmpeg"; Binary = "ffmpeg"; Package = "Gyan.FFmpeg" },
-        @{ Command = "bismillah"; Type = "alias"; Definition = "python auto_dev.py"; Binary = "python"; Package = "Python.Python.3.14" },
-        @{ Command = "spa"; Type = "alias"; Definition = "spicetify apply"; Binary = "spicetify"; Package = "spicetify-cli" },
-        @{ Command = "sba"; Type = "alias"; Definition = "spicetify backup apply"; Binary = "spicetify"; Package = "spicetify-cli" },
-        @{ Command = "su"; Type = "alias"; Definition = "spicetify update"; Binary = "spicetify"; Package = "spicetify-cli" }
-    )
-    $customCmds | ConvertTo-Json -Depth 3 | Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Manifests "custom-commands.json") -Encoding utf8
-    Write-DotmodSuccess "10 custom commands mapped to binaries and packages -> manifests/custom-commands.json" 2
+    $customCommandsManifest = @{
+        Commands = @(
+            @{ Name = "dlmp3"; Binary = "yt-dlp"; Description = "Extract audio from YouTube/URL as MP3" },
+            @{ Name = "dl1080"; Binary = "yt-dlp"; Description = "Download 1080p video with best audio" },
+            @{ Name = "dl4k"; Binary = "yt-dlp"; Description = "Download 4K 2160p video with best audio" },
+            @{ Name = "bismillah"; Binary = "python"; Description = "Launch auto_dev.py AI automation workflow" },
+            @{ Name = "spa"; Binary = "spicetify"; Description = "spicetify apply" },
+            @{ Name = "sba"; Binary = "spicetify"; Description = "spicetify backup apply" },
+            @{ Name = "su"; Binary = "spicetify"; Description = "spicetify update" },
+            @{ Name = "ff"; Binary = "ffmpeg"; Description = "FFmpeg media processing alias" }
+        )
+    }
+    $customCommandsJson = Join-Path $global:DOTMOD_PATHS.Manifests "custom-commands.json"
+    $customCommandsManifest | ConvertTo-Json -Depth 4 | Set-Content -Path $customCommandsJson -Encoding utf8
+    Write-DotmodSuccess "custom commands cataloged -> manifests/custom-commands.json" 2
 
-    # [08/16] Starship & Fastfetch
-    Write-DotmodStep ($step++) $totalSteps "Starship & Fastfetch Prompt"
-    $starshipToml = Join-Path $global:DOTMOD_PATHS.Dotfiles "starship\starship.toml"
-    $starshipBaseline = @(
-        "# Starship Configuration for DOTMOD",
-        "# Catppuccin Mocha theme inspired",
-        'format = """$all"""',
-        "",
-        "[character]",
-        'success_symbol = "[>](bold green)"',
-        'error_symbol = "[x](bold red)"',
-        "",
-        "[directory]",
-        "truncation_length = 3",
-        'truncation_symbol = ".../"',
-        'style = "bold cyan"',
-        "",
-        "[git_branch]",
-        'symbol = "git: "',
-        'style = "bold purple"',
-        "",
-        "[git_status]",
-        'style = "bold red"'
-    ) -join "`r`n"
-
-    Set-Content -Path $starshipToml -Value $starshipBaseline -Encoding utf8
-    Write-DotmodSuccess "starship prompt configuration created -> dotfiles/starship/starship.toml" 2
-
-    $ffConfigSrc = "$HOME\.config\fastfetch\config.jsonc"
-    $ffAsciiSrc = "$HOME\.config\fastfetch\ascii.txt"
-    if (Test-Path $ffConfigSrc) {
-        Copy-Item -Path $ffConfigSrc -Destination (Join-Path $global:DOTMOD_PATHS.Dotfiles "fastfetch\config.jsonc") -Force
-        Copy-Item -Path $ffAsciiSrc -Destination (Join-Path $global:DOTMOD_PATHS.Dotfiles "fastfetch\ascii.txt") -Force
-        Write-DotmodSuccess "Fastfetch custom 'DRVC' ASCII and config captured -> dotfiles/fastfetch/" 2
+    # [10/17] Starship Configuration
+    Write-DotmodStep ($step++) $totalSteps "Starship Configuration"
+    $starshipSrc = "$env:USERPROFILE\.config\starship.toml"
+    $starshipDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "starship\starship.toml"
+    if (Test-Path $starshipSrc) {
+        Copy-Item -Path $starshipSrc -Destination $starshipDest -Force
+        Write-DotmodSuccess "starship.toml captured -> dotfiles/starship/starship.toml" 2
     }
 
-    # [09/16] Windows Terminal
+    # [11/17] Windows Terminal
     Write-DotmodStep ($step++) $totalSteps "Windows Terminal"
     $wtSrc = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     $wtDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "windows-terminal\settings.json"
     if (Test-Path $wtSrc) {
         Copy-Item -Path $wtSrc -Destination $wtDest -Force
-        Write-DotmodSuccess "Windows Terminal settings.json captured (Catppuccin Mocha / OhMyZsh profile)" 2
+        Write-DotmodSuccess "Windows Terminal settings.json captured -> dotfiles/windows-terminal/settings.json" 2
     }
 
-    # [10/16] PowerShell Profiles
-    Write-DotmodStep ($step++) $totalSteps "PowerShell Profile"
+    # [12/17] PowerShell Configuration
+    Write-DotmodStep ($step++) $totalSteps "PowerShell Configuration"
+    $psProfileSrc = $PROFILE.CurrentUserCurrentHost
     $psProfileDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "powershell\profile.ps1"
-    $psBaseline = @(
-        "# DOTMOD - PowerShell Profile",
-        "Set-PSReadLineOption -PredictionSource History",
-        "Set-PSReadLineOption -BellStyle None",
-        "",
-        "# Aliases",
-        "Set-Alias -Name ll -Value Get-ChildItem",
-        'function which ($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source }'
-    ) -join "`r`n"
+    if (Test-Path $psProfileSrc) {
+        Copy-Item -Path $psProfileSrc -Destination $psProfileDest -Force
+        Write-DotmodSuccess "PowerShell profile captured -> dotfiles/powershell/profile.ps1" 2
+    }
 
-    Set-Content -Path $psProfileDest -Value $psBaseline -Encoding utf8
-    Write-DotmodSuccess "PowerShell profile captured -> dotfiles/powershell/profile.ps1" 2
-
-    # [11/16] VS Code Environment (High Priority)
+    # [13/17] VS Code Environment
     Write-DotmodStep ($step++) $totalSteps "VS Code Environment"
-    $vscodeUser = "$env:APPDATA\Code\User"
-    $vscodeDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "vscode"
-    if (Test-Path "$vscodeUser\settings.json") {
-        Copy-Item -Path "$vscodeUser\settings.json" -Destination "$vscodeDest\settings.json" -Force
-        Write-DotmodSuccess "VS Code settings.json captured (Tokyo Night Dark, fonts, formatters)" 2
+    $codeSettingsSrc = "$env:APPDATA\Code\User\settings.json"
+    $codeSettingsDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "vscode\settings.json"
+    if (Test-Path $codeSettingsSrc) {
+        Copy-Item -Path $codeSettingsSrc -Destination $codeSettingsDest -Force
+        Write-DotmodSuccess "VS Code settings.json captured -> dotfiles/vscode/settings.json" 2
     }
-    if (Test-Path "$HOME\.antigravity\argv.json") {
-        Copy-Item -Path "$HOME\.antigravity\argv.json" -Destination "$vscodeDest\argv.json" -Force
-        Write-DotmodSuccess "argv.json captured" 2
-    }
-    $exts = code --list-extensions --show-versions 2>$null
-    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "development\vscode-extensions.txt") -Value $exts -Encoding utf8
-    Write-DotmodSuccess "$($exts.Count) VS Code extensions cataloged -> inventory/development/vscode-extensions.txt" 2
 
-    # [12/16] Git Configuration
+    $codeArgvSrc = "$env:USERPROFILE\.vscode\argv.json"
+    $codeArgvDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "vscode\argv.json"
+    if (Test-Path $codeArgvSrc) {
+        Copy-Item -Path $codeArgvSrc -Destination $codeArgvDest -Force
+        Write-DotmodSuccess "VS Code argv.json captured -> dotfiles/vscode/argv.json" 2
+    }
+
+    $extOut = code --list-extensions --show-versions 2>$null | Out-String
+    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "development\vscode-extensions.txt") -Value $extOut -Encoding utf8
+    Write-DotmodSuccess "VS Code extensions list captured -> inventory/development/vscode-extensions.txt" 2
+
+    # [14/17] Git Configuration
     Write-DotmodStep ($step++) $totalSteps "Git Configuration"
-    $gitConfigSrc = "$HOME\.gitconfig"
+    $gitConfigSrc = "$env:USERPROFILE\.gitconfig"
     $gitConfigDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "git\.gitconfig"
     if (Test-Path $gitConfigSrc) {
         Copy-Item -Path $gitConfigSrc -Destination $gitConfigDest -Force
-        Write-DotmodSuccess "sanitized ~/.gitconfig captured" 2
+        Write-DotmodSuccess ".gitconfig captured -> dotfiles/git/.gitconfig" 2
     }
-    $gitIgnoreGlobal = Join-Path $global:DOTMOD_PATHS.Dotfiles "git\.gitignore_global"
-    $gitIgnoreContent = @(
-        "# Global Git Exclusions",
-        ".DS_Store",
-        "Thumbs.db",
-        "Desktop.ini",
-        "*.log",
-        "*.tmp",
-        "*.bak",
-        ".vscode/",
-        ".idea/",
-        "*.swp",
-        "*.swo"
-    ) -join "`r`n"
 
-    Set-Content -Path $gitIgnoreGlobal -Value $gitIgnoreContent -Encoding utf8
-    Write-DotmodSuccess "global gitignore created -> dotfiles/git/.gitignore_global" 2
+    $gitIgnoreSrc = "$env:USERPROFILE\.gitignore_global"
+    $gitIgnoreDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "git\.gitignore_global"
+    if (Test-Path $gitIgnoreSrc) {
+        Copy-Item -Path $gitIgnoreSrc -Destination $gitIgnoreDest -Force
+        Write-DotmodSuccess ".gitignore_global captured -> dotfiles/git/.gitignore_global" 2
+    }
 
-    # [13/16] Browser Inventory & Extensions
+    # [15/17] Browser Inventory
     Write-DotmodStep ($step++) $totalSteps "Browser Inventory"
+    $browserMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "software\browser-inventory.md"
     $browserMd = @(
-        "# Browser Inventory",
+        "# Browser Profiles & Extensions Inventory",
         "",
         "> Source Machine: $hostname  ",
         "> Last Backup: $timestampStr  ",
         "",
-        "## Primary Workstation Browsers",
+        "## Primary Browsers",
+        "- **Zen Browser** (Firefox-based, Gecko runtime)",
+        "  - Path: ``C:\Users\drvc-\AppData\Roaming\zen\Profiles\``",
+        "  - Key Extensions: uBlock Origin, Buram, Dark Reader, Password Manager",
+        "- **Vivaldi** (Chromium-based power user browser)",
+        "  - Specified in ``manifests/apps.json``",
         "",
-        "### 1. Zen Browser (Installed)",
-        "- **Engine**: Firefox-based (Gecko)",
-        "- **Install Path**: C:\Program Files\Zen Browser",
-        "- **Package ID**: Zen-Team.Zen-Browser",
-        "- **Profile**: 5uhpc3s7.Default (release)",
-        "- **Installed Extensions**:",
-        "  - **uBlock Origin** (ID: ``uBlock0@raymondhill.net``) - Ad blocking / content filtering",
-        "  - **Buram: Privacy Blur for WhatsApp Web** (ID: ``{6d73c982-59ee-4fdf-a80b-65644119d413}``)",
-        "",
-        "### 2. Vivaldi (Target Fresh Machine Browser)",
-        "- **Engine**: Chromium-based (Power-user productivity)",
-        "- **Package ID**: VivaldiTechnologies.Vivaldi",
-        "- **Policy**: Manual extension install via Chrome Web Store or Vivaldi Sync.",
-        "",
-        "> [!IMPORTANT]",
-        "> Google Chrome and Standalone Mozilla Firefox are explicitly EXCLUDED per workstation rules."
+        "## Policy Notice",
+        "- Google Chrome is intentionally excluded.",
+        "- Standalone Firefox is intentionally excluded (Zen Browser handles Firefox workflow).",
+        "- Session storage, cookies, and login credentials are never backed up to Git."
     ) -join "`r`n"
+    Set-Content -Path $browserMdPath -Value $browserMd -Encoding utf8
+    Write-DotmodSuccess "Browser inventory cataloged -> inventory/software/browser-inventory.md" 2
 
-    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Inventory "software\browser-inventory.md") -Value $browserMd -Encoding utf8
-    Write-DotmodSuccess "Zen Browser & Vivaldi inventoried -> inventory/software/browser-inventory.md" 2
-
-    # [14/16] Spicetify & Spotify
+    # [16/17] Spicetify & Spotify
     Write-DotmodStep ($step++) $totalSteps "Spicetify & Spotify"
     $spicetifyIniSrc = "$env:APPDATA\spicetify\config-xpui.ini"
     $spicetifyDest = Join-Path $global:DOTMOD_PATHS.Dotfiles "spicetify\config-xpui.ini"
@@ -370,54 +448,13 @@ function Invoke-DotmodBackup {
         Write-DotmodSuccess "Spicetify config-xpui.ini captured (Theme: marketplace, CustomApps: marketplace)" 2
     }
 
-    # [15/16] OBS Studio & vMix (Production Applications)
-    Write-DotmodStep ($step++) $totalSteps "OBS Studio & vMix"
-    # OBS safe files
-    $obsBasicIni = "$env:APPDATA\obs-studio\basic\profiles\Untitled\basic.ini"
-    if (Test-Path $obsBasicIni) {
-        Copy-Item -Path $obsBasicIni -Destination (Join-Path $global:DOTMOD_PATHS.Dotfiles "obs\basic.ini") -Force
-        Write-DotmodSuccess "OBS basic.ini captured (Encoders: QSV & NVENC, 1080p30)" 2
-    }
-    $obsScene = "$env:APPDATA\obs-studio\basic\scenes\Untitled.json"
-    if (Test-Path $obsScene) {
-        Copy-Item -Path $obsScene -Destination (Join-Path $global:DOTMOD_PATHS.Dotfiles "obs\scenes\Untitled.json") -Force
-        Write-DotmodSuccess "OBS scenes captured (Move transition, window captures)" 2
-    }
-    $obsPlugins = @("move-transition", "obs-multi-rtmp")
-    Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Dotfiles "obs\plugins.txt") -Value $obsPlugins -Encoding utf8
-    Write-DotmodWarning "EXCLUDED OBS service.json & obs-multi-rtmp.json (Contains YouTube stream keys)" 2
-    Write-DotmodWarning "EXCLUDED obs-websocket config.json (Contains server password)" 2
-
-    # vMix safe summary
-    $vmixSummaryPath = Join-Path $global:DOTMOD_PATHS.Dotfiles "vmix\settings-summary.md"
-    $vmixSummary = @(
-        "# vMix Workstation Configuration Summary",
-        "",
-        "> Source Machine: $hostname  ",
-        "> Version: vMix 64-bit 26.0.0.45  ",
-        "> Install Location: C:\Program Files (x86)\vMix  ",
-        "",
-        "## Production Setup",
-        "- Output Resolution: 1920x1080 @ 29.97 / 30 fps",
-        "- Master Audio Bus: Stereo 48kHz",
-        "- Web Server API Port: 8088 (Localhost enabled)",
-        "- Virtual External / SRT Output configured",
-        "",
-        "> [!CAUTION]",
-        "> Production presets (*.vmix) and project files in D:\RECORDS\ contain sensitive customer/broadcast assets and stream configurations.",
-        "> These files are EXCLUDED from Git and must be backed up privately."
-    ) -join "`r`n"
-
-    Set-Content -Path $vmixSummaryPath -Value $vmixSummary -Encoding utf8
-    Write-DotmodSuccess "vMix settings summary documented -> dotfiles/vmix/settings-summary.md" 2
-
-    # [16/16] Environment Variables & Private Backup Checklist
+    # [17/17] Environment Variables & Private Backup Checklist
     Write-DotmodStep ($step++) $totalSteps "Environment Variables & Private Checklist"
     $envMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "development\environment.md"
     $userPathEntries = [Environment]::GetEnvironmentVariable("Path", "User") -split ";" | Where-Object { $_ }
     $sysPathEntries = [Environment]::GetEnvironmentVariable("Path", "Machine") -split ";" | Where-Object { $_ }
     $envNames = Get-ChildItem env: | Select-Object -ExpandProperty Name | Sort-Object
-    
+
     $userPathLines = ($userPathEntries | ForEach-Object { "- ``$_``" }) -join "`r`n"
     $sysPathLines = ($sysPathEntries | ForEach-Object { "- ``$_``" }) -join "`r`n"
     $envVarLines = ($envNames | ForEach-Object {
@@ -458,17 +495,12 @@ function Invoke-DotmodBackup {
         "",
         "| Item Description | Category | Discovered Local Path | Reason / Sensitive Content |",
         "|---|---|---|---|",
-        "| OBS YouTube Stream Key | Credentials | ``C:\Users\drvc-\AppData\Roaming\obs-studio\basic\profiles\Untitled\service.json`` | YouTube Live Stream Key |",
-        "| OBS Multi-RTMP Targets | Credentials | ``C:\Users\drvc-\AppData\Roaming\obs-studio\basic\profiles\Untitled\obs-multi-rtmp.json`` | Multi-RTMP YouTube stream key |",
-        "| OBS WebSocket Password | Authentication | ``C:\Users\drvc-\AppData\Roaming\obs-studio\plugin_config\obs-websocket\config.json`` | Local WebSocket password |",
         "| Gemini API Key | API Key | Originally in ``~/.zshrc`` and User Environment | Google Gemini API Secret Key |",
-        "| vMix Production Projects | Production | ``D:\RECORDS\*.vmix``, ``D:\MASTER\`` | Client presets, event assets & stream keys |",
         "| Client Video Recordings | Media | ``D:\RECORDS\``, ``D:\OBB Records\`` | Production client recordings |",
         "| Zen Browser Profiles | Auth / Sessions | ``C:\Users\drvc-\AppData\Roaming\zen\Profiles\`` | Cookies, logins & session data |",
         "| Claude Code Credentials | Auth | ``C:\Users\drvc-\.claude.json`` | Anthropic OAuth tokens & session keys |",
         "| Codex CLI Credentials | Auth | ``C:\Users\drvc-\.codex\`` | OpenAI session state |",
-        "| SSH Key Pairs (If any) | Security | ``C:\Users\drvc-\.ssh\`` | Private SSH keys |",
-        "| vMix License Key | License | Physical or email license record | vMix 26 registration code |"
+        "| SSH Key Pairs (If any) | Security | ``C:\Users\drvc-\.ssh\`` | Private SSH keys |"
     ) -join "`r`n"
 
     Set-Content -Path $privateChecklistPath -Value $privateChecklist -Encoding utf8
@@ -477,6 +509,7 @@ function Invoke-DotmodBackup {
     # Build manifests/apps.json
     $appsManifest = @{
         Core = @(
+            @{ Id = "DEVCOM.JetBrainsMonoNerdFont"; Name = "JetBrains Mono Nerd Font" },
             @{ Id = "Git.Git"; Name = "Git for Windows" },
             @{ Id = "GitHub.cli"; Name = "GitHub CLI" },
             @{ Id = "Microsoft.WindowsTerminal"; Name = "Windows Terminal" },
@@ -494,16 +527,15 @@ function Invoke-DotmodBackup {
             @{ Id = "Zen-Team.Zen-Browser"; Name = "Zen Browser" },
             @{ Id = "VivaldiTechnologies.Vivaldi"; Name = "Vivaldi" }
         )
-        MultimediaAndBroadcast = @(
+        Multimedia = @(
             @{ Id = "Spotify.Spotify"; Name = "Spotify" },
-            @{ Id = "OBSProject.OBSStudio"; Name = "OBS Studio" },
             @{ Id = "Zoom.Zoom.EXE"; Name = "Zoom Workplace" }
         )
     }
     $appsManifest | ConvertTo-Json -Depth 4 | Set-Content -Path (Join-Path $global:DOTMOD_PATHS.Manifests "apps.json") -Encoding utf8
     Write-DotmodSuccess "application manifest created -> manifests/apps.json" 2
 
-    # 17. Pre-commit Secret Scan
+    # Pre-commit Secret Scan
     Write-Host "`n--- Running Pre-Commit Secret Scanner ---" -ForegroundColor Cyan
     $findings = Invoke-DotmodSecretScan -TargetDirectory $global:DOTMOD_ROOT
     if (@($findings).Length -gt 0) {
@@ -520,13 +552,12 @@ function Invoke-DotmodBackup {
     }
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
-    Write-Host "  [OK] Backup complete: 16 modules completed" -ForegroundColor Green
+    Write-Host "  [OK] Backup complete: 17 modules completed" -ForegroundColor Green
     Write-Host "  [OK] Portable configuration captured" -ForegroundColor Green
-    Write-Host "  [OK] Hardware and software inventories generated" -ForegroundColor Green
-    Write-Host "  [WARN] Sensitive production items safely excluded and cataloged" -ForegroundColor Yellow
+    Write-Host "  [OK] Hardware, software, fonts, and theme inventories generated" -ForegroundColor Green
+    Write-Host "  [OK] Sensitive items safely excluded and cataloged" -ForegroundColor Green
     Write-Host "  [OK] Secret scan passed" -ForegroundColor Green
     Write-Host "============================================================`n" -ForegroundColor DarkGray
 
     return $true
 }
-

@@ -1,7 +1,7 @@
-# Environment Variables Inventory
+﻿# Environment Variables Inventory
 
 > Source Machine: DRVC-F15  
-> Last Backup: 2026-09-29 22:29:09  
+> Last Backup: 2026-09-29 22:56:23  
 
 ## User PATH
 - `C:\Users\drvc-\.cargo\bin`
@@ -126,6 +126,7 @@
 - `PROGRAMFILES`
 - `ProgramFiles(x86)`
 - `ProgramW6432`
+- `PSExecutionPolicyPreference`
 - `PSModulePath`
 - `PUBLIC`
 - `PWD`

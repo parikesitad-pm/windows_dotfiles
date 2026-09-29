@@ -1,0 +1,6 @@
+bmewburn.vscode-intelephense-client
+devsense.phptools-vscode
+devsense.composer-php-vscode
+devsense.intelli-php-vscode
+devsense.profiler-php-vscode
+ikappas.composer

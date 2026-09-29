@@ -1,0 +1,31 @@
+@{
+    Id                 = "one-dark"
+    DisplayName        = "One Dark"
+    DarkMode           = $true
+    VSCodeExtension    = "zhuangtongfa.material-theme"
+    VSCodeThemeName    = "One Dark Pro"
+    StarshipPalette    = "one_dark"
+    TerminalColors     = @{
+        name                = "DOTMOD One Dark"
+        background          = "#282c34"
+        foreground          = "#abb2bf"
+        selectionBackground = "#3e4451"
+        cursorColor         = "#528bff"
+        black               = "#1e2127"
+        red                 = "#e06c75"
+        green               = "#98c379"
+        yellow              = "#d19a66"
+        blue                = "#61afef"
+        purple              = "#c678dd"
+        cyan                = "#56b6c2"
+        white               = "#abb2bf"
+        brightBlack         = "#5c6370"
+        brightRed           = "#e06c75"
+        brightGreen         = "#98c379"
+        brightYellow        = "#e5c07b"
+        brightBlue          = "#61afef"
+        brightPurple        = "#c678dd"
+        brightCyan          = "#56b6c2"
+        brightWhite         = "#ffffff"
+    }
+}

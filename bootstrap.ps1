@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - bootstrap.ps1
 # One-Line Fresh Windows Workstation Bootstrap
 # ============================================================
@@ -6,7 +6,12 @@
 [CmdletBinding()]
 param(
     [switch]$Full,
-    [switch]$DryRun
+    [switch]$DryRun,
+    [switch]$DevJS,
+    [switch]$DevPHP,
+    [switch]$DevRails,
+    [switch]$React,
+    [string]$Theme = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -47,18 +52,15 @@ if (Test-Path $targetDir) {
 Write-Host "`nLaunching DOTMOD Restore Engine...`n" -ForegroundColor Green
 $dotmodScript = ".\dotmod.ps1"
 
-if ($Full) {
-    if ($DryRun) {
-        & $dotmodScript -Restore -Full -DryRun
-    } else {
-        & $dotmodScript -Restore -Full
-    }
-} else {
-    if ($DryRun) {
-        & $dotmodScript -Restore -DryRun
-    } else {
-        & $dotmodScript -Restore
-    }
-}
+$restoreArgs = @("-Restore")
+if ($Full) { $restoreArgs += "-Full" }
+if ($DryRun) { $restoreArgs += "-DryRun" }
+if ($DevJS) { $restoreArgs += "-DevJS" }
+if ($DevPHP) { $restoreArgs += "-DevPHP" }
+if ($DevRails) { $restoreArgs += "-DevRails" }
+if ($React) { $restoreArgs += "-React" }
+if ($Theme) { $restoreArgs += @("-Theme", $Theme) }
+
+& $dotmodScript @restoreArgs
 
 Pop-Location

@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/audit/AuditMachine.ps1
 # Comprehensive read-only audit engine for Windows workstation
 # ============================================================
@@ -106,15 +106,40 @@ function Invoke-DotmodAudit {
         Write-DotmodSuccess "Spicetify detected at: $($spicetifyCmd.Source)"
     }
 
-    # 5. OBS & vMix
-    if (Test-Path "$env:APPDATA\obs-studio") {
-        Write-DotmodSuccess "OBS Studio configuration detected"
+    # 5. Fonts Standard Audit
+    $jbMonoInstalled = $false
+    $fontKeys = @("HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts", "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts")
+    foreach ($k in $fontKeys) {
+        if (Test-Path $k) {
+            $props = (Get-ItemProperty $k).PSObject.Properties
+            foreach ($p in $props) {
+                if (($p.Name -like "*JetBrains*" -and ($p.Name -like "*NF*" -or $p.Name -like "*Nerd*")) -or
+                    ($p.Value -like "*JetBrainsMono*Nerd*")) {
+                    $jbMonoInstalled = $true
+                    break
+                }
+            }
+            if ($jbMonoInstalled) { break }
+        }
     }
-    if (Test-Path "C:\Program Files (x86)\vMix") {
-        Write-DotmodSuccess "vMix installation detected at C:\Program Files (x86)\vMix"
+    if ($jbMonoInstalled) {
+        Write-DotmodSuccess "Standard Font: JetBrains Mono Nerd Font is installed"
+    } else {
+        Write-DotmodWarning "JetBrains Mono Nerd Font not detected in Windows Fonts"
     }
 
-    # 6. Browsers
+    # 6. Developer Stack Capabilities
+    $devStacks = @()
+    if (Get-Command node -ErrorAction SilentlyContinue) { $devStacks += "DEV JS (Node.js $(node -v 2>$null))" }
+    if (Get-Command php -ErrorAction SilentlyContinue) { $devStacks += "DEV PHP (PHP $(php -v 2>$null | Select-Object -First 1))" }
+    if (Get-Command ruby -ErrorAction SilentlyContinue) { $devStacks += "DEV RAILS (Ruby $(ruby -v 2>$null))" }
+    if ($devStacks.Count -gt 0) {
+        Write-DotmodSuccess "Detected Developer Capabilities: $($devStacks -join ', ')"
+    } else {
+        Write-DotmodInfo "No primary language runtimes detected in PATH" 2
+    }
+
+    # 7. Browsers
     if (Test-Path "$env:APPDATA\zen\Profiles") {
         Write-DotmodSuccess "Zen Browser profiles detected"
     }

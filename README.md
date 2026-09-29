@@ -2,8 +2,8 @@
 
 Windows Environment Backup & Restore.
 
-> a Modula Project  
-> crafted by parikesitad-pm  
+> a Modula Project
+> crafted by parikesitad-pm
 
 **Backup first. Rebuild later.**
 
@@ -20,18 +20,22 @@ Windows Environment Backup & Restore.
 The same repository powers two completely separate, strictly isolated phases:
 
 1. **Current Windows (Backup Mode)**:
-   - READ-ONLY workstation audit
-   - Portable configuration capture (.zshrc, VS Code, Windows Terminal, Spicetify, Git, Fastfetch, OBS)
+   - READ-ONLY workstation audit (Hardware, drivers, installed software, runtimes)
+   - Font inventory and standard verification (JetBrains Mono Nerd Font)
+   - Visual theme detection and cataloging
+   - Portable configuration capture (.zshrc, VS Code, Windows Terminal, Spicetify, Git, Fastfetch)
    - Software and package inventory (WinGet, npm, pip, choco, PowerShell modules)
    - Secret sanitization and pre-commit security scanning
    - Synchronized to GitHub
 2. **Fresh Windows (Restore Mode)**:
+   - Font installation (JetBrains Mono Nerd Font 12) *before* terminal/shell configuration
+   - Selectable Developer Profiles (DEV JS, DEV PHP, DEV RAILS + React)
+   - Selectable Visual Themes (Tokyo Night, Catppuccin Mocha, Dracula, One Dark, Nord, Gruvbox Dark)
    - Automated application installation via WinGet
    - Idempotent configuration restoration (with local `*.pre-dotmod` backups)
    - Shell, Starship, and Fastfetch environment reconstruction
-   - VS Code settings and extension installation
+   - VS Code settings, extensions, and font standardization
    - Spotify and Spicetify Marketplace setup
-   - Production broadcasting application configuration
 
 > [!NOTE]
 > DOTMOD is **NOT** a Windows debloater, registry tweaker, or gaming optimizer. It focuses strictly on reproducible environment backup and rapid post-reinstall workstation recovery.
@@ -43,6 +47,7 @@ The same repository powers two completely separate, strictly isolated phases:
 ### 1. Fresh Windows Reinstall (Choose One)
 
 #### Method A: Normal / Safer Method (Clone & Inspect)
+
 ```powershell
 git clone https://github.com/parikesitad-pm/windows_dotfiles.git
 cd windows_dotfiles
@@ -50,12 +55,15 @@ cd windows_dotfiles
 ```
 
 #### Method B: One-Line Remote Bootstrap
+
 Open PowerShell and run directly from this repository:
+
 ```powershell
 irm https://raw.githubusercontent.com/parikesitad-pm/windows_dotfiles/main/bootstrap.ps1 | iex
 ```
 
 To run a safe dry-run simulation first without modifying the system:
+
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/parikesitad-pm/windows_dotfiles/main/bootstrap.ps1))) -DryRun
 ```
@@ -65,11 +73,13 @@ To run a safe dry-run simulation first without modifying the system:
 ### 2. Current Workstation (Backup)
 
 Launch the interactive CLI:
+
 ```powershell
 .\dotmod.ps1
 ```
 
 Or run directly via command line:
+
 ```powershell
 .\dotmod.ps1 -Backup
 ```
@@ -105,10 +115,64 @@ What do you want to do?
 
 ---
 
+## Terminal Font Standard
+
+DOTMOD enforces a unified monospace font standard across all development environments:
+
+- **Font Family**: `JetBrains Mono Nerd Font` (`JetBrainsMono Nerd Font Mono`)
+- **Font Size**: `12`
+- **WinGet Package**: `DEVCOM.JetBrainsMonoNerdFont`
+- **Targets**:
+  - Windows Terminal (Profile font face and size)
+  - Visual Studio Code (`terminal.integrated.fontFamily` and `terminal.integrated.fontSize`)
+  - PowerShell and MSYS2/Git Bash shell sessions
+
+---
+
+## Developer Profiles
+
+DOTMOD provides 3 composable developer stacks that share a common core (Git, Terminal, ZSH, Starship, JetBrains Mono Nerd Font 12):
+
+1. **DEV JS**:
+   - Runtime: Node.js LTS, npm, nvm, pnpm, yarn
+   - Stack: React, Next.js, Vite, TypeScript, Tailwind CSS
+   - Extensions: ESLint, Prettier, React snippets, Tailwind CSS, Pretty TS Errors
+   - Shell: `dotfiles/shell/profiles/js.zsh` (`nr`, `nrd`, `nrb`, `pd`, `pb`, `yd`, `yb`, etc.)
+2. **DEV PHP**:
+   - Runtime: PHP 8.3+, Composer
+   - Stack: Laravel, Lumen, PHPUnit, Pest
+   - Extensions: Intelephense, PHP Tools, Composer
+   - Shell: `dotfiles/shell/profiles/php.zsh` (`art`, `arts`, `artm`, `comp`, `ci`, `pu`, etc.)
+3. **DEV RAILS**:
+   - Runtime: Ruby 3.3+ with DevKit, Bundler, Ruby on Rails
+   - Extensions: Shopify Ruby LSP, ERB Beautify
+   - Shell: `dotfiles/shell/profiles/rails.zsh` (`rc`, `rs`, `rg`, `rr`, `bi`, `be`, etc.)
+   - **Frontend Layer Option**: Composable with `+ React / TypeScript` layer without duplicating packages or configuration.
+
+---
+
+## Visual Theme System
+
+During restore, DOTMOD provides visual theme synchronization across **Windows Terminal**, **VS Code**, and **Starship**:
+
+| Theme | Recommended | Terminal Color Scheme | VS Code Theme Extension | Starship Palette |
+|---|---|---|---|---|
+| **Tokyo Night** | **Yes (Default)** | `DOTMOD Tokyo Night` | `enkia.tokyo-night` | `tokyo_night` |
+| **Catppuccin Mocha** | Optional | `DOTMOD Catppuccin Mocha` | `Catppuccin.catppuccin-vsc` | `catppuccin_mocha` |
+| **Dracula** | Optional | `DOTMOD Dracula` | `dracula-theme.theme-dracula` | `dracula` |
+| **One Dark** | Optional | `DOTMOD One Dark` | `zhuangtongfa.material-theme` | `one_dark` |
+| **Nord** | Optional | `DOTMOD Nord` | `arcticicestudio.nord-visual-studio-code` | `nord` |
+| **Gruvbox Dark** | Optional | `DOTMOD Gruvbox Dark` | `jdinhlife.gruvbox` | `gruvbox_dark` |
+| **Keep Existing** | Optional | Unchanged | Unchanged | Unchanged |
+
+Themes and developer profiles are completely independent: any theme can be paired with any developer stack (e.g. `DEV RAILS` + `Tokyo Night` or `DEV PHP` + `Dracula`).
+
+---
+
 ## CLI Command Flags
 
 | Flag | Purpose | Mode |
-|---|---|---|
+| --- | --- | --- |
 | `.\dotmod.ps1` | Launches interactive UI menu | Interactive |
 | `.\dotmod.ps1 -Backup` | Runs complete workstation audit & backup | Backup |
 | `.\dotmod.ps1 -Backup -NoPush` | Runs backup locally without pushing to GitHub | Backup |
@@ -116,9 +180,13 @@ What do you want to do?
 | `.\dotmod.ps1 -Restore -Full -DryRun` | Simulates restore process without writing changes | DryRun |
 | `.\dotmod.ps1 -Restore -ConfigOnly` | Restores dotfiles and editor settings only | Restore |
 | `.\dotmod.ps1 -Restore -AppsOnly` | Installs WinGet packages only | Restore |
+| `.\dotmod.ps1 -Restore -DevJS` | Restores system configured for Node.js / React / TypeScript | Restore |
+| `.\dotmod.ps1 -Restore -DevPHP` | Restores system configured for PHP / Laravel | Restore |
+| `.\dotmod.ps1 -Restore -DevRails [-React]` | Restores Ruby / Rails stack (optionally with React frontend) | Restore |
+| `.\dotmod.ps1 -Restore -Theme <Name>` | Applies specific theme (`TokyoNight`, `CatppuccinMocha`, etc.) | Restore |
 | `.\dotmod.ps1 -Audit` | Runs safe read-only hardware/software audit | Audit |
 | `.\dotmod.ps1 -Status` | Displays backup status, git commit, and module health | Status |
-| `.\dotmod.ps1 -Diagnostics` | Tests CLI binaries and custom command prerequisites | Diagnostics |
+| `.\dotmod.ps1 -Diagnostics` | Tests CLI binaries, font, theme, and profile prerequisites | Diagnostics |
 | `.\dotmod.ps1 -Help` | Displays comprehensive PowerShell cmdlet help | Help |
 
 ---
@@ -133,35 +201,47 @@ windows_dotfiles/
 ├── LICENSE                     # MIT License
 ├── .gitignore                  # Strict security & credential exclusion rules
 │
-├── src/                        # Core PowerShell engine
-│   ├── core/                   # Common helpers, config, secret scanner
-│   ├── ui/                     # Terminal styling and interactive menu
-│   ├── audit/                  # Read-only workstation audit logic
-│   ├── backup/                 # Master backup runner
-│   ├── restore/                # Idempotent restoration runner
-│   └── diagnostics/            # Diagnostic verification runner
+├── themes/                     # Centralized theme definitions
+│   ├── tokyo-night.psd1        # Tokyo Night (Default)
+│   ├── catppuccin-mocha.psd1   # Catppuccin Mocha
+│   ├── dracula.psd1            # Dracula
+│   ├── one-dark.psd1           # One Dark Pro
+│   ├── nord.psd1               # Nord
+│   └── gruvbox-dark.psd1       # Gruvbox Dark Hard
+│
+├── src/                        # Implementation modules
+│   ├── core/                   # Common, Config, ThemeEngine, SecretScanner
+│   ├── ui/                     # Ansi, Banner, Interactive Menu
+│   ├── audit/                  # AuditMachine
+│   ├── backup/                 # BackupRunner (Read-only on current machine)
+│   ├── restore/                # RestoreRunner, FontInstaller
+│   └── diagnostics/            # DiagnosticsRunner
 │
 ├── dotfiles/                   # Tracked portable dotfiles
 │   ├── shell/                  # .zshrc, .bash_profile, custom oh-my-zsh plugins
-│   ├── starship/               # starship.toml
+│   │   └── profiles/           # Modular shell profiles (common, js, php, rails)
+│   ├── starship/               # starship.toml (Multi-palette enabled)
 │   ├── fastfetch/              # config.jsonc, DRVC ascii.txt
 │   ├── vscode/                 # settings.json, argv.json
-│   ├── windows-terminal/       # settings.json (Catppuccin Mocha / OhMyZsh)
+│   ├── windows-terminal/       # settings.json (JetBrains Mono Nerd Font 12)
 │   ├── powershell/             # profile.ps1
 │   ├── git/                    # .gitconfig, .gitignore_global
-│   ├── spicetify/              # config-xpui.ini (Marketplace theme/apps)
-│   ├── obs/                    # basic.ini, scene collections, plugin list
-│   └── vmix/                   # Settings summary & portable config
+│   └── spicetify/              # config-xpui.ini (Marketplace theme/apps)
 │
 ├── inventory/                  # System state catalogs
 │   ├── machine/                # machine.md, machine.json, drivers.md
 │   ├── software/               # software.md, winget-list.txt, browser-inventory.md
+│   ├── fonts/                  # fonts.md, fonts.json
 │   ├── development/            # development.md, vscode-extensions.txt, environment.md
+│   ├── theme.md                # Active theme detection report
+│   ├── developer-profiles.md   # Detected developer capabilities
 │   └── packages/               # npm-global.txt, pip-list.txt, choco-list.txt, powershell-modules.txt
 │
 ├── manifests/                  # Restoration blueprints
 │   ├── apps.json               # Categorized WinGet IDs
-│   └── custom-commands.json    # Shell aliases & binary requirements
+│   ├── custom-commands.json    # Shell aliases & binary requirements
+│   ├── dev-profiles.json       # Developer profile packages and dependencies
+│   └── vscode/                 # Modular extension manifests (common, dev-js, dev-php, dev-rails)
 │
 ├── docs/                       # Technical references
 │   ├── ARCHITECTURE.md         # System design & boundaries
@@ -178,14 +258,12 @@ windows_dotfiles/
 
 This repository is **publicly safe**:
 
-- **Pre-Commit Secret Scanner**: Scans every file and staged diff before committing. If an API key, stream key, password, or private key is detected, commit and push are immediately blocked.
+- **Pre-Commit Secret Scanner**: Scans every file and staged diff before committing. If an API key, password, or private key is detected, commit and push are immediately blocked.
 - **Strictly Excluded**:
-  - OBS YouTube stream keys (`service.json`, `obs-multi-rtmp.json`)
-  - OBS WebSocket password (`config.json`)
   - Gemini API key (sanitized from `.zshrc`)
-  - vMix production `.vmix` projects with sensitive stream keys
   - SSH private keys and certificates
   - Browser sessions, cookies, and login credentials
+  - Claude Code and Codex CLI authentication tokens
 - **Private Backup Checklist**: Every sensitive item discovered on the machine is cataloged in [`private-backup-required/README.md`](private-backup-required/README.md) with its exact local path so you can back it up securely to private storage before formatting.
 
 ---
@@ -193,8 +271,8 @@ This repository is **publicly safe**:
 ## Workstation Scope
 
 - **Primary Browsers**: Zen Browser (Firefox-based) & Vivaldi. *(Google Chrome and Standalone Firefox are intentionally excluded).*
-- **Shell**: ZSH inside Git for Windows (MSYS2) with Oh My Zsh, custom plugins, and custom aliases (`dlmp3`, `dl1080`, `dl4k`, `bismillah`, `spa`, `sba`, `su`).
-- **Production Tools**: OBS Studio (QSV + NVENC hardware encoders), vMix 64-bit, Zoom Workplace.
+- **Shell**: ZSH inside Git for Windows (MSYS2) with Oh My Zsh, Starship, custom plugins, and custom aliases (`dlmp3`, `dl1080`, `dl4k`, `bismillah`, `spa`, `sba`, `su`).
+- **Productivity**: Zoom Workplace, Spotify (Spicetify).
 
 ---
 

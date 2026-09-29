@@ -1,22 +1,66 @@
 # Starship Configuration for DOTMOD
-# Catppuccin Mocha theme inspired
+# Visual themes support via palettes
+palette = "tokyo_night"
+
 format = """
-[┌───────────────────>](bold green)
-[│](bold green) $all
-[└─>](bold green) """
+[┌───────────────────>](bold color_frame)
+[│](bold color_frame) $all
+[└─>](bold color_frame) """
 
 [character]
-success_symbol = "[➜](bold green)"
-error_symbol = "[✗](bold red)"
+success_symbol = "[➜](bold color_char)"
+error_symbol = "[✗](bold color_err)"
 
 [directory]
 truncation_length = 3
 truncation_symbol = "…/"
-style = "bold cyan"
+style = "bold color_dir"
 
 [git_branch]
 symbol = " "
-style = "bold purple"
+style = "bold color_git"
 
 [git_status]
-style = "bold red"
+style = "bold color_err"
+
+[palettes.tokyo_night]
+color_frame = "#7aa2f7"
+color_char  = "#9ece6a"
+color_err   = "#f7768e"
+color_dir   = "#7dcfff"
+color_git   = "#bb9af7"
+
+[palettes.catppuccin_mocha]
+color_frame = "#89b4fa"
+color_char  = "#a6e3a1"
+color_err   = "#f38ba8"
+color_dir   = "#89dceb"
+color_git   = "#cba6f7"
+
+[palettes.dracula]
+color_frame = "#bd93f9"
+color_char  = "#50fa7b"
+color_err   = "#ff5555"
+color_dir   = "#8be9fd"
+color_git   = "#ff79c6"
+
+[palettes.one_dark]
+color_frame = "#61afef"
+color_char  = "#98c379"
+color_err   = "#e06c75"
+color_dir   = "#56b6c2"
+color_git   = "#c678dd"
+
+[palettes.nord]
+color_frame = "#88c0d0"
+color_char  = "#a3be8c"
+color_err   = "#bf616a"
+color_dir   = "#81a1c1"
+color_git   = "#b48ead"
+
+[palettes.gruvbox_dark]
+color_frame = "#83a598"
+color_char  = "#b8bb26"
+color_err   = "#fb4934"
+color_dir   = "#8ec07c"
+color_git   = "#d3869b"

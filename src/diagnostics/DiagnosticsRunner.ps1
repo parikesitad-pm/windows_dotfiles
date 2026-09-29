@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # DOTMOD - src/diagnostics/DiagnosticsRunner.ps1
 # Diagnostics and environment health verification
 # ============================================================
@@ -8,6 +8,7 @@ Set-StrictMode -Version Latest
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Common.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\Config.ps1")
 . (Join-Path (Split-Path -Parent $PSScriptRoot) "core\SecretScanner.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "core\ThemeEngine.ps1")
 
 function Invoke-DotmodDiagnostics {
     Write-Host "`n============================================================" -ForegroundColor DarkGray
@@ -26,7 +27,47 @@ function Invoke-DotmodDiagnostics {
         }
     }
 
-    # 2. Custom Shell Command Dependencies
+    # 2. Developer Stacks Capabilities
+    Write-Host "`n--- Developer Profiles Health ---" -ForegroundColor Yellow
+    $jsOk = [bool](Get-Command node -ErrorAction SilentlyContinue)
+    $phpOk = [bool](Get-Command php -ErrorAction SilentlyContinue)
+    $railsOk = [bool](Get-Command ruby -ErrorAction SilentlyContinue)
+
+    Write-Host "  * DEV JS (Node/React/TS) ... $(if ($jsOk) { 'READY' } else { 'NOT INSTALLED' })" -ForegroundColor $(if ($jsOk) { "Green" } else { "Gray" })
+    Write-Host "  * DEV PHP (PHP/Laravel) .... $(if ($phpOk) { 'READY' } else { 'NOT INSTALLED' })" -ForegroundColor $(if ($phpOk) { "Green" } else { "Gray" })
+    Write-Host "  * DEV RAILS (Ruby/Rails) ... $(if ($railsOk) { 'READY' } else { 'NOT INSTALLED' })" -ForegroundColor $(if ($railsOk) { "Green" } else { "Gray" })
+
+    # 3. Font Standard Verification
+    Write-Host "`n--- Terminal Font Standard Verification ---" -ForegroundColor Yellow
+    $jbMonoInstalled = $false
+    $fontKeys = @("HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts", "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts")
+    foreach ($k in $fontKeys) {
+        if (Test-Path $k) {
+            $props = (Get-ItemProperty $k).PSObject.Properties
+            foreach ($p in $props) {
+                if (($p.Name -like "*JetBrains*" -and ($p.Name -like "*NF*" -or $p.Name -like "*Nerd*")) -or
+                    ($p.Value -like "*JetBrainsMono*Nerd*")) {
+                    $jbMonoInstalled = $true
+                    break
+                }
+            }
+            if ($jbMonoInstalled) { break }
+        }
+    }
+    if ($jbMonoInstalled) {
+        Write-DotmodSuccess "JetBrains Mono Nerd Font ... INSTALLED (Standard Size 12 active)" 2
+    } else {
+        Write-DotmodWarning "JetBrains Mono Nerd Font ... NOT INSTALLED (Run font restoration)" 2
+    }
+
+    # 4. Theme & Appearance
+    Write-Host "`n--- Theme & Appearance State ---" -ForegroundColor Yellow
+    $themeInfo = Get-DotmodCurrentTheme
+    Write-DotmodInfo "Windows Terminal Scheme .... $($themeInfo.TerminalScheme)" 2
+    Write-DotmodInfo "VS Code Color Theme ........ $($themeInfo.VSCodeTheme)" 2
+    Write-DotmodInfo "Starship Palette ........... $($themeInfo.StarshipPalette)" 2
+
+    # 5. Custom Shell Command Dependencies
     Write-Host "`n--- Custom Shell Command Dependencies ---" -ForegroundColor Yellow
     $customCmds = @(
         @{ Name = "dl / fdownload"; Deps = @("yt-dlp") },
@@ -48,12 +89,12 @@ function Invoke-DotmodDiagnostics {
         }
     }
 
-    # 3. Application Configurations
+    # 6. Application Configurations
     Write-Host "`n--- Application Configuration State ---" -ForegroundColor Yellow
     $configs = @(
         @{ Name = "ZSH .zshrc"; Path = "$HOME\.zshrc" },
         @{ Name = "Git .gitconfig"; Path = "$HOME\.gitconfig" },
-        @{ Name = "Windows Terminal"; Path = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" },
+        @{ Name = "Windows Terminal"; Path = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyd3d8bbwe\LocalState\settings.json" },
         @{ Name = "VS Code Settings"; Path = "$env:APPDATA\Code\User\settings.json" },
         @{ Name = "Spicetify Settings"; Path = "$env:APPDATA\spicetify\config-xpui.ini" },
         @{ Name = "Fastfetch Config"; Path = "$HOME\.config\fastfetch\config.jsonc" }
@@ -66,7 +107,7 @@ function Invoke-DotmodDiagnostics {
         }
     }
 
-    # 4. Repository Security Status
+    # 7. Repository Security Status
     Write-Host "`n--- Repository Security & Git Health ---" -ForegroundColor Yellow
     $findings = Invoke-DotmodSecretScan -TargetDirectory $global:DOTMOD_ROOT
     if (@($findings).Length -eq 0) {

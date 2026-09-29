@@ -1,72 +1,44 @@
-[
-  {
-    "Command": "dl",
-    "Definition": "yt-dlp --cookies-from-browser firefox",
-    "Package": "yt-dlp.yt-dlp",
-    "Type": "alias",
-    "Binary": "yt-dlp"
-  },
-  {
-    "Command": "fdownload",
-    "Definition": "yt-dlp --cookies-from-browser firefox -F",
-    "Package": "yt-dlp.yt-dlp",
-    "Type": "alias",
-    "Binary": "yt-dlp"
-  },
-  {
-    "Command": "dlmp3",
-    "Definition": "yt-dlp --cookies-from-browser firefox -x --audio-format mp3",
-    "Package": "yt-dlp.yt-dlp, Gyan.FFmpeg",
-    "Type": "alias",
-    "Binary": "yt-dlp, ffmpeg"
-  },
-  {
-    "Command": "dl1080",
-    "Definition": "yt-dlp --cookies-from-browser firefox -S ext:mp4,res:1080 -f bv+ba",
-    "Package": "yt-dlp.yt-dlp, Gyan.FFmpeg",
-    "Type": "alias",
-    "Binary": "yt-dlp, ffmpeg"
-  },
-  {
-    "Command": "dl4k",
-    "Definition": "yt-dlp --cookies-from-browser firefox -S ext:mp4,res:2160 -f bv+ba",
-    "Package": "yt-dlp.yt-dlp, Gyan.FFmpeg",
-    "Type": "alias",
-    "Binary": "yt-dlp, ffmpeg"
-  },
-  {
-    "Command": "ff",
-    "Definition": "ffmpeg",
-    "Package": "Gyan.FFmpeg",
-    "Type": "alias",
-    "Binary": "ffmpeg"
-  },
-  {
-    "Command": "bismillah",
-    "Definition": "python auto_dev.py",
-    "Package": "Python.Python.3.14",
-    "Type": "alias",
-    "Binary": "python"
-  },
-  {
-    "Command": "spa",
-    "Definition": "spicetify apply",
-    "Package": "spicetify-cli",
-    "Type": "alias",
-    "Binary": "spicetify"
-  },
-  {
-    "Command": "sba",
-    "Definition": "spicetify backup apply",
-    "Package": "spicetify-cli",
-    "Type": "alias",
-    "Binary": "spicetify"
-  },
-  {
-    "Command": "su",
-    "Definition": "spicetify update",
-    "Package": "spicetify-cli",
-    "Type": "alias",
-    "Binary": "spicetify"
-  }
-]
+﻿{
+    "Commands":  [
+                     {
+                         "Description":  "Extract audio from YouTube/URL as MP3",
+                         "Name":  "dlmp3",
+                         "Binary":  "yt-dlp"
+                     },
+                     {
+                         "Description":  "Download 1080p video with best audio",
+                         "Name":  "dl1080",
+                         "Binary":  "yt-dlp"
+                     },
+                     {
+                         "Description":  "Download 4K 2160p video with best audio",
+                         "Name":  "dl4k",
+                         "Binary":  "yt-dlp"
+                     },
+                     {
+                         "Description":  "Launch auto_dev.py AI automation workflow",
+                         "Name":  "bismillah",
+                         "Binary":  "python"
+                     },
+                     {
+                         "Description":  "spicetify apply",
+                         "Name":  "spa",
+                         "Binary":  "spicetify"
+                     },
+                     {
+                         "Description":  "spicetify backup apply",
+                         "Name":  "sba",
+                         "Binary":  "spicetify"
+                     },
+                     {
+                         "Description":  "spicetify update",
+                         "Name":  "su",
+                         "Binary":  "spicetify"
+                     },
+                     {
+                         "Description":  "FFmpeg media processing alias",
+                         "Name":  "ff",
+                         "Binary":  "ffmpeg"
+                     }
+                 ]
+}

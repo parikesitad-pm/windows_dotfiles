@@ -1,4 +1,4 @@
-Name                                                               Id                                                                                    Version                       Available                     Source
+﻿Name                                                               Id                                                                                    Version                       Available                     Source
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3D Viewer                                                          MSIX\Microsoft.Microsoft3DViewer_7.2602.8012.0_x64__8wekyb3d8bbwe                     7.2602.8012.0                                               
 Adobe Creative Cloud                                               Adobe.CreativeCloud                                                                   6.10.0.252.3                  6.10.0.252.41                 winget

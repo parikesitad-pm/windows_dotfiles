@@ -1,9 +1,9 @@
-# System & Hardware Drivers Inventory
+﻿# System & Hardware Drivers Inventory
 
 > Source Machine: DRVC-F15  
-> Last Backup: 2026-09-29 22:29:09  
+> Last Backup: 2026-09-29 22:56:23  
 
-| Device Class | Device Name | Manufacturer | Driver Version | Driver Date |
+| Class | Device Name | Manufacturer | Driver Version | Date |
 |---|---|---|---|---|
 | BLUETOOTH | Bluetooth Device | Microsoft | 10.0.19041.5848 | 06/21/2006 07:00:00 |
 | BLUETOOTH | Bluetooth Device | Microsoft | 10.0.19041.5848 | 06/21/2006 07:00:00 |
