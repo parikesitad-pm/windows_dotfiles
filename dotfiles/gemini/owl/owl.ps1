@@ -1,4 +1,4 @@
-﻿# ==============================================================================
+# ==============================================================================
 #  🦉 OWL CLI - Custom Antigravity Interface for Ed
 #  crafted with ♥ · a Modula project by parikesitad-pm
 # ==============================================================================
@@ -1839,6 +1839,22 @@ try {
     if ($PromptArgs -and $PromptArgs.Count -gt 0) {
         # Check if first arg is screenshot command
         $firstArg = $PromptArgs[0].ToLower()
+        if ($firstArg -in @("logout", "/logout", "--logout", "-logout")) {
+            Write-Host "`n$C_YELLOW🚪 Melakukan logout dari Google Antigravity...$C_RESET"
+            try {
+                cmdkey /delete:LegacyGeneric:target=gemini:antigravity 2>$null | Out-Null
+            } catch {}
+            Write-Host "$C_GREEN[OK] Berhasil logout dari akun Antigravity!$C_RESET"
+            Write-Host "$C_CYAN💡 Silakan jalankan 'owl' atau 'agy' untuk login dengan akun Google baru.$C_RESET`n"
+            exit 0
+        }
+
+        if ($firstArg -in @("login", "/login", "--login", "-login")) {
+            Write-Host "`n$C_CYAN🔑 Membuka autentikasi Antigravity (Google OAuth)...$C_RESET"
+            & $AGY_PATH
+            exit 0
+        }
+
         if ($firstArg -in @("/paste", "/ss", "/shot", "/img", "-paste", "-ss")) {
             $att = Add-OwlAttachmentFromClipboard
             if (-not $att) {
@@ -1974,6 +1990,16 @@ try {
             continue
         }
 
+        if ($trimmed -in @("/logout", "logout")) {
+            Write-Host "`n$C_YELLOW🚪 Melakukan logout dari Google Antigravity...$C_RESET"
+            try {
+                cmdkey /delete:LegacyGeneric:target=gemini:antigravity 2>$null | Out-Null
+            } catch {}
+            Write-Host "$C_GREEN[OK] Berhasil logout dari akun Antigravity!$C_RESET"
+            Write-Host "$C_CYAN💡 Silakan jalankan 'owl' atau 'agy' untuk login dengan akun Google baru.$C_RESET`n"
+            break
+        }
+
         if ($trimmed -in @("/help", "?", "help")) {
             Write-Host ""
             Write-Host "$C_CYAN Shortcuts & Commands:$C_RESET"
@@ -1987,6 +2013,7 @@ try {
             Write-Host "  $C_YELLOW/model$C_RESET       - Switch Gemini / AI model"
             Write-Host "  $C_YELLOW/new$C_RESET         - Reset percakapan dan mulai konteks baru"
             Write-Host "  $C_YELLOW/clear$C_RESET       - Bersihkan layar terminal"
+            Write-Host "  $C_YELLOW/logout$C_RESET      - Logout akun Google Antigravity saat ini"
             Write-Host "  $C_YELLOW/tui$C_RESET         - Buka tampilan native Antigravity TUI"
             Write-Host "  $C_YELLOWexit$C_RESET         - Keluar dan tampilkan ringkasan sesi"
             Write-Host ""
