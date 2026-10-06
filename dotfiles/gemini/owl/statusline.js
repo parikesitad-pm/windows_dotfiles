@@ -141,11 +141,11 @@ process.stdin.on('end', () => {
   // Line 1: 🦉 ⚡ 105.7k (7.4%) | 💎 0% (3j 7m)
   const line1 = `🦉 ${C_YELLOW}⚡${C_RESET} ${C_CYAN}${tokStr}${C_RESET} ${C_YELLOW}(${tokPctStr}%)${C_RESET} ${C_GRAY}|${C_RESET} 💎 ${quotaColor}${quotaRemainingPct}%${C_RESET} ${C_GRAY}(${resetStr})${C_RESET}`;
 
-  // Line 2 (Windows version): crafted with <3 · a Modula project by parikesitad-pm · 🧠 Gemini 3.8 Flash (High)
+  // Line 2 (Windows version): crafted with ♥ · a Modula project by parikesitad-pm · 🧠 Gemini 3.8 Flash (High)
   const cols = process.stdout.columns || 80;
   const line2 = (cols < 78)
-    ? ` ${C_GRAY}crafted with${C_RESET} ${C_MAGENTA}<3${C_RESET} ${C_GRAY}· Modula ·${C_RESET} ${C_CYAN}🧠 ${rawModel}${C_RESET}`
-    : ` ${C_GRAY}crafted with${C_RESET} ${C_MAGENTA}<3${C_RESET} ${C_GRAY}· a Modula project by parikesitad-pm ·${C_RESET} ${C_CYAN}🧠 ${rawModel}${C_RESET}`;
+    ? ` ${C_GRAY}crafted with${C_RESET} ${C_MAGENTA}♥${C_RESET} ${C_GRAY}· Modula ·${C_RESET} ${C_CYAN}🧠 ${rawModel}${C_RESET}`
+    : ` ${C_GRAY}crafted with${C_RESET} ${C_MAGENTA}♥${C_RESET} ${C_GRAY}· a Modula project by parikesitad-pm ·${C_RESET} ${C_CYAN}🧠 ${rawModel}${C_RESET}`;
 
   process.stdout.write(`${line1}\n${line2}\n`);
 });
