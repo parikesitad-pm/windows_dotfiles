@@ -16,6 +16,14 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Ensure execution policy allows running scripts for CurrentUser
+try {
+    $currentPolicy = Get-ExecutionPolicy -Scope CurrentUser
+    if ($currentPolicy -eq "Restricted" -or $currentPolicy -eq "Undefined") {
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+    }
+} catch {}
+
 Write-Host "============================================================" -ForegroundColor DarkGray
 Write-Host "  DOTMOD - One-Line Workstation Bootstrap" -ForegroundColor Cyan
 Write-Host "  a Modula Project crafted by parikesitad-pm" -ForegroundColor Magenta
@@ -50,7 +58,7 @@ if (Test-Path $targetDir) {
 
 # Launch DOTMOD Restore
 Write-Host "`nLaunching DOTMOD Restore Engine...`n" -ForegroundColor Green
-$dotmodScript = ".\dotmod.ps1"
+$dotmodScript = Join-Path $targetDir "dotmod.ps1"
 
 $restoreArgs = @("-Restore")
 if ($Full) { $restoreArgs += "-Full" }
@@ -61,6 +69,6 @@ if ($DevRails) { $restoreArgs += "-DevRails" }
 if ($React) { $restoreArgs += "-React" }
 if ($Theme) { $restoreArgs += @("-Theme", $Theme) }
 
-& $dotmodScript @restoreArgs
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $dotmodScript @restoreArgs
 
 Pop-Location

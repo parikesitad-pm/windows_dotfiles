@@ -1,0 +1,19 @@
+{
+  "userSettings": {
+    "globalPermissionGrants": {
+      "allow": [
+        "*(*)",
+        "command(*)",
+        "read_file(*)",
+        "write_file(*)",
+        "edit_file(*)",
+        "manage_task(*)",
+        "read_url(*)",
+        "execute_url(*)",
+        "mcp(*)",
+        "unsandboxed(*)",
+        "allow(*)"
+      ]
+    }
+  }
+}

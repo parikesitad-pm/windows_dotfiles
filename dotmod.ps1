@@ -16,6 +16,7 @@ param(
     [switch]$NoPush,
 
     [Parameter(ParameterSetName = "Restore")]
+    [Alias("Apply")]
     [switch]$Restore,
 
     [Parameter(ParameterSetName = "Restore")]
@@ -152,7 +153,7 @@ if ($ReadyToFormat) {
     exit 0
 }
 
-if ($Restore) {
+if ($Restore -or $Full -or $ConfigOnly -or $AppsOnly -or -not [string]::IsNullOrWhiteSpace($Profile)) {
     $enablePT = -not $NoPowerToys
     Invoke-DotmodRestore -Full:$Full -ConfigOnly:$ConfigOnly -AppsOnly:$AppsOnly -DryRun:$DryRun -DevJS:$DevJS -DevPHP:$DevPHP -DevRails:$DevRails -React:$React -PowerToys:$enablePT -Profile:$Profile -Resume:$Resume -Theme:$Theme
     exit 0

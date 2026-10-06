@@ -100,7 +100,7 @@ function Get-DotmodDisplayTopology {
             $adapter = New-Object DotmodDisplayCorrelator+DISPLAY_DEVICEW
             $adapter.cb = [System.Runtime.InteropServices.Marshal]::SizeOf($adapter)
             if (![DotmodDisplayCorrelator]::EnumAdapters([IntPtr]::Zero, $i, [ref]$adapter, 0)) { break }
-            
+
             # StateFlags & 1 == DISPLAY_DEVICE_ATTACHED_TO_DESKTOP
             if (($adapter.StateFlags -band 1) -eq 1) {
                 $mon = New-Object DotmodDisplayCorrelator+DISPLAY_DEVICEW

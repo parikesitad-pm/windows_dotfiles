@@ -121,11 +121,15 @@ function Invoke-DotmodDiagnostics {
         Write-DotmodFailure "Repository Secret Scanner: $(@($findings).Length) POTENTIAL SECRETS DETECTED" 2
     }
 
-    $gitStatus = git status --porcelain 2>&1
-    if (-not $gitStatus) {
-        Write-DotmodSuccess "Git working tree: CLEAN" 2
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        $gitStatus = git status --porcelain 2>&1
+        if (-not $gitStatus) {
+            Write-DotmodSuccess "Git working tree: CLEAN" 2
+        } else {
+            Write-DotmodInfo "Git working tree: MODIFIED / UNCOMMITTED FILES PRESENT" 2
+        }
     } else {
-        Write-DotmodInfo "Git working tree: MODIFIED / UNCOMMITTED FILES PRESENT" 2
+        Write-DotmodWarning "Git CLI: Not installed on this machine" 2
     }
 
     Write-Host "`n[OK] Diagnostics run complete.`n" -ForegroundColor Green

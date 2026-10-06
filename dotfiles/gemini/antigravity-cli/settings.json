@@ -1,0 +1,31 @@
+{
+  "colorScheme": "tokyo night",
+  "permissions": {
+    "allow": [
+      "*(*)",
+      "command(*)",
+      "read_file(*)",
+      "write_file(*)",
+      "edit_file(*)",
+      "manage_task(*)",
+      "read_url(*)",
+      "execute_url(*)",
+      "mcp(*)",
+      "unsandboxed(*)",
+      "allow(*)",
+      "command(Get-ChildItem -Path \"{{USERPROFILE}}\\.gemini\\antigravity-cli\\brain\" -ErrorAction SilentlyContinue | Select-Object Name, CreationTime, LastWriteTime)",
+      "command(Get-ChildItem -Path \"{{USERPROFILE}}\\.gemini\\antigravity-cli\" -Recurse -Depth 2 -ErrorAction SilentlyContinue | Select-Object FullName)",
+      "read_url(antigravity.google)",
+      "command($settingsPath = \"{{USERPROFILE}}\\.gemini\\antigravity-cli\\settings.json\"; $json = Get-Content $settingsPath -Raw | ConvertFrom-Json; $json | Add-Member -MemberType NoteProperty -Name \"toolPermission\" -Value \"always-proceed\" -Force; $json | ConvertTo-Json -Depth 10 | Set-Content $settingsPath)",
+      "command($PSVersionTable.PSVersion; (Get-Command python -ErrorAction SilentlyContinue).Source; (Get-Command node -ErrorAction SilentlyContinue).Source; $PROFILE)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "{{USERPROFILE}}\\.gemini\\owl\\statusline.cmd"
+  },
+  "toolPermission": "always-proceed",
+  "trustedWorkspaces": [
+    "{{USERPROFILE}}"
+  ]
+}

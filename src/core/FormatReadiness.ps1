@@ -33,25 +33,29 @@ function Check-DotmodFormatReadiness {
         $allPassed = $false
     }
 
-    # 3. Git working tree clean
-    $oldEAP = $ErrorActionPreference
-    $ErrorActionPreference = "SilentlyContinue"
-    $gitStatus = git status --porcelain 2>$null
-    $ErrorActionPreference = $oldEAP
-    if (-not $gitStatus) {
-        Write-DotmodSuccess "Repository clean (no uncommitted changes)" 2
-    } else {
-        Write-DotmodFailure "Repository has uncommitted changes" 2
-        $allPassed = $false
-    }
+    # 3. Git working tree clean & push status
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        $oldEAP = $ErrorActionPreference
+        $ErrorActionPreference = "SilentlyContinue"
+        $gitStatus = git status --porcelain 2>$null
+        $gitBranchStatus = git status -uno 2>$null | Out-String
+        $ErrorActionPreference = $oldEAP
 
-    # 4. Git Push confirmed
-    $gitBranchStatus = git status -uno 2>$null | Out-String
-    if ($gitBranchStatus -match "up to date with") {
-        Write-DotmodSuccess "Push to origin/main confirmed (synchronized with GitHub)" 2
+        if (-not $gitStatus) {
+            Write-DotmodSuccess "Repository clean (no uncommitted changes)" 2
+        } else {
+            Write-DotmodFailure "Repository has uncommitted changes" 2
+            $allPassed = $false
+        }
+
+        if ($gitBranchStatus -match "up to date with") {
+            Write-DotmodSuccess "Push to origin/main confirmed (synchronized with GitHub)" 2
+        } else {
+            Write-DotmodWarning "Repository may have unpushed commits. Run git push origin main" 2
+            $allPassed = $false
+        }
     } else {
-        Write-DotmodWarning "Repository may have unpushed commits. Run git push origin main" 2
-        $allPassed = $false
+        Write-DotmodWarning "Git is not installed on this machine" 2
     }
 
     # 5. Shell configuration backed up

@@ -54,8 +54,11 @@ The same repository powers two completely separate, strictly isolated phases:
 ```powershell
 git clone https://github.com/parikesitad-pm/windows_dotfiles.git
 cd windows_dotfiles
-.\dotmod.ps1
+.\dotmod
 ```
+
+> [!TIP]
+> Running `.\dotmod` (or `.\dotmod.cmd`) automatically bypasses PowerShell execution restrictions. If running `.\dotmod.ps1` directly on a fresh Windows system, ensure execution policy is enabled via `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`.
 
 #### Method B: One-Line Remote Bootstrap
 

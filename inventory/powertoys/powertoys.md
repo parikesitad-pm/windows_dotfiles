@@ -1,7 +1,7 @@
 ﻿# Microsoft PowerToys Inventory
 
 > Source Machine: DRVC-F15  
-> Captured: 2026-09-30 01:17:49  
+> Captured: 2026-09-30 01:48:54  
 
 ## Installation Status
 - **Version**: v0.98.1

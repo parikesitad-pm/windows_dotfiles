@@ -50,6 +50,7 @@ $global:DOTMOD_MODULES = @(
     "Git configuration",
     "Browser inventory",
     "Spicetify & Spotify",
+    "Owl CLI & Antigravity configuration",
     "Environment variables",
     "Private backup checklist"
 )

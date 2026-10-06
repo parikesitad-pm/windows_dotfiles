@@ -322,6 +322,18 @@ function Invoke-DotmodRestore {
                 Restore-DotmodPowerToys -DryRun:$DryRun
             }
 
+            # Owl CLI & Antigravity Configuration
+            $geminiInstallScript = Join-Path $global:DOTMOD_PATHS.Dotfiles "gemini\install.ps1"
+            if (Test-Path $geminiInstallScript) {
+                if ($DryRun) {
+                    Write-DotmodSkipped "Owl CLI & Antigravity configuration (install.ps1) would run" 2
+                } else {
+                    Write-Host "    -> Restoring Owl CLI & Antigravity configuration..." -ForegroundColor Cyan
+                    & $geminiInstallScript -Force | Out-Null
+                    Write-DotmodSuccess "Owl CLI & Antigravity configuration restored -> ~/.gemini" 2
+                }
+            }
+
             if (-not $DryRun) { Update-DotmodRestoreStage "PersonalConfig" }
         }
     }

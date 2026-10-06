@@ -20,7 +20,7 @@ function Invoke-DotmodBackup {
     $startTime = Get-Date
     $hostname = $env:COMPUTERNAME
     $timestampStr = $startTime.ToString("yyyy-MM-dd HH:mm:ss")
-    $totalSteps = 18
+    $totalSteps = 19
     $step = 1
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
@@ -34,7 +34,7 @@ function Invoke-DotmodBackup {
         $p = Join-Path $global:DOTMOD_PATHS.Inventory $_
         if (-not (Test-Path $p)) { New-Item -ItemType Directory -Path $p -Force | Out-Null }
     }
-    @("shell", "shell\profiles", "starship", "fastfetch", "vscode", "windows-terminal", "powershell", "git", "spicetify") | ForEach-Object {
+    @("shell", "shell\profiles", "starship", "fastfetch", "vscode", "windows-terminal", "powershell", "git", "spicetify", "gemini", "gemini\owl", "gemini\antigravity-cli", "gemini\config", "gemini\bin") | ForEach-Object {
         $p = Join-Path $global:DOTMOD_PATHS.Dotfiles $_
         if (-not (Test-Path $p)) { New-Item -ItemType Directory -Path $p -Force | Out-Null }
     }
@@ -464,11 +464,39 @@ function Invoke-DotmodBackup {
         Write-DotmodSuccess "Spicetify config-xpui.ini captured (Theme: marketplace, CustomApps: marketplace)" 2
     }
 
-    # [17/18] Microsoft PowerToys
+    # [17/19] Microsoft PowerToys
     Write-DotmodStep ($step++) $totalSteps "Microsoft PowerToys"
     Backup-DotmodPowerToys
 
-    # [18/18] Environment Variables & Private Backup Checklist
+    # [18/19] Owl CLI & Antigravity Configuration
+    Write-DotmodStep ($step++) $totalSteps "Owl CLI & Antigravity Configuration"
+    $geminiDotfiles = Join-Path $global:DOTMOD_PATHS.Dotfiles "gemini"
+    $owlSrc = "$HOME\.gemini\owl"
+    if (Test-Path $owlSrc) {
+        $owlDest = Join-Path $geminiDotfiles "owl"
+        if (-not (Test-Path $owlDest)) { New-Item -ItemType Directory -Path $owlDest -Force | Out-Null }
+        if (Test-Path "$owlSrc\owl.ps1") {
+            $owlText = Get-Content -Path "$owlSrc\owl.ps1" -Raw -Encoding utf8
+            $portableAgy = @'
+$AGY_PATH = if (Test-Path "$env:LOCALAPPDATA\agy\bin\agy.exe") {
+    "$env:LOCALAPPDATA\agy\bin\agy.exe"
+} elseif (Test-Path "$HOME\.gemini\bin\agy.exe") {
+    "$HOME\.gemini\bin\agy.exe"
+} elseif (Get-Command agy.exe -ErrorAction SilentlyContinue) {
+    (Get-Command agy.exe).Source
+} else {
+    "$env:LOCALAPPDATA\agy\bin\agy.exe"
+}
+'@
+            $portableOwl = $owlText.Replace('$AGY_PATH = "C:\Users\drvc-\AppData\Local\agy\bin\agy.exe"', $portableAgy)
+            [System.IO.File]::WriteAllText((Join-Path $owlDest "owl.ps1"), $portableOwl, [System.Text.Encoding]::UTF8)
+        }
+        if (Test-Path "$owlSrc\statusline.js") { Copy-Item "$owlSrc\statusline.js" (Join-Path $owlDest "statusline.js") -Force }
+        if (Test-Path "$owlSrc\statusline.cmd") { Copy-Item "$owlSrc\statusline.cmd" (Join-Path $owlDest "statusline.cmd") -Force }
+        Write-DotmodSuccess "Owl CLI scripts captured -> dotfiles/gemini/owl" 2
+    }
+
+    # [19/19] Environment Variables & Private Backup Checklist
     Write-DotmodStep ($step++) $totalSteps "Environment Variables & Private Checklist"
     $envMdPath = Join-Path $global:DOTMOD_PATHS.Inventory "development\environment.md"
     $userPathEntries = [Environment]::GetEnvironmentVariable("Path", "User") -split ";" | Where-Object { $_ }
@@ -543,7 +571,7 @@ function Invoke-DotmodBackup {
     }
 
     Write-Host "`n============================================================" -ForegroundColor DarkGray
-    Write-Host "  [OK] Backup complete: 18 modules completed" -ForegroundColor Green
+    Write-Host "  [OK] Backup complete: 19 modules completed" -ForegroundColor Green
     Write-Host "  [OK] Portable configuration captured" -ForegroundColor Green
     Write-Host "  [OK] Hardware, software, fonts, and theme inventories generated" -ForegroundColor Green
     Write-Host "  [OK] Sensitive items safely excluded and cataloged" -ForegroundColor Green

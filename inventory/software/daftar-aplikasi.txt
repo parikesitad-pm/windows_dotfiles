@@ -1,0 +1,266 @@
+﻿==============================================================================================================
+  DAFTAR APLIKASI & SOFTWARE TERINSTAL DI LAPTOP
+  Nama Laptop   : DRVC-F15
+  Sistem Operasi: Microsoft Windows 10 Pro (64-bit)
+  Waktu Dibuat  : 2026-09-30 01:58:26
+  Total Aplikasi: 177 aplikasi terdeteksi
+==============================================================================================================
+
+--------------------------------------------------------------------------------------------------------------
+  1. KATEGORI APLIKASI UTAMA & POPULER
+--------------------------------------------------------------------------------------------------------------
+
+[Browser & Internet]
+  - Arc                                    | Versi: 1.125.0.458        | TheBrowserCompany.Arc
+  - Microsoft Edge                         | Versi: 154.0.4258.37      | Microsoft Corporation
+  - Mozilla Firefox (x64 en-US)            | Versi: 156.0.1            | Mozilla
+  - Opera GX Stable 136.0.6008.76          | Versi: 136.0.6008.76      | Opera Software
+  - Zen Browser (x64 en-US)                | Versi: 1.22.3b            | Zen OSS Team
+
+[Development & Coding]
+  - Deno                                   | Versi: 2.9.1              | Deno Land Inc.
+  - Git                                    | Versi: 2.55.0.5           | The Git Development Community
+  - GitHub CLI                             | Versi: 2.100.0            | GitHub, Inc.
+  - Microsoft Visual Studio Code (User)    | Versi: 1.139.1            | Microsoft Corporation
+  - Microsoft Visual Studio Installer      | Versi: 4.0.2168.39045     | Microsoft Corporation
+  - Microsoft Visual Studio Tools for Applications 2022 | Versi: 17.0.33529         | Microsoft Corporation
+  - Node.js                                | Versi: 25.5.0             | Node.js Foundation
+  - PowerToys (Preview) x64                | Versi: 0.98.1             | Microsoft Corporation
+  - PowerToys.SparseApp                    | Versi: 0.96.1.0           | Microsoft Store / Windows
+  - Python 3.14.2 (64-bit)                 | Versi: 3.14.2150.0        | Python Software Foundation
+  - Python Launcher                        | Versi: 3.14.2150.0        | Python Software Foundation
+  - Rustup: the Rust toolchain installer   | Versi: 1.29.1             | -
+  - Visual Studio / Code for Command Palette | Versi: 1.31.0.0           | 15722UsefulApp.WorkspaceLauncherForVSCode
+  - Visual Studio Build Tools 2022         | Versi: 17.14.25 (January 2026) | Microsoft Corporation
+  - Windows Terminal                       | Versi: 1.24.11911.0       | Microsoft.WindowsTerminal
+
+[Kreatif, Desain & Media]
+  - Adobe Creative Cloud                   | Versi: 6.10.0.252.3       | Adobe Inc.
+  - Adobe Notification Client              | Versi: 6.0.0.1            | Microsoft Store / Windows
+  - Adobe Photoshop 2025                   | Versi: 26.4.1.194         | Adobe Inc.
+  - Blackmagic ATEM Switchers              | Versi: 10.3               | Blackmagic Design
+  - OBS Studio                             | Versi: 32.0.2             | OBS Project
+  - Spotify                                | Versi: 1.3.0.277.g5441bb3e | Spotify AB
+  - VLC media player                       | Versi: 3.0.21             | VideoLAN
+  - vMix                                   | Versi: -                  | StudioCoast
+  - vMix Social                            | Versi: -                  | StudioCoast Pty Ltd
+  - vMix Video Codec version 3.1           | Versi: 3.1                | StudioCoast Pty Ltd
+
+[Komunikasi, AI & Produktivitas]
+  - Claude                                 | Versi: 1.1.4498           | Anthropic PBC
+  - Copilot                                | Versi: 154.0.4258.37      | Microsoft Corporation
+  - Microsoft Office LTSC Professional Plus 2024 - en-us | Versi: 16.0.17932.20574   | Microsoft Corporation
+  - WhatsApp                               | Versi: 2.2637.100.0       | Microsoft Store / Windows
+  - WhatsApp Web                           | Versi: 1.0                | Google\Chrome
+  - Zoom Workplace                         | Versi: 7.1.9 (48550)      | Zoom Communications, Inc.
+
+[Hardware, Driver & Utility Sistem]
+  - Armoury Crate                          | Versi: 6.5.14.0           | Microsoft Store / Windows
+  - Armoury Crate Service                  | Versi: 6.4.7.0            | ASUSTeK COMPUTER INC.
+  - ASUS Framework Service                 | Versi: 4.2.4.8            | ASUSTeK Computer Inc.
+  - ASUS Smart Display Control             | Versi: 1.10.0             | ASUSTek COMPUTER INC.
+  - AURA Creator                           | Versi: 4.5.5.0            | Microsoft Store / Windows
+  - AURA lighting effect add-on            | Versi: 0.0.52             | ASUSTek COMPUTER INC.
+  - AURA lighting effect add-on x64        | Versi: 0.0.52             | ASUSTek COMPUTER INC.
+  - AURA Service                           | Versi: 3.10.04            | ASUSTeK COMPUTER INC.
+  - Canon IJ Printer Assistant Tool        | Versi: 1.120.3.24         | Canon Inc.
+  - Cheat Engine 7.6                       | Versi: -                  | Cheat Engine
+  - Cloudflare WARP                        | Versi: 25.10.186.0        | Cloudflare, Inc.
+  - Intel® Graphics Command Center         | Versi: 1.100.5688.0       | Microsoft Store / Windows
+  - MyASUS                                 | Versi: 4.0.77.0           | Microsoft Store / Windows
+  - NVIDIA App 11.0.8.299                  | Versi: 11.0.8.299         | NVIDIA Corporation
+  - NVIDIA Control Panel                   | Versi: 8.1.969.0          | Microsoft Store / Windows
+  - NVIDIA FrameView SDK 1.8.12612.38276700 | Versi: 1.8.12612.38276700 | NVIDIA Corporation
+  - NVIDIA GeForce NOW 2.0.79.166          | Versi: 2.0.79.166         | NVIDIA Corporation
+  - NVIDIA Graphics Driver 610.62          | Versi: 610.62             | NVIDIA Corporation
+  - NVIDIA HD Audio Driver 1.4.5.7         | Versi: 1.4.5.7            | NVIDIA Corporation
+  - NVIDIA PhysX System Software 9.23.1019 | Versi: 9.23.1019          | NVIDIA Corporation
+  - WinRAR 6.24                            | Versi: 6.24               | LR
+
+--------------------------------------------------------------------------------------------------------------
+  2. DAFTAR LENGKAP SEMUA APLIKASI (ALFABETIS A - Z)
+--------------------------------------------------------------------------------------------------------------
+
+No   | Nama Aplikasi                              | Versi              | Publisher / ID                 | Tipe Instalasi      
+-----------------------------------------------------------------------------------------------------------------------------
+1    | 3D Viewer                                  | 7.2602.8012.0      | Microsoft Store / Windows      | Windows Store / MSIX
+2    | Adobe Creative Cloud                       | 6.10.0.252.3       | Adobe Inc.                     | Aplikasi Desktop    
+3    | Adobe Notification Client                  | 6.0.0.1            | Microsoft Store / Windows      | Windows Store / MSIX
+4    | Adobe Photoshop 2025                       | 26.4.1.194         | Adobe Inc.                     | Aplikasi Desktop    
+5    | AI Noise Cancelation Audio Software        | 4.0.7              | ASUSTek Computer Inc.          | Aplikasi Desktop    
+6    | AI Noise Cancelation Audio Software SDK    | 1.0.6              | ASUSTeK COMPUTER INC.          | Aplikasi Desktop    
+7    | App Installer                              | 1.29.380.0         | Microsoft.AppInstaller         | WinGet Package      
+8    | Arc                                        | 1.125.0.458        | TheBrowserCompany.Arc          | WinGet Package      
+9    | Armoury Crate                              | 6.5.14.0           | Microsoft Store / Windows      | Windows Store / MSIX
+10   | Armoury Crate Service                      | 6.4.7.0            | ASUSTeK COMPUTER INC.          | Aplikasi Desktop    
+11   | ASUS Framework Service                     | 4.2.4.8            | ASUSTeK Computer Inc.          | Aplikasi Desktop    
+12   | ASUS Smart Display Control                 | 1.10.0             | ASUSTek COMPUTER INC.          | Aplikasi Desktop    
+13   | AURA Creator                               | 4.5.5.0            | Microsoft Store / Windows      | Windows Store / MSIX
+14   | AURA lighting effect add-on                | 0.0.52             | ASUSTek COMPUTER INC.          | Aplikasi Desktop    
+15   | AURA lighting effect add-on x64            | 0.0.52             | ASUSTek COMPUTER INC.          | Aplikasi Desktop    
+16   | AURA Service                               | 3.10.04            | ASUSTeK COMPUTER INC.          | Aplikasi Desktop    
+17   | Blackmagic ATEM Switchers                  | 10.3               | Blackmagic Design              | Aplikasi Desktop    
+18   | Bonjour                                    | 3.0.0.10           | Apple Inc.                     | Aplikasi Desktop    
+19   | bottom                                     | 0.14.9             | Clement Tsang                  | Aplikasi Desktop    
+20   | Canon IJ Printer Assistant Tool            | 1.120.3.24         | Canon Inc.                     | Aplikasi Desktop    
+21   | Cheat Engine 7.6                           | -                  | Cheat Engine                   | Aplikasi Desktop    
+22   | Claude                                     | 1.1.4498           | Anthropic PBC                  | Aplikasi Desktop    
+23   | Cloudflare WARP                            | 25.10.186.0        | Cloudflare, Inc.               | Aplikasi Desktop    
+24   | Command Palette                            | 0.9.10852.0        | Microsoft Store / Windows      | Windows Store / MSIX
+25   | Copilot                                    | 154.0.4258.37      | Microsoft Corporation          | Aplikasi Desktop    
+26   | Cortana                                    | 4.2308.1005.0      | Microsoft Store / Windows      | Windows Store / MSIX
+27   | Countdown Timer 2.0                        | 2.0.16             | Irisdown                       | Aplikasi Desktop    
+28   | Cross Device Experience Host               | 0.25072.59.0       | Microsoft Store / Windows      | Windows Store / MSIX
+29   | Deno                                       | 2.9.1              | Deno Land Inc.                 | Aplikasi Desktop    
+30   | DistroAV                                   | 6.2.1              | DistroAV                       | Aplikasi Desktop    
+31   | DriverMax 17                               | 17.11.0.12         | Innovative Solutions           | Aplikasi Desktop    
+32   | DTS:X Ultra                                | 1.14.2.0           | Microsoft Store / Windows      | Windows Store / MSIX
+33   | EarTrumpet                                 | 2.3.0.0            | Microsoft Store / Windows      | Windows Store / MSIX
+34   | EaseUS Partition Master                    | 18.2               | EaseUS                         | Aplikasi Desktop    
+35   | fastfetch                                  | 2.68.1             | fastfetch-cli                  | Aplikasi Desktop    
+36   | Feedback Hub                               | 1.2608.17301.0     | Microsoft Store / Windows      | Windows Store / MSIX
+37   | FFmpeg                                     | 8.1.2              | Gyan                           | Aplikasi Desktop    
+38   | FFmpeg for yt-dlp                          | N-124716-g054df... | yt-dlp                         | Aplikasi Desktop    
+39   | Football Life 2026                         | -                  | -                              | Aplikasi Desktop    
+40   | Format Factory 5.21.0.0                    | 5.21.0.0           | LR                             | Aplikasi Desktop    
+41   | Game Bar                                   | 7.326.8061.0       | Microsoft Store / Windows      | Windows Store / MSIX
+42   | GameSDK Service                            | 1.0.5.0            | ASUSTek COMPUTER INC.          | Aplikasi Desktop    
+43   | Get Help                                   | 10.2409.41132.0    | Microsoft Store / Windows      | Windows Store / MSIX
+44   | Git                                        | 2.55.0.5           | The Git Development Community  | Aplikasi Desktop    
+45   | GitHub CLI                                 | 2.100.0            | GitHub, Inc.                   | Aplikasi Desktop    
+46   | Haali Media Splitter                       | -                  | -                              | Aplikasi Desktop    
+47   | HEIF Image Extension                       | 1.2.48.0           | Microsoft Store / Windows      | Windows Store / MSIX
+48   | Helium                                     | 0.18.1.1           | The Helium Authors             | Aplikasi Desktop    
+49   | Intel® Graphics Command Center             | 1.100.5688.0       | Microsoft Store / Windows      | Windows Store / MSIX
+50   | Java 8 Update 441 (64-bit)                 | 8.0.4410.7         | Oracle Corporation             | Aplikasi Desktop    
+51   | JetBrainsMono Nerd Font                    | 3.3.0              | DEVCOM                         | Aplikasi Desktop    
+52   | Kate                                       | 25.1201.11022.0    | Microsoft Store / Windows      | Windows Store / MSIX
+53   | Maono ProStudio 2x2 1.0.0.8                | 1.0.0.8            | Shenzhen Maono Technology C... | Aplikasi Desktop    
+54   | Maxon Cinema 4D 2024                       | 2024               | Maxon                          | Aplikasi Desktop    
+55   | Microsoft .Net Native Framework Package... | 1.7.27413.0        | Microsoft Store / Windows      | Windows Store / MSIX
+56   | Microsoft .Net Native Framework Package... | 2.1.27427.0        | Microsoft Store / Windows      | Windows Store / MSIX
+57   | Microsoft .Net Native Framework Package... | 2.2.29512.0        | Microsoft Store / Windows      | Windows Store / MSIX
+58   | Microsoft .Net Native Runtime Package 1.7  | 1.7.27422.0        | Microsoft Store / Windows      | Windows Store / MSIX
+59   | Microsoft .Net Native Runtime Package 2.1  | 2.1.26424.0        | Microsoft Store / Windows      | Windows Store / MSIX
+60   | Microsoft .Net Native Runtime Package 2.2  | 2.2.28604.0        | Microsoft.DotNet.Native.Run... | WinGet Package      
+61   | Microsoft .NET Runtime - 8.0.21 (x64)      | 8.0.21.35325       | Microsoft Corporation          | Aplikasi Desktop    
+62   | Microsoft .NET SDK 8.0.301 (x64)           | 8.3.124.27210      | Microsoft Corporation          | Aplikasi Desktop    
+63   | Microsoft Bing                             | 1.1.40.0           | Microsoft Store / Windows      | Windows Store / MSIX
+64   | Microsoft Edge                             | 154.0.4258.37      | Microsoft Corporation          | Aplikasi Desktop    
+65   | Microsoft Office LTSC Professional Plus... | 16.0.17932.20574   | Microsoft Corporation          | Aplikasi Desktop    
+66   | Microsoft OneDrive                         | 26.163.0823.0004   | Microsoft Corporation          | Aplikasi Desktop    
+67   | Microsoft Pay                              | 2.4.18324.0        | Microsoft Store / Windows      | Windows Store / MSIX
+68   | Microsoft People                           | 10.2202.100.0      | Microsoft Store / Windows      | Windows Store / MSIX
+69   | Microsoft Photos                           | 2026.11080.24002.0 | Microsoft Store / Windows      | Windows Store / MSIX
+70   | Microsoft Sticky Notes                     | 6.1.4.0            | Microsoft Store / Windows      | Windows Store / MSIX
+71   | Microsoft Store                            | 22608.1401.4.0     | Microsoft Store / Windows      | Windows Store / MSIX
+72   | Microsoft Tips                             | 10.2312.1.0        | Microsoft Store / Windows      | Windows Store / MSIX
+73   | Microsoft Update Health Tools              | 3.74.0.0           | Microsoft Corporation          | Aplikasi Desktop    
+74   | Microsoft Visual C++ 2008 Redistributab... | 9.0.30729          | Microsoft Corporation          | Aplikasi Desktop    
+75   | Microsoft Visual C++ 2008 Redistributab... | 9.0.30729          | Microsoft Corporation          | Aplikasi Desktop    
+76   | Microsoft Visual C++ 2010  x64 Redistri... | 10.0.30319         | Microsoft Corporation          | Aplikasi Desktop    
+77   | Microsoft Visual C++ 2010  x86 Redistri... | 10.0.30319         | Microsoft Corporation          | Aplikasi Desktop    
+78   | Microsoft Visual C++ 2013 Redistributab... | 12.0.30501.0       | Microsoft Corporation          | Aplikasi Desktop    
+79   | Microsoft Visual C++ 2013 Redistributab... | 12.0.40664.0       | Microsoft Corporation          | Aplikasi Desktop    
+80   | Microsoft Visual C++ 2013 Redistributab... | 12.0.30501.0       | Microsoft Corporation          | Aplikasi Desktop    
+81   | Microsoft Visual C++ 2013 Redistributab... | 12.0.40664.0       | Microsoft Corporation          | Aplikasi Desktop    
+82   | Microsoft Visual C++ 2015 UWP Desktop R... | 14.0.33728.0       | Microsoft.VCLibs.Desktop.14    | WinGet Package      
+83   | Microsoft Visual C++ 2015 UWP Runtime P... | 14.0.33519.0       | Microsoft.VCLibs.14            | WinGet Package      
+84   | Microsoft Visual C++ 2015-2022 Redistri... | 14.44.35211.0      | Microsoft Corporation          | Aplikasi Desktop    
+85   | Microsoft Visual C++ 2015-2022 Redistri... | 14.44.35211.0      | Microsoft Corporation          | Aplikasi Desktop    
+86   | Microsoft Visual Studio Code (User)        | 1.139.1            | Microsoft Corporation          | Aplikasi Desktop    
+87   | Microsoft Visual Studio Installer          | 4.0.2168.39045     | Microsoft Corporation          | Aplikasi Desktop    
+88   | Microsoft Visual Studio Tools for Appli... | 17.0.33529         | Microsoft Corporation          | Aplikasi Desktop    
+89   | Microsoft.UI.Xaml.2.0                      | 2.1810.18004.0     | Microsoft Store / Windows      | Windows Store / MSIX
+90   | Microsoft.UI.Xaml.2.3                      | 2.32002.13001.0    | Microsoft Store / Windows      | Windows Store / MSIX
+91   | Microsoft.UI.Xaml.2.4                      | 2.42007.9001.0     | Microsoft Store / Windows      | Windows Store / MSIX
+92   | Microsoft.UI.Xaml.2.7                      | 7.2409.9001.0      | Microsoft.UI.Xaml.2.7          | WinGet Package      
+93   | Microsoft.UI.Xaml.2.8                      | 8.2501.31001.0     | Microsoft.UI.Xaml.2.8          | WinGet Package      
+94   | move-transition version 3.2.0              | 3.2.0              | Exeldro                        | Aplikasi Desktop    
+95   | Mozilla Firefox (x64 en-US)                | 156.0.1            | Mozilla                        | Aplikasi Desktop    
+96   | Mozilla Maintenance Service                | 1.22.3b            | Mozilla                        | Aplikasi Desktop    
+97   | MSN Weather                                | 4.54.63045.0       | Microsoft Store / Windows      | Windows Store / MSIX
+98   | MyASUS                                     | 4.0.77.0           | Microsoft Store / Windows      | Windows Store / MSIX
+99   | NDI 6 Runtime                              | 6.3.2.0            | NDI                            | Aplikasi Desktop    
+100  | NDI 6 Tools                                | 6.3.2.0            | NDI                            | Aplikasi Desktop    
+101  | NewTek SpeedHQ Video Codec (x64) (Remov... | -                  | -                              | Aplikasi Desktop    
+102  | NewTek SpeedHQ Video Codec (x86) (Remov... | -                  | -                              | Aplikasi Desktop    
+103  | Nitro PDF Pro                              | 14.42.0.34         | Nitro                          | Aplikasi Desktop    
+104  | Node.js                                    | 25.5.0             | Node.js Foundation             | Aplikasi Desktop    
+105  | NVIDIA App 11.0.8.299                      | 11.0.8.299         | NVIDIA Corporation             | Aplikasi Desktop    
+106  | NVIDIA Control Panel                       | 8.1.969.0          | Microsoft Store / Windows      | Windows Store / MSIX
+107  | NVIDIA FrameView SDK 1.8.12612.38276700    | 1.8.12612.38276700 | NVIDIA Corporation             | Aplikasi Desktop    
+108  | NVIDIA GeForce NOW 2.0.79.166              | 2.0.79.166         | NVIDIA Corporation             | Aplikasi Desktop    
+109  | NVIDIA Graphics Driver 610.62              | 610.62             | NVIDIA Corporation             | Aplikasi Desktop    
+110  | NVIDIA HD Audio Driver 1.4.5.7             | 1.4.5.7            | NVIDIA Corporation             | Aplikasi Desktop    
+111  | NVIDIA PhysX System Software 9.23.1019     | 9.23.1019          | NVIDIA Corporation             | Aplikasi Desktop    
+112  | OBS Studio                                 | 32.0.2             | OBS Project                    | Aplikasi Desktop    
+113  | Okular                                     | 26.801.7936.0      | Microsoft Store / Windows      | Windows Store / MSIX
+114  | OneNote for Windows 10                     | 16001.14326.225... | Microsoft Store / Windows      | Windows Store / MSIX
+115  | Opera GX Stable 136.0.6008.76              | 136.0.6008.76      | Opera Software                 | Aplikasi Desktop    
+116  | Outlook for Windows                        | 1.2026.120.300     | Microsoft.Outlook              | WinGet Package      
+117  | Paint 3D                                   | 6.1907.29027.0     | Microsoft Store / Windows      | Windows Store / MSIX
+118  | Phone Link                                 | 1.25072.81.0       | Microsoft Store / Windows      | Windows Store / MSIX
+119  | PowerShell                                 | 7.6.6.0            | Microsoft.PowerShell           | WinGet Package      
+120  | PowerToys (Preview) x64                    | 0.98.1             | Microsoft Corporation          | Aplikasi Desktop    
+121  | PowerToys.SparseApp                        | 0.96.1.0           | Microsoft Store / Windows      | Windows Store / MSIX
+122  | Python 3.14.2 (64-bit)                     | 3.14.2150.0        | Python Software Foundation     | Aplikasi Desktop    
+123  | Python Launcher                            | 3.14.2150.0        | Python Software Foundation     | Aplikasi Desktop    
+124  | QR Codes for Command Palette               | 0.4.0.0            | JiriPolasek.QRCodesforComma... | WinGet Package      
+125  | Resolume Arena 7.15.0 rev 23381            | 7.15.0.23381       | Resolume                       | Aplikasi Desktop    
+126  | ROG Live Service                           | 3.5.6.0            | ASUSTek COMPUTER INC.          | Aplikasi Desktop    
+127  | Rustup: the Rust toolchain installer       | 1.29.1             | -                              | Aplikasi Desktop    
+128  | Skype                                      | 15.150.3125.0      | Microsoft Store / Windows      | Windows Store / MSIX
+129  | Snip & Sketch                              | 10.2008.3001.0     | Microsoft Store / Windows      | Windows Store / MSIX
+130  | Spotify                                    | 1.3.0.277.g5441... | Spotify AB                     | Aplikasi Desktop    
+131  | StartIsBack++                              | 2.9.20             | startisback.com                | Aplikasi Desktop    
+132  | Store Experience Host                      | 22608.1401.1.0     | Microsoft Store / Windows      | Windows Store / MSIX
+133  | ThunderboltTM Control Center               | 1.0.37.0           | Microsoft Store / Windows      | Windows Store / MSIX
+134  | UltraUXThemePatcher                        | 4.5.0.0            | Manuel Hoefs (Zottel)          | Aplikasi Desktop    
+135  | Update for x64-based Windows Systems (K... | 8.94.0.0           | Microsoft Corporation          | Aplikasi Desktop    
+136  | UXP WebView Support                        | 1.2.0              | Adobe Inc.                     | Aplikasi Desktop    
+137  | VBCABLE-A, The Virtual Audio Cable         | -                  | VB-Audio Software              | Aplikasi Desktop    
+138  | VBCABLE-B, The Virtual Audio Cable         | -                  | VB-Audio Software              | Aplikasi Desktop    
+139  | VirtualDJ 2021                             | 8.5.6334.0         | Atomix Productions             | Aplikasi Desktop    
+140  | Visual Studio / Code for Command Palette   | 1.31.0.0           | 15722UsefulApp.WorkspaceLau... | WinGet Package      
+141  | Visual Studio Build Tools 2022             | 17.14.25 (Janua... | Microsoft Corporation          | Aplikasi Desktop    
+142  | VLC media player                           | 3.0.21             | VideoLAN                       | Aplikasi Desktop    
+143  | vMix                                       | -                  | StudioCoast                    | Aplikasi Desktop    
+144  | vMix Social                                | -                  | StudioCoast Pty Ltd            | Aplikasi Desktop    
+145  | vMix Video Codec version 3.1               | 3.1                | StudioCoast Pty Ltd            | Aplikasi Desktop    
+146  | Voicemeeter, The Virtual Mixing Console    | -                  | VB-Audio Software              | Aplikasi Desktop    
+147  | VP9 Video Extensions                       | 1.2.20.0           | Microsoft Store / Windows      | Windows Store / MSIX
+148  | vs_CoreEditorFonts                         | 17.7.40001         | Microsoft Corporation          | Aplikasi Desktop    
+149  | Web Media Extensions                       | 1.2.42.0           | Microsoft Store / Windows      | Windows Store / MSIX
+150  | WebP Image Extension                       | 1.2.31.0           | Microsoft Store / Windows      | Windows Store / MSIX
+151  | WhatsApp                                   | 2.2637.100.0       | Microsoft Store / Windows      | Windows Store / MSIX
+152  | WhatsApp Web                               | 1.0                | Google\Chrome                  | Aplikasi Desktop    
+153  | Windows Advanced Settings                  | 0.2100.858.0       | Microsoft Store / Windows      | Windows Store / MSIX
+154  | Windows Calculator                         | 11.2607.0.0        | Microsoft Store / Windows      | Windows Store / MSIX
+155  | Windows Camera                             | 2026.2607.1.0      | Microsoft Store / Windows      | Windows Store / MSIX
+156  | Windows Clock                              | 11.2607.6.0        | Microsoft Store / Windows      | Windows Store / MSIX
+157  | Windows Maps                               | 11.2506.3.0        | Microsoft Store / Windows      | Windows Store / MSIX
+158  | Windows Media Player                       | 11.2607.16.0       | Microsoft Store / Windows      | Windows Store / MSIX
+159  | Windows Package Manager Source (winget) V2 | 2026.929.1921.28   | Microsoft Store / Windows      | Windows Store / MSIX
+160  | Windows SDK AddOn                          | 10.1.0.0           | Microsoft Corporation          | Aplikasi Desktop    
+161  | Windows Software Development Kit - Wind... | 10.1.26100.7175    | Microsoft Corporation          | Aplikasi Desktop    
+162  | Windows Terminal                           | 1.24.11911.0       | Microsoft.WindowsTerminal      | WinGet Package      
+163  | Windows Voice Recorder                     | 10.2103.28.0       | Microsoft Store / Windows      | Windows Store / MSIX
+164  | WindowsAppRuntime.1.5                      | 1.5.9              | Microsoft.WindowsAppRuntime... | WinGet Package      
+165  | WindowsAppRuntime.1.6                      | 1.6.9              | Microsoft.WindowsAppRuntime... | WinGet Package      
+166  | WindowsAppRuntime.1.7                      | 1.7.9              | Microsoft.WindowsAppRuntime... | WinGet Package      
+167  | WindowsAppRuntime.1.8                      | > 1.8.10           | Microsoft.WindowsAppRuntime... | WinGet Package      
+168  | WindowsAppRuntime.2                        | 2.5.1.0            | Microsoft.WindowsAppRuntime.2  | WinGet Package      
+169  | WinRAR 6.24                                | 6.24               | LR                             | Aplikasi Desktop    
+170  | Xbox Console Companion                     | 48.104.4001.0      | Microsoft Store / Windows      | Windows Store / MSIX
+171  | Xbox Game Bar Plugin                       | 1.54.4001.0        | Microsoft Store / Windows      | Windows Store / MSIX
+172  | Xbox Game Speech Window                    | 1.21.13002.0       | Microsoft Store / Windows      | Windows Store / MSIX
+173  | Xbox Identity Provider                     | 12.130.16001.0     | Microsoft Store / Windows      | Windows Store / MSIX
+174  | Xbox TCUI                                  | 1.24.10001.0       | Microsoft Store / Windows      | Windows Store / MSIX
+175  | yt-dlp                                     | 2026.07.04         | yt-dlp                         | Aplikasi Desktop    
+176  | Zen Browser (x64 en-US)                    | 1.22.3b            | Zen OSS Team                   | Aplikasi Desktop    
+177  | Zoom Workplace                             | 7.1.9 (48550)      | Zoom Communications, Inc.      | Aplikasi Desktop    
+
+==============================================================================================================
+  Akhir dari daftar aplikasi.
+==============================================================================================================
